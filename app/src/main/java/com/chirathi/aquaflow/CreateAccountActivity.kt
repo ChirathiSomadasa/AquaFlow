@@ -10,7 +10,12 @@ class CreateAccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
 
-        val consumer = findViewById<Button>(R.id.consumer_btn)
+        val consumer = findViewById<Button>(R.id.consumer_btn) // consumer_layout
+        consumer.setOnClickListener {
+            val intent = Intent(this, CustomerRegistrationActivity::class.java)
+            startActivity(intent)
+        }
+        val supplier = findViewById<Button>(R.id.supplier_btn) // supplier_layout
         consumer.setOnClickListener {
             val intent = Intent(this, CustomerRegistrationActivity::class.java)
             startActivity(intent)
