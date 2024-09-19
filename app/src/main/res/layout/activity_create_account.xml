@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".CreateAccountActivity">
+
+    <!-- Top Wave -->
+    <com.scwang.wave.MultiWaveHeader
+        android:id="@+id/waveHeader"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        app:mwhIsRunning="true"
+        app:mwhVelocity="5"
+        app:mwhProgress="1"
+        app:mwhGradientAngle="45"
+        app:mwhWaveHeight="70dp"
+        app:mwhColorAlpha="0.45"
+        app:mwhStartColor="#5DCCFC"
+        app:mwhCloseColor="#36D2EEFA"
+        app:mwhWaves="MultiWave" />
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/waveHeader"
+        android:layout_centerHorizontal="true"
+        android:text="Create Account"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/black" />
+
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:text="Please select your user type"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:textColor="#7E7676" />
+
+
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subtitle"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="80dp">
+
+
+        <LinearLayout
+            android:id="@+id/consumer_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="20dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/consumer_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/consumer1" />
+
+            <Button
+                android:id="@+id/consumer_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Consumer"
+                android:background="@drawable/account_btn"
+                app:backgroundTint="#5DCCFC"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/supplier_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/supplier_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/supplier1" />
+
+            <Button
+                android:id="@+id/supplier_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Supplier"
+                android:background="@drawable/account_btn"
+                app:backgroundTint="#5DCCFC"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Bottom Wave -->
+    <com.scwang.wave.MultiWaveHeader
+        android:id="@+id/waveFooter"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:scaleY="-1"
+        app:mwhIsRunning="true"
+        app:mwhVelocity="5"
+        app:mwhProgress="1"
+        app:mwhGradientAngle="45"
+        app:mwhWaveHeight="70dp"
+        app:mwhColorAlpha="0.45"
+        app:mwhStartColor="#5DCCFC"
+        app:mwhCloseColor="#36D2EEFA"
+        app:mwhWaves="MultiWave" />
+
+</RelativeLayout>
