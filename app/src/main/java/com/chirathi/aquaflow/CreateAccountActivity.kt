@@ -16,8 +16,8 @@ class CreateAccountActivity : AppCompatActivity() {
             startActivity(intent)
         }
         val supplier = findViewById<Button>(R.id.supplier_btn) // supplier_layout
-        consumer.setOnClickListener {
-            val intent = Intent(this, CustomerRegistrationActivity::class.java)
+        supplier.setOnClickListener {
+            val intent = Intent(this, SupplierRegistrationActivity::class.java)//
             startActivity(intent)
         }
     }
