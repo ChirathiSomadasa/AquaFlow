@@ -162,7 +162,7 @@
             </LinearLayout>
 
         <Button
-            android:id="@+id/save_btn"
+            android:id="@+id/signup_btn"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_above="@+id/sing_in"

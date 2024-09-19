@@ -4,4 +4,12 @@
         <item name="colorPrimary">@color/blue</item>
         <item name="android:fontFamily">@font/fonts</item>
     </style>
+
+    <style name="OutlinedButton">
+        <item name="android:background">@drawable/outline_btn</item>
+    </style>
+
+    <style name="SolidButton">
+        <item name="android:background">@drawable/blue_btn</item>
+    </style>
 </resources>
