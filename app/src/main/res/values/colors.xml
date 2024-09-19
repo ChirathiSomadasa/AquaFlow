@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#5DCCFC</color>
+    <color name="wave_blue">#4B93DDFB</color>
+    <color name="wave_lightblue">#36D2EEFA</color>
 </resources>
