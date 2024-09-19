@@ -19,8 +19,8 @@
         app:mwhGradientAngle="45"
         app:mwhWaveHeight="70dp"
         app:mwhColorAlpha="0.45"
-        app:mwhStartColor="#5DCCFC"
-        app:mwhCloseColor="#36D2EEFA"
+        app:mwhStartColor="@color/blue_wave"
+        app:mwhCloseColor="@color/light_blue_wave"
         app:mwhWaves="MultiWave" />
 
 
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="Consumer"
                 android:background="@drawable/account_btn"
-                app:backgroundTint="#5DCCFC"
+                app:backgroundTint="@color/blue"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:text="Supplier"
                 android:background="@drawable/account_btn"
-                app:backgroundTint="#5DCCFC"
+                app:backgroundTint="@color/blue"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="16sp" />

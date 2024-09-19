@@ -6,5 +6,7 @@
     <color name="wave_blue">#4B93DDFB</color>
     <color name="wave_lightblue">#36D2EEFA</color>
     <color name="gray">#7E7676</color>
+    <color name="blue_wave">#5DCCFC</color>
+    <color name="light_blue_wave">#36D2EEFA</color>
 
 </resources>
