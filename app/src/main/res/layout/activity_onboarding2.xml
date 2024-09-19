@@ -7,10 +7,10 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".Onboarding1Activity">
+    tools:context=".Onboarding2Activity">
 
     <ImageView
-        android:id="@+id/onboardingimg1"
+        android:id="@+id/onboardingimg2"
         android:layout_width="400dp"
         android:layout_height="400dp"
         android:layout_gravity="center"
@@ -27,29 +27,29 @@
         android:layout_marginVertical="20dp">
 
         <TextView
-            android:id="@+id/topic1"
+            android:id="@+id/topic2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Track Your Water Quota"
+            android:text="Turn Points into Discounts"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/description1"
+            android:id="@+id/description2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
             android:padding="10dp"
-            android:text="Easily monitor your  water usage and stay within your quota to manage consumption effectively"
+            android:text="Earn reward points with each water delivery and redeem them for discounts on future . Refresh and save!"
             android:textColor="@color/gray"
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/btn_next1"
+            android:id="@+id/btn_next2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
@@ -60,7 +60,6 @@
             android:textStyle="bold"
             app:backgroundTint="@color/blue" />
     </LinearLayout>
-
 
 
 </LinearLayout>
