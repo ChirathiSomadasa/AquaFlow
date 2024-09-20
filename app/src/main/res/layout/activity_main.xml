@@ -24,7 +24,6 @@
         app:mwhCloseColor="@color/wave_lightblue"
         app:mwhWaves="MultiWave"/>
 
-
     <LinearLayout
         android:id="@+id/layoutLogin"
         android:layout_width="match_parent"
@@ -35,15 +34,12 @@
         android:gravity="center"
         android:orientation="vertical">
 
-
-        <!-- Small Drop Icon -->
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/drop" />
 
-        <!-- App Title -->
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
@@ -55,7 +51,6 @@
             android:textSize="28sp"
             android:textStyle="bold" />
 
-        <!-- Subtitle Text -->
         <TextView
             android:id="@+id/tvSubTitle"
             android:layout_width="wrap_content"

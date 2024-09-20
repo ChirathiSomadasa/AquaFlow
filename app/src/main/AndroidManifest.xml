@@ -12,6 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AquaFlow"
         tools:targetApi="31">
+
+        <activity
+            android:name=".CustomerDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScanQRCodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QRCodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WaterQuotaActivity"
+            android:exported="false" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
