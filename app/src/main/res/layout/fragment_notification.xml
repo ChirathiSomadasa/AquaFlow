@@ -3,12 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".NotificationFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_above="@+id/bottom_nav_view"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="50dp">
 
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_notifications"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp" />
+
+
+    </RelativeLayout>
 </FrameLayout>

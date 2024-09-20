@@ -39,24 +39,11 @@
         android:alpha="0.5"
         android:background="@drawable/ash_shadow" />
 
-    <RelativeLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="15dp"
         android:layout_above="@+id/bottom_nav_view"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/toolbar">
-
-        <!-- RecyclerView -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_notifications"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
-
-
-    </RelativeLayout>
+        android:background="@drawable/blue_shadow" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_view"
