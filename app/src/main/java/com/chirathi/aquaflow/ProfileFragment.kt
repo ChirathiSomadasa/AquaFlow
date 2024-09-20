@@ -17,19 +17,23 @@ class ProfileFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val rootView =  inflater.inflate(R.layout.fragment_profile, container, false)
 
-        // Initialize the profile details layout
-        val profileDetailsLayout:RelativeLayout = rootView.findViewById(R.id.profile_details)
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
+        val profileView = view.findViewById<RelativeLayout>(R.id.profile_details)
         // Set a click listener on the profile details layout
-        profileDetailsLayout.setOnClickListener {
+        profileView.setOnClickListener {
             // Start ProfileDetailsActivity
             val intent = Intent(activity, ProfileDetailsActivity::class.java)
             startActivity(intent)
         }
 
-        return rootView
+        val qrcodeView = view.findViewById<RelativeLayout>(R.id.qrcode)
+        qrcodeView.setOnClickListener {
+            val intent = Intent(context, QRCodeActivity::class.java)
+            startActivity(intent)
+        }
+        return view
 
     }
 
