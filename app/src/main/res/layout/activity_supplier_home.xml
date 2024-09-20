@@ -89,23 +89,23 @@
 
 <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
     <FrameLayout
-        android:id="@+id/fragment_container"
+        android:id="@+id/Supplier_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_nav_view" />
+        android:layout_above="@+id/supplier_bottom_nav_view" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="15dp"
-        android:layout_above="@+id/bottom_nav_view"
+        android:layout_above="@+id/supplier_bottom_nav_view"
         android:background="@drawable/blue_shadow" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav_view"
+        android:id="@+id/supplier_bottom_nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:menu="@menu/supplier_bottom_nav_view" />
 
 
 </RelativeLayout>
