@@ -10,7 +10,7 @@ class SupplierHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_supplier_home)
 
-        val navigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+        val navigationView = findViewById<BottomNavigationView>(R.id.supplier_bottom_nav_view)
         navigationView.setOnItemSelectedListener  { menuItem ->
             when (menuItem.itemId) {
                 R.id.fragment_home -> {
