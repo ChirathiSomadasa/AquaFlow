@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:background="@drawable/blue_btn"
-            android:text="next"
+            android:text="Get Started"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textStyle="bold"
