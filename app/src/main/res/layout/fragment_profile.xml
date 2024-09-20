@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#635DCCFC"
     tools:context=".ProfileFragment">
 
@@ -19,14 +20,18 @@
             android:text="Profile"
             android:textAlignment="center"
             android:textSize="26sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
 
-        <ImageView
+        <!-- Circular Image View  -->
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/oval_white_shape"
-            android:src="@drawable/user1" />
+            android:src="@drawable/user1"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="4dp"/>
+
 
         <TextView
             android:layout_width="match_parent"
@@ -34,7 +39,7 @@
             android:layout_marginTop="5dp"
             android:text="Shenali Perera"
             android:textAlignment="center"
-            android:textColor="@color/blue"
+            android:textColor="#017BAF"
             android:textSize="26sp"
             android:textStyle="bold" />
 
@@ -106,6 +111,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/qrcode"
                     android:layout_width="match_parent"
                     android:layout_height="70dp">
 

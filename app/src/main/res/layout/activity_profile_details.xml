@@ -20,14 +20,17 @@
         android:text="Edit Profile"
         android:textAlignment="center"
         android:textSize="26sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
-    <ImageView
+    <!-- Circular Image View  -->
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/oval_white_shape"
-        android:src="@drawable/user1" />
+        android:src="@drawable/user1"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="4dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -36,7 +39,7 @@
         android:layout_marginBottom="20dp"
         android:text="Shenali Perera"
         android:textAlignment="center"
-        android:textColor="@color/blue"
+        android:textColor="#017BAF"
         android:textSize="26sp"
         android:textStyle="bold" />
 
