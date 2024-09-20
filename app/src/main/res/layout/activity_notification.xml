@@ -39,6 +39,13 @@
         android:alpha="0.5"
         android:background="@drawable/ash_shadow" />
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/bottom_nav_view" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="15dp"
