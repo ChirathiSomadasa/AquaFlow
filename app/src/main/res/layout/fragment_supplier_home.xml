@@ -41,7 +41,6 @@
             android:id="@+id/imageView"
             android:layout_width="400dp"
             android:layout_height="200dp"
-            android:src="@tools:sample/avatars"
             app:layout_constraintBottom_toTopOf="@+id/layoutBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

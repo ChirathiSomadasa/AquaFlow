@@ -14,15 +14,15 @@ class SupplierHomeActivity : AppCompatActivity() {
         navigationView.setOnItemSelectedListener  { menuItem ->
             when (menuItem.itemId) {
                 R.id.fragment_home -> {
-                    replaceFragment(HomeFragment())
+                    replaceFragment(SupplierHomeFragment())
                     return@setOnItemSelectedListener true
                 }
                 R.id.fragment_notification -> {
-                    replaceFragment(NotificationFragment())
+                    replaceFragment(SupplierNotificationFragment())
                     return@setOnItemSelectedListener true
                 }
                 R.id.fragment_profile -> {
-                    replaceFragment(ProfileFragment())
+                    replaceFragment(SupplierProfileFragment())
                     return@setOnItemSelectedListener true
                 }
                 else -> false
