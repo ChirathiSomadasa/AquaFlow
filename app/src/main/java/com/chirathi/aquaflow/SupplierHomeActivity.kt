@@ -34,7 +34,7 @@ class SupplierHomeActivity : AppCompatActivity() {
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
+            .replace(R.id.Supplier_fragment_container, fragment)
             .commit()
     }
 }
