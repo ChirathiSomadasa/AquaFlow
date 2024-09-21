@@ -33,6 +33,13 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
 
+
+        val membershipView = view.findViewById<RelativeLayout>(R.id.membership)
+        membershipView.setOnClickListener {
+            val intent = Intent(context, MembershipActivity::class.java)
+            startActivity(intent)
+        }
+
         return view
 
     }
