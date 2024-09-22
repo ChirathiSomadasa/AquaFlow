@@ -9,6 +9,13 @@ class ReminderNoticeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reminder_notice)
+
+        // Set the initial fragment
+        if (savedInstanceState == null) {
+            replaceFragment(ReminderNoticeFragment())
+        }
+
+
     }
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
