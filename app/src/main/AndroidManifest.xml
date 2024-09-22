@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AquaFlow"
         tools:targetApi="31">
         <activity
+            android:name=".PaymentProcessActivity"
+            android:exported="false" />
+        <activity
             android:name=".PaymentActivity"
             android:exported="false" />
         <activity
