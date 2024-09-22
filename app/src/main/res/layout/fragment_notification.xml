@@ -37,6 +37,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
         </RelativeLayout>
 
         <View
@@ -45,6 +46,7 @@
             android:layout_below="@+id/toolbar"
             android:alpha="0.5"
             android:background="@drawable/ash_shadow" />
+
     </LinearLayout>
 
     <RelativeLayout
