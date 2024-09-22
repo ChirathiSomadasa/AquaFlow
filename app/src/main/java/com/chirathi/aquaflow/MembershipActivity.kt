@@ -12,7 +12,6 @@ import androidx.core.view.WindowInsetsCompat
 class MembershipActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_membership)
 
         val next = findViewById<Button>(R.id.continue_button)
