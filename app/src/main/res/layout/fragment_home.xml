@@ -9,8 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".HomeActivity">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/welcomeText"
@@ -50,14 +49,13 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardWaterQuote"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
                     android:backgroundTint="@color/lightBlue"
                     android:elevation="4dp"
                     app:cardCornerRadius="12dp"
@@ -67,7 +65,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="142dp"
+                        android:layout_height="150dp"
                         android:background="@color/white">
 
                         <com.scwang.wave.MultiWaveHeader
@@ -115,8 +113,9 @@
 
                         <ImageView
                             android:id="@+id/imageView3"
-                            android:layout_width="190dp"
+                            android:layout_width="160dp"
                             android:layout_height="144dp"
+                            android:layout_marginEnd="40dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/waterQuotaQuoteTitle"
@@ -129,7 +128,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/WaterQuota"
                     android:layout_width="418dp"
-                    android:layout_height="168dp"
+                    android:layout_height="200dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="16dp"
@@ -150,7 +149,7 @@
                             android:id="@+id/water_quota_topic"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="3dp"
+                            android:layout_marginStart="20dp"
                             android:layout_marginEnd="198dp"
                             android:paddingTop="8dp"
                             android:text="Water Quota Status"
@@ -165,7 +164,7 @@
                             android:id="@+id/waveProgressBar"
                             android:layout_width="118dp"
                             android:layout_height="166dp"
-                            android:layout_marginStart="20dp"
+                            android:layout_marginStart="60dp"
                             app:arc_color="@color/white"
                             app:behind_wave_color="#A3E3FF"
                             app:cavans_bg="#FFFFFF"
@@ -178,17 +177,17 @@
 
                         <TextView
                             android:id="@+id/water_quota_text"
-                            android:layout_width="216dp"
-                            android:layout_height="50dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginTop="36dp"
-                            android:layout_marginEnd="2dp"
+                            android:layout_marginTop="32dp"
+                            android:layout_marginEnd="40dp"
                             android:paddingTop="8dp"
                             android:text="Remaining water amount\n400L"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintHorizontal_bias="0.408"
                             app:layout_constraintStart_toEndOf="@id/waveProgressBar"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -196,10 +195,12 @@
                             android:id="@+id/view_more_quota"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="16dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="56dp"
+                            android:background="@drawable/view_more_btn"
                             android:backgroundTint="@color/blue"
                             android:drawableEnd="@drawable/rightarrow"
-                            android:drawablePadding="8dp"
+                            android:textStyle="bold"
                             android:text="View more"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/water_quota_text" />
@@ -209,6 +210,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
+                            android:layout_marginEnd="80dp"
                             android:text="Updated Date : 2024 August 20"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -221,7 +223,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/WaterLoyalty"
                     android:layout_width="411dp"
-                    android:layout_height="163dp"
+                    android:layout_height="200dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="16dp"
@@ -243,6 +245,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="8dp"
+                            android:layout_marginStart="25dp"
                             android:text="Loyalty Balance"
                             android:textColor="@color/black"
                             android:textSize="16sp"
@@ -263,9 +266,9 @@
 
                         <TextView
                             android:id="@+id/loyalty_balance_text"
-                            android:layout_width="151dp"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="44dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="2dp"
                             android:paddingTop="8dp"
@@ -273,7 +276,7 @@
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.519"
+                            app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toEndOf="@id/loyalty_image"
                             app:layout_constraintTop_toTopOf="@id/loyalty_image" />
 
@@ -281,10 +284,12 @@
                             android:id="@+id/view_more_loyalty"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="16dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="56dp"
+                            android:background="@drawable/view_more_btn"
                             android:backgroundTint="@color/blue"
                             android:drawableEnd="@drawable/rightarrow"
-                            android:drawablePadding="8dp"
+                            android:textStyle="bold"
                             android:text="View more"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/loyalty_balance_text" />
@@ -294,7 +299,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/WaterTip"
                     android:layout_width="408dp"
-                    android:layout_height="188dp"
+                    android:layout_height="200dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="16dp"
@@ -315,6 +320,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="8dp"
+                            android:layout_marginStart="25dp"
                             android:text="Today Your Tip"
                             android:textColor="@color/black"
                             android:textSize="16sp"
@@ -339,12 +345,14 @@
                             android:id="@+id/today_tip_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="2dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="40dp"
                             android:paddingTop="8dp"
                             android:text="Turn off water while lathering"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
                             app:layout_constraintStart_toEndOf="@id/tip_image"
                             app:layout_constraintTop_toTopOf="@id/tip_image" />
 
@@ -352,10 +360,12 @@
                             android:id="@+id/view_more_tip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="16dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="56dp"
+                            android:background="@drawable/view_more_btn"
                             android:backgroundTint="@color/blue"
                             android:drawableEnd="@drawable/rightarrow"
-                            android:drawablePadding="8dp"
+                            android:textStyle="bold"
                             android:text="View more"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/today_tip_text" />
