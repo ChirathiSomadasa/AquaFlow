@@ -1,7 +1,6 @@
 package com.chirathi.aquaflow.NotificationType
 
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,20 +14,15 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
-import androidx.core.widget.addTextChangedListener
 import com.chirathi.aquaflow.R
-//import com.google.firebase.messaging.FirebaseMessaging      ///////// firebase setting
 
 
-
-class ReminderNoticeFragment : Fragment() {
+class UrgentNoticeFragment : Fragment() {
 
     private var selectedDate: String = ""
-    private var selectedTime: String = ""
     private var selectedLocation: String = ""
 
     private lateinit var etSetDate: EditText
-    private lateinit var etSetTime: EditText
     private lateinit var spinnerLocation: Spinner
 
 
@@ -36,17 +30,15 @@ class ReminderNoticeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_reminder_notice, container, false)
+        val view = inflater.inflate(R.layout.fragment_urgent_notice, container, false)
 
 
         // Find the TextView by its ID
         val tvNoticeContent = view.findViewById<TextView>(R.id.tvNoticeContent)
-        val reminderText = getString(R.string.reminder_water_supply)
+        val reminderText = getString(R.string.urgent_notice_water_supply_disruption)
 
         etSetDate = view.findViewById(R.id.etSetDate)
-        etSetTime = view.findViewById(R.id.etSetTime)
         spinnerLocation = view.findViewById(R.id.spinnerLocation)
 
 
@@ -55,10 +47,9 @@ class ReminderNoticeFragment : Fragment() {
 
         // Function to update the reminder text with the selected date and time
         fun updateReminderText() {
-            if (selectedDate.isNotEmpty() || selectedTime.isNotEmpty()) {
+            if (selectedDate.isNotEmpty() ) {
                 val formattedReminderText = reminderText
                     .replace("[Date]", if (selectedDate.isNotEmpty()) selectedDate else "Not set")
-                    .replace("[Time]", if (selectedTime.isNotEmpty()) selectedTime else "Not set")
                     .replace("[Location]", if (selectedLocation.isNotEmpty()) selectedLocation else "Not set")
                 tvNoticeContent.text = HtmlCompat.fromHtml(formattedReminderText, HtmlCompat.FROM_HTML_MODE_LEGACY)
             }
@@ -83,26 +74,6 @@ class ReminderNoticeFragment : Fragment() {
             datePickerDialog.show()
         }
 
-        // Time Picker
-        etSetTime.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR)
-            val minute = calendar.get(Calendar.MINUTE)
-
-            val timePickerDialog = TimePickerDialog(requireContext(), { _, selectedHour, selectedMinute ->
-                selectedTime = String.format("%02d:%02d %s",
-                    if (selectedHour == 0) 12 else selectedHour,
-                    selectedMinute,
-                    if (selectedHour < 12) "AM" else "PM")
-                etSetTime.setText(selectedTime)
-
-                // Update reminder text with the selected date and time
-                updateReminderText()
-
-            }, hour, minute, false)
-
-            timePickerDialog.show()
-        }
 
         // Set up the spinner with the districts
         val districts = arrayOf(
@@ -130,7 +101,6 @@ class ReminderNoticeFragment : Fragment() {
             }
         })
 
-
         // Find the buttons and set OnClickListeners
         val btnConfirm = view.findViewById<Button>(R.id.btnConfirm)
         btnConfirm.setOnClickListener {
@@ -142,46 +112,21 @@ class ReminderNoticeFragment : Fragment() {
             sendNotification()
         }
 
-//        // Find the button and set an OnClickListener
-//        val nextButton = view.findViewById<Button>(R.id.btnConfirm)
-//        nextButton.setOnClickListener {
-//            // Replace with the next fragment on button click
-//            (activity as? ReminderNoticeActivity)?.replaceFragment(ReminderSendFragment())
-//
-//        }
-
         return view
     }
 
     private fun lockInputFields() {
         etSetDate.isEnabled = false
-        etSetTime.isEnabled = false
         spinnerLocation.isEnabled = false
     }
-
-/*
-    private fun sendNotification() {
-        // Implement Firebase notification logic here
-        val message = "Reminder set for $selectedDate at $selectedTime in $selectedLocation."
-
-        // Ensure you have a topic for notifications
-//        FirebaseMessaging.getInstance().subscribeToTopic("customers")   //////////// firebase setting
-
-        // Assuming you want to send a notification to the topic
-        // Your backend should handle sending the actual notification to this topic
-
-        // For demonstration, you can print the message
-        println("Notification sent: $message")
-    }
-*/
 
     private fun sendNotification() {
         // Construct the notification message
         val message = """
-            🚰 Reminder: Water Supply Today!
-            Your scheduled water delivery is set for $selectedDate at $selectedTime to $selectedLocation. 
-            Please ensure access to the delivery point is clear.
-            Thank you!
+            Urgent Notice: Water Supply Disruption
+            An unexpected disruption in the water supply scheduled for $selectedDate at $selectedLocation. 
+            We are working to resolve the issue as quickly as possible. 
+            Please conserve any available water. Updates will follow shortly.
         """.trimIndent()
 
         // Ensure you have a topic for notifications
@@ -190,6 +135,4 @@ class ReminderNoticeFragment : Fragment() {
         // For demonstration, you can print the message
         println("Notification sent: $message")
     }
-
-
 }
