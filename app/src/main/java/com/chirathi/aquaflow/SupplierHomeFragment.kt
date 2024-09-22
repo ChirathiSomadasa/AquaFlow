@@ -16,7 +16,15 @@ class SupplierHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_supplier_home, container, false)
+        val view =  inflater.inflate(R.layout.fragment_supplier_home, container, false)
+
+        val scanqrcodeView = view.findViewById<Button>(R.id.Scan_QR_code_btn)
+        scanqrcodeView.setOnClickListener {
+            val intent = Intent(context, ScanQRCodeActivity::class.java)
+            startActivity(intent)
+        }
+
+        return view
     }
 
 }
