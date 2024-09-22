@@ -1,149 +1,331 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/blue_home">
+    android:background="@color/blue_home"
+    tools:context=".HomeFragment">
 
 
-    <TextView
-        android:id="@+id/welcomeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="Welcome"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/userNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello Shenali Perera"
-        android:textSize="24sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp" />
-
-    <!-- Water Tracking Card -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="20dp">
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="match_parent"
+            tools:context=".HomeActivity">
 
             <TextView
+                android:id="@+id/welcomeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your Water, Your Way"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="28dp"
+                android:text="Welcome"
+                android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.028"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Smart tracking, easy delivery, and great savings"
-                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                android:text="Hello Shenali Perera"
                 android:textColor="@color/black"
-                android:layout_marginBottom="8dp" />
-
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="20dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Water Quota Status"
-                android:textSize="18sp"
-                android:textColor="@color/black"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/welcomeText"
+                tools:ignore="MissingConstraints" />
 
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="20dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardWaterQuote"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Loyalty Balance"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/lightBlue"
+                android:elevation="4dp"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/userName">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="142dp"
+                    android:background="@color/white">
+
+                    <com.scwang.wave.MultiWaveHeader
+                        android:id="@+id/waveFooter"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="60dp"
+                        android:scaleY="-1"
+                        app:layout_constraintTop_toTopOf="@+id/imageView3"
+                        app:mwhCloseColor="#36D2EEFA"
+                        app:mwhColorAlpha="0.45"
+                        app:mwhGradientAngle="45"
+                        app:mwhIsRunning="true"
+                        app:mwhProgress="1"
+                        app:mwhStartColor="#5DCCFC"
+                        app:mwhVelocity="5"
+                        app:mwhWaveHeight="70dp"
+                        app:mwhWaves="MultiWave"
+                        tools:layout_editor_absoluteX="0dp" />
+
+                    <TextView
+                        android:id="@+id/waterQuotaQuote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Your Water, Your Way"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/waterQuotaQuoteTitle"
+                        android:layout_width="223dp"
+                        android:layout_height="57dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:text="Smart tracking, easy delivery, and great savings"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/waterQuotaQuote" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="190dp"
+                        android:layout_height="144dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/waterQuotaQuoteTitle"
+                        app:srcCompat="@drawable/waterdrops" />
 
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="20dp">
+            </androidx.cardview.widget.CardView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/WaterQuota"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Today Your Tip"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/lightBlue"
+                android:elevation="4dp"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardWaterQuote"
+                tools:ignore="MissingConstraints">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="174dp"
+                    android:background="@color/white">
 
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/water_quota_image"
+                        android:layout_width="146dp"
+                        android:layout_height="119dp"
+                        android:layout_margin="16dp"
+                        android:layout_marginStart="26dp"
+                        android:src="@drawable/process"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/water_quota_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:paddingTop="8dp"
+                        android:text="Remaining water amount\n400L"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/water_quota_image"
+                        app:layout_constraintTop_toTopOf="@id/water_quota_image" />
+
+                    <Button
+                        android:id="@+id/view_more_quota"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_marginTop="15dp"
+                        android:backgroundTint="@color/blue"
+                        android:text="View more"
+                        android:drawableEnd="@drawable/rightarrow"
+                        android:drawablePadding="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/water_quota_text" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Updated Date : 2024 August  20"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.119"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/water_quota_image" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/WaterLoyalty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/lightBlue"
+                android:elevation="4dp"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/WaterQuota"
+                tools:ignore="MissingConstraints">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayoutLoyalty"
+                    android:layout_width="match_parent"
+                    android:layout_height="174dp"
+                    android:background="@color/white">
+
+
+                    <ImageView
+                        android:id="@+id/loyalty_image"
+                        android:layout_width="166dp"
+                        android:layout_height="173dp"
+                        android:layout_margin="16dp"
+                        android:src="@drawable/loyalty"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="1dp" />
+
+
+                    <TextView
+                        android:id="@+id/loyalty_balance_text"
+                        android:layout_width="151dp"
+                        android:layout_height="33dp"
+                        android:layout_marginStart="44dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="2dp"
+                        android:paddingTop="8dp"
+                        android:text="Current Points 20"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/loyalty_image"
+                        app:layout_constraintTop_toTopOf="@id/loyalty_image" />
+
+                    <Button
+                        android:id="@+id/view_more_loyalty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:backgroundTint="@color/blue"
+                        android:text="View more"
+                        android:drawableEnd="@drawable/rightarrow"
+                        android:drawablePadding="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/loyalty_balance_text" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/WaterTip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/lightBlue"
+                android:elevation="4dp"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/WaterLoyalty"
+                tools:ignore="MissingConstraints">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="174dp"
+                    android:background="@color/white">
+
+
+                    <ImageView
+                        android:id="@+id/tip_image"
+                        android:layout_width="160dp"
+                        android:layout_height="177dp"
+                        android:layout_margin="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/tips"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/today_tip_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="2dp"
+                        android:paddingTop="8dp"
+                        android:text="Turn off water while lathering"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tip_image"
+                        app:layout_constraintTop_toTopOf="@id/tip_image" />
+
+                    <Button
+                        android:id="@+id/view_more_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:backgroundTint="@color/blue"
+                        android:text="View more"
+                        android:drawableEnd="@drawable/rightarrow"
+                        android:drawablePadding="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/today_tip_text" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 
-
-
-
-
-
-</LinearLayout>
+</RelativeLayout>
