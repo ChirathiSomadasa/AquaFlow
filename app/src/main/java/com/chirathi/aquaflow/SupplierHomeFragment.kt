@@ -16,7 +16,33 @@ class SupplierHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_supplier_home, container, false)
+        val view =  inflater.inflate(R.layout.fragment_supplier_home, container, false)
+
+        val NotificationManagementView = view.findViewById<Button>(R.id.Notification_Management_btn)
+        NotificationManagementView.setOnClickListener {
+            val intent = Intent(context, NotificationManagementActivity::class.java)
+            startActivity(intent)
+        }
+
+        val DeliverySchedulesView = view.findViewById<Button>(R.id.Delivery_Schedules_btn)
+        DeliverySchedulesView.setOnClickListener {
+            val intent = Intent(context, NotificationManagementActivity::class.java)
+            startActivity(intent)
+        }
+
+        val scanqrcodeView = view.findViewById<Button>(R.id.Scan_QR_code_btn)
+        scanqrcodeView.setOnClickListener {
+            val intent = Intent(context, ScanQRCodeActivity::class.java)
+            startActivity(intent)
+        }
+
+        val PaymentProcessView = view.findViewById<Button>(R.id.Payment_Process_btn)
+        PaymentProcessView.setOnClickListener {
+            val intent = Intent(context, NotificationManagementActivity::class.java)
+            startActivity(intent)
+        }
+
+        return view
     }
 
 }
