@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment"
+    tools:context=".SupplierHomeFragment"
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@color/blue_home">
@@ -61,7 +61,7 @@
 
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/Notification_Management_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/blue_btn"
@@ -72,37 +72,37 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/Delivery_Schedules_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/blue_btn"
                 android:backgroundTint="@color/blue"
-                android:text="Delivery Schedules "
+                android:text="Delivery Schedules"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/Scan_QR_code_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/blue_btn"
                 android:backgroundTint="@color/blue"
-                android:text="Scan QR code "
+                android:text="Scan QR code"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/Payment_Process_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/blue_btn"
                 android:backgroundTint="@color/blue"
-                android:text="Payment Process "
+                android:text="Payment Process"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
