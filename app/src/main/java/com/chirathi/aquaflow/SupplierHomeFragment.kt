@@ -36,12 +36,6 @@ class SupplierHomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        val PaymentProcessView = view.findViewById<Button>(R.id.Payment_Process_btn)
-        PaymentProcessView.setOnClickListener {
-            val intent = Intent(context, NotificationManagementActivity::class.java)
-            startActivity(intent)
-        }
-
         return view
     }
 
