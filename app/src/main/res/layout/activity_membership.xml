@@ -113,7 +113,7 @@
                 android:textStyle="bold" />
 
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="260dp"
                 android:layout_height="260dp"
                 android:layout_marginTop="20dp"
@@ -122,8 +122,44 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:textAlignment="center"
+                    />
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/progress_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:text="20"
+                    android:textColor="@color/black"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-condensed"
+                    />
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="points"
+                    android:textColor="@color/black"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="90dp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginTop="130dp"/>
+
+
+            </FrameLayout>
         </LinearLayout>
 
     </RelativeLayout>
