@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.chirathi.aquaflow" />
+                  <option name="mobileSdkAppId" value="1:259968826205:android:eabfb199cf282799f906b4" />
+                  <option name="projectId" value="aquaflow-e93c7" />
+                  <option name="projectNumber" value="259968826205" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
