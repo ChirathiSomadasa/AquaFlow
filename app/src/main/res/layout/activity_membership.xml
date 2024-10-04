@@ -107,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="1 L -> 1 Point"
+                android:text="10 L -> 1 Point"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
