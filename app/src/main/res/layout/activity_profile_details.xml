@@ -71,7 +71,7 @@
           android:id="@+id/fName"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Shenali"/>
+          android:text=" "/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,7 +86,7 @@
           android:id="@+id/lName"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Perera"/>
+          android:text=" "/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,7 +101,7 @@
             android:id="@+id/prof_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kurunegala"/>
+            android:text=" "/>
 
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,7 +116,7 @@
             android:id="@+id/prof_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="shenali@gmail.com"/>
+            android:text=" "/>
 
       </com.google.android.material.textfield.TextInputLayout>
 
