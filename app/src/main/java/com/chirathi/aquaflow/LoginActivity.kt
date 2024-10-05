@@ -10,6 +10,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 
 class LoginActivity : AppCompatActivity() {
 
@@ -71,6 +72,40 @@ class LoginActivity : AppCompatActivity() {
                                 .addOnSuccessListener { document ->
                                     if (document != null) {
                                         val isSupplier = document.getBoolean("isSupplier") ?: false
+
+                                        // Get FCM token
+                                        FirebaseMessaging.getInstance().token
+                                            .addOnCompleteListener { tokenTask ->
+                                                if (tokenTask.isSuccessful) {
+                                                    val fcmToken = tokenTask.result
+
+                                                    // Store FCM token in Firestore
+                                                    db.collection("users").document(userId)
+                                                        .update("fcmToken", fcmToken)
+                                                        .addOnSuccessListener {
+                                                            Toast.makeText(
+                                                                this,
+                                                                "FCM Token saved",
+                                                                Toast.LENGTH_SHORT
+                                                            ).show()
+                                                        }
+                                                        .addOnFailureListener { e ->
+                                                            Toast.makeText(
+                                                                this,
+                                                                "Error saving FCM token: ${e.message}",
+                                                                Toast.LENGTH_SHORT
+                                                            ).show()
+                                                        }
+                                                } else {
+                                                    Toast.makeText(
+                                                        this,
+                                                        "Failed to get FCM token",
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
+                                            }
+
+                                        // Navigate based on user role(supplier / consumer)
                                         if (isSupplier) {
                                             // Navigate to Supplier Dashboard
                                             val intent = Intent(this, SupplierHomeActivity::class.java)
