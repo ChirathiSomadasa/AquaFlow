@@ -10,12 +10,13 @@
     <!-- Image to show in the dialog -->
 
     <!-- Text to show in the dialog -->
+
     <ImageView
         android:id="@+id/dialogimage"
         android:layout_width="wrap_content"
         android:layout_height="400dp"
         android:layout_gravity="center"
-         android:src="@drawable/reward" />
+        android:src="@drawable/reward" />
 
     <LinearLayout
         android:layout_width="match_parent"
