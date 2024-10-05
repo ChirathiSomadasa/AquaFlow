@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New Notification"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
@@ -79,40 +79,43 @@
             android:id="@+id/expandedLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="vertical"
-            android:visibility="gone"
-            android:layout_marginTop="16dp">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tvExpandedText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:padding="10dp"
                 android:text="Reminder: Water Supply Today!"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_marginBottom="8dp" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvExpandedDetail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="10dp"
                 android:text="Your scheduled water delivery is set for [Date] at [Time]. Please ensure access to the delivery point is clear."
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@color/gray"
+                android:textStyle="bold" />
 
             <!-- Confirm/Cancel Buttons -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="16dp"
-                android:gravity="end">
+                android:gravity="end"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnConfirm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Confirm"
-                    android:layout_marginEnd="8dp" />
+                    android:layout_marginEnd="8dp"
+                    android:text="Confirm" />
 
                 <Button
                     android:id="@+id/btnCancel"
@@ -122,4 +125,6 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+
 </androidx.cardview.widget.CardView>
