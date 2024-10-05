@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.RelativeLayout
 
 class SupplierHomeFragment : Fragment() {
 
@@ -16,27 +15,17 @@ class SupplierHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_supplier_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_supplier_home, container, false)
 
-        val NotificationManagementView = view.findViewById<Button>(R.id.Notification_Management_btn)
-        NotificationManagementView.setOnClickListener {
-            val intent = Intent(context, NotificationManagementActivity::class.java)
+        // Find the button using the inflated view
+        val paymentProcessView = view.findViewById<Button>(R.id.button4)
+        paymentProcessView.setOnClickListener {
+            // Start PaymentProcessActivity when button is clicked
+            val intent = Intent(context, PaymentProcessActivity::class.java)
             startActivity(intent)
         }
 
-        val DeliverySchedulesView = view.findViewById<Button>(R.id.Delivery_Schedules_btn)
-        DeliverySchedulesView.setOnClickListener {
-            val intent = Intent(context, NotificationManagementActivity::class.java)
-            startActivity(intent)
-        }
-
-        val scanqrcodeView = view.findViewById<Button>(R.id.Scan_QR_code_btn)
-        scanqrcodeView.setOnClickListener {
-            val intent = Intent(context, ScanQRCodeActivity::class.java)
-            startActivity(intent)
-        }
-
+        // Return the inflated view
         return view
     }
-
 }

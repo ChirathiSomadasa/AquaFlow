@@ -23,6 +23,12 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        val loyaltyBalanceView = view.findViewById<Button>(R.id.view_more_loyalty)
+        loyaltyBalanceView.setOnClickListener {
+            val intent = Intent(context, MembershipActivity::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 

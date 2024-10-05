@@ -2,24 +2,4 @@
     <string name="app_name">AquaFlow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
-    <string name="reminder_water_supply">
-        <![CDATA[
-        <b>🚰 Reminder: Water Supply Today!</b><br/><br/>
-        Your scheduled water delivery is set for <b>[Date]</b> at <b>[Time]</b> to <b>[Location]</b>. Please ensure access to the delivery point is clear.<br/><br/>
-        Thank you!
-        ]]>
-    </string>
-
-    <string name="urgent_notice_water_supply_disruption">
-        <![CDATA[
-        <b>⚠️ Urgent Notice: Water Supply Disruption</b><br/><br/>
-        An unexpected disruption in the water supply scheduled for <b>[Date]</b> at <b>[Location]</b>. We are working to resolve the issue as quickly as possible.<br/><br/>
-        Please conserve any available water. Updates will follow shortly.
-        ]]>
-    </string>
-
-
-
 </resources>
