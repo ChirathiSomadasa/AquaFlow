@@ -4,15 +4,37 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class PaymentProcessActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+    private val db = Firebase.firestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment_process)
 
-        val back= findViewById<ImageView>(R.id.backbtn)
+        auth = FirebaseAuth.getInstance()
+
+        val fName = findViewById<TextView>(R.id.firstname) // Add this
+        val lName = findViewById<TextView>(R.id.lastname) // Add this
+        val date = findViewById<TextView>(R.id.date) // Add this
+        val address = findViewById<TextView>(R.id.location)  // Address (location)
+        val payment = findViewById<TextView>(R.id.payment)  // Email
+
+        val currentDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+        date.text = currentDate
+
+        val back = findViewById<ImageView>(R.id.backbtn)
         back.setOnClickListener {
             finish()
         }
@@ -20,33 +42,87 @@ class PaymentProcessActivity : AppCompatActivity() {
         val submitBtn: Button = findViewById(R.id.submit_btn)
 
         submitBtn.setOnClickListener {
-            // Create an AlertDialog.Builder
-            val builder = AlertDialog.Builder(this)
+            // Get the details from the UI
 
-            // Inflate the custom layout
-            val inflater = layoutInflater
-            val dialogView = inflater.inflate(R.layout.custom_submit, null)
+            val firstName = fName.text.toString().trim()
+            val lastName = lName.text.toString().trim()
+            val currentDate = date.text.toString().trim()
+            val location = address.text.toString().trim()
+            val paymentAmount = payment.text.toString().trim()
 
-            // Set the custom layout to the dialog
-            builder.setView(dialogView)
-
-            // Create the dialog instance first
-            val dialog: AlertDialog = builder.create()
-
-            // Get the views from the custom layout if needed
-            val dialogImage: ImageView = dialogView.findViewById(R.id.dialogimage)
-            val dialogMessage: TextView = dialogView.findViewById(R.id.dialog)
-            val dialogButton: Button = dialogView.findViewById(R.id.dialog_button)
-
-            // Set an onClickListener to the button in the custom layout
-            dialogButton.setOnClickListener {
-                // Dismiss the dialog when button is clicked
-                dialog.dismiss()  // Now you can call dismiss() on the dialog object
+            // Validate the input fields
+            if (firstName.isEmpty() || lastName.isEmpty() || currentDate.isEmpty() || location.isEmpty() || paymentAmount.isEmpty()) {
+                // Show an error message (e.g., a Toast or a dialog)
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
-            // Show the dialog
-            dialog.show()
-        }
+            db.collection("users")
+                .whereEqualTo("firstName", firstName)
+                .whereEqualTo("lastName", lastName)
+                .whereEqualTo("address",location)
+                .get()
+                .addOnSuccessListener { documents ->
+                    if (!documents.isEmpty) {
+                        // User exists, proceed with saving payment details
+                        val customerId = documents.documents[0].id
 
+                        // Prepare the data to be saved
+                        val paymentDetails = hashMapOf(
+                            "firstName" to firstName,
+                            "lastName" to lastName,
+                            "date" to currentDate,
+                            "location" to location,
+                            "paymentAmount" to paymentAmount,
+                            "customerID" to customerId // Optional, you can use this to link the payment to a user
+                        )
+
+                        // Save the data to Firestore
+                        db.collection("payment")
+                            .add(paymentDetails)
+                            .addOnSuccessListener { documentReference ->
+                                // Data saved successfully, show a success message
+                                Toast.makeText(
+                                    this,
+                                    "Payment processed successfully!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                                // Optionally show the custom submit dialog after saving
+                                val builder = AlertDialog.Builder(this)
+                                val inflater = layoutInflater
+                                val dialogView = inflater.inflate(R.layout.custom_submit, null)
+                                builder.setView(dialogView)
+
+                                val dialog: AlertDialog = builder.create()
+                                val dialogButton: Button =
+                                    dialogView.findViewById(R.id.dialog_button)
+                                dialogButton.setOnClickListener {
+                                    dialog.dismiss()
+                                }
+                                dialog.show()
+
+                                // Clear the form fields
+                                fName.text = ""
+                                lName.text = ""
+                                date.text = ""
+                                address.text = ""
+                                payment.text = ""
+                            }
+                            .addOnFailureListener { e ->
+                                // Handle the error
+                                Toast.makeText(
+                                    this,
+                                    "Error processing payment: ${e.message}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                    }
+                    else {
+                        // Show an error message if no user is found
+                        Toast.makeText(this, "This user isn't in our records. Please double-check the details.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
     }
 }
