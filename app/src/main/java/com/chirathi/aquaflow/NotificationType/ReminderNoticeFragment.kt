@@ -15,10 +15,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
-import androidx.core.widget.addTextChangedListener
-import com.chirathi.aquaflow.R
-//import com.google.firebase.messaging.FirebaseMessaging      ///////// firebase setting
-import android.widget.Toast
+import com.chirathi.aquaflow.*
 import androidx.core.app.NotificationCompat
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging      ///////// firebase setting
@@ -32,8 +29,7 @@ import java.io.DataOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 import java.text.SimpleDateFormat   // Get current time and format it
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
 
 
@@ -187,73 +183,6 @@ class ReminderNoticeFragment : Fragment() {
         etSetTime.isEnabled = false
         spinnerLocation.isEnabled = false
     }
-
-/*
-    private fun sendNotification() {
-        // Implement Firebase notification logic here
-        val message = "Reminder set for $selectedDate at $selectedTime in $selectedLocation."
-
-        // Ensure you have a topic for notifications
-//        FirebaseMessaging.getInstance().subscribeToTopic("customers")   //////////// firebase setting
-
-        // Assuming you want to send a notification to the topic
-        // Your backend should handle sending the actual notification to this topic
-
-        // For demonstration, you can print the message
-        println("Notification sent: $message")
-    }
-*/
-
-/*
-    private fun sendNotification_Fire() {
-        // Construct the notification message
-        val message = """
-            🚰 Reminder: Water Supply Today!
-            Your scheduled water delivery is set for $selectedDate at $selectedTime to $selectedLocation. 
-            Please ensure access to the delivery point is clear.
-            Thank you!
-        """.trimIndent()
-
-        // Ensure you have a topic for notifications
-        // FirebaseMessaging.getInstance().subscribeToTopic("customers")   //////////// firebase setting
-
-        // For demonstration, you can print the message
-        println("Notification sent: $message")
-    }
-
-
-        // Fetch consumer FCM tokens from Firestore
-        val db = FirebaseFirestore.getInstance()
-
-        db.collection("users")
-            .whereEqualTo("isSupplier", false)  // Fetch consumers only
-            .get()
-            .addOnSuccessListener { querySnapshot ->
-                for (document in querySnapshot.documents) {
-                    val fcmToken = document.getString("fcmToken")
-
-                    if (!fcmToken.isNullOrEmpty()) {
-                        // Prepare the notification payload
-                        val notificationPayload = mapOf(
-                            "to" to fcmToken,
-                            "notification" to mapOf(
-                                "title" to "Water Supply Reminder",
-                                "body" to message
-                            )
-                        )
-
-                        // Send the notification
-                        CoroutineScope(Dispatchers.IO).launch {
-                            sendNotificationToConsumer(notificationPayload)
-                        }
-                    }
-                }
-            }
-            .addOnFailureListener { e ->
-                println("Error fetching consumers' FCM tokens: ${e.message}")
-            }
-    }
-*/
 
 
     private fun sendNotification_Fire() {
