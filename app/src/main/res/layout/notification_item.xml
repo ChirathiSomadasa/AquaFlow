@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="5dp"
+    android:layout_marginTop="10dp"
     android:elevation="4dp"
     app:cardCornerRadius="12dp">
 
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="5dp">
 
         <!-- Date Header -->
         <TextView
@@ -39,21 +40,21 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginEnd="8dp"
-                app:srcCompat="@drawable/bottom_navigation_notification_fragment" />
+                app:srcCompat="@drawable/ic_notifications_active" />
 
             <!-- Notification Texts -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvNotificationTitle"
+                    android:id="@+id/notification_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New Notification"
-                    android:textColor="@color/black"
+                    android:textColor="@android:color/black"
                     android:textStyle="bold" />
 
                 <TextView
@@ -67,14 +68,14 @@
             <!-- Expand/Collapse Arrow -->
             <ImageView
                 android:id="@+id/btnExpandCollapse"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center|end"
                 android:rotation="90"
                 app:srcCompat="@drawable/arrow" />
         </LinearLayout>
 
-        <!-- Expanded Section -->
+        <!-- Expanded Section (Initially Hidden) -->
         <LinearLayout
             android:id="@+id/expandedLayout"
             android:layout_width="match_parent"
@@ -83,6 +84,7 @@
             android:orientation="vertical"
             android:visibility="gone">
 
+            <!-- Expanded Text -->
             <TextView
                 android:id="@+id/tvExpandedText"
                 android:layout_width="match_parent"
@@ -90,17 +92,17 @@
                 android:layout_marginBottom="8dp"
                 android:padding="10dp"
                 android:text="Reminder: Water Supply Today!"
-                android:textColor="@color/black"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
+            <!-- Expanded Detail -->
             <TextView
-                android:id="@+id/tvExpandedDetail"
+                android:id="@+id/notification_message"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:text="Your scheduled water delivery is set for [Date] at [Time]. Please ensure access to the delivery point is clear."
-                android:textColor="@color/gray"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Your scheduled water delivery is set for [Date] at [Time] to [Location]. Please ensure access to the delivery point is clear."
+                android:textColor="@android:color/black" />
 
             <!-- Confirm/Cancel Buttons -->
             <LinearLayout
@@ -125,6 +127,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-
 </androidx.cardview.widget.CardView>
