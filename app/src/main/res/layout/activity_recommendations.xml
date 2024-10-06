@@ -24,13 +24,15 @@
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:contentDescription="Back Icon"
-                android:src="@drawable/back" />
+                android:src="@drawable/back"
+                android:layout_marginTop="20dp"/>
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:text="Recommendations"
                 android:textColor="@color/black"
                 android:textSize="30sp"

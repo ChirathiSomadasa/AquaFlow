@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Waste_Water_Advice">
+    tools:context=".WasteWaterAdviceActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="79dp"
+            android:layout_height="74dp"
             android:layout_marginTop="20dp"
             android:background="@color/babyBlue"
             android:gravity="center_vertical"
@@ -74,7 +74,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="83dp"
+            android:layout_height="70dp"
             android:layout_marginTop="20dp"
             android:background="@color/babyBlue"
             android:gravity="center_vertical"
@@ -100,7 +100,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="78dp"
+            android:layout_height="62dp"
             android:layout_marginTop="20dp"
             android:background="@color/babyBlue"
             android:gravity="center_vertical"
@@ -126,7 +126,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="187dp"
+            android:layout_height="144dp"
             android:scaleType="fitXY"
             android:src="@drawable/wavetop" />
 

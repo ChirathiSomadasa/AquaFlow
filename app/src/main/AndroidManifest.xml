@@ -25,7 +25,7 @@
             android:name=".WaterFootprintActivity"
             android:exported="false" />
         <activity
-            android:name=".Waste_Water_Advice"
+            android:name=".WasteWaterAdviceActivity"
             android:exported="false" />
         <activity
             android:name=".NotificationType.UrgentNoticeActivity"

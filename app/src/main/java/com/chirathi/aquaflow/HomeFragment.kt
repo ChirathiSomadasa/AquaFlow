@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
         // Button to view more tips
         val viewMoreTips = view.findViewById<Button>(R.id.view_more_tip)
         viewMoreTips.setOnClickListener {
-            val intent = Intent(context, Waste_Water_Advice::class.java)
+            val intent = Intent(context, WasteWaterAdviceActivity::class.java)
             startActivity(intent)
         }
 
