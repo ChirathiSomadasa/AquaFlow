@@ -14,8 +14,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:alpha="0.5"
+        android:layout_height="15dp"
         android:layout_above="@+id/bottom_nav_view"
         android:background="@drawable/blue_shadow" />
 

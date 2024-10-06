@@ -11,29 +11,16 @@
     android:foregroundGravity="center"
     android:orientation="vertical"
     android:paddingLeft="10dp"
-    android:paddingTop="20dp"
+    android:paddingTop="50dp"
     android:paddingRight="10dp"
     android:paddingBottom="20dp">
-
-
-    <TextView
-        android:id="@+id/set_topic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal"
-        android:layout_marginBottom="30dp"
-        android:text="Set Date &amp; Location"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvNoticeContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/blue_btn"
         android:backgroundTint="@color/blue"
         android:fontFamily="@font/poppins_regular"
@@ -48,9 +35,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:focusable="false"
         android:hint="Set Date"
+        android:focusable="false"
         android:inputType="none" />
+
 
 
     <!-- Dropdown for selecting location (districts) -->
@@ -58,7 +46,7 @@
         android:id="@+id/spinnerLocation"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="25dp" />
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:id="@+id/btnConfirm"
