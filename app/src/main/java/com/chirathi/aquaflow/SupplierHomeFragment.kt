@@ -17,6 +17,8 @@ class SupplierHomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_supplier_home, container, false)
 
+
+
         // Find the button using the inflated view
         val paymentProcessView = view.findViewById<Button>(R.id.button4)
         paymentProcessView.setOnClickListener {
