@@ -24,6 +24,18 @@
             android:resource="@color/blue_wave" />
 
         <activity
+            android:name=".NotificationType.UrgentNoticeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationType.ReminderNoticeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".PaymentProcessActivity"
             android:exported="false" />
         <activity
@@ -34,9 +46,6 @@
             android:exported="false" />
         <activity
             android:name=".MembershipActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NotificationActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileDetailsActivity"
