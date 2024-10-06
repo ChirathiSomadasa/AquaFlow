@@ -50,7 +50,7 @@
         android:layout_marginTop="20dp"
         app:arc_color="@color/white"
         app:behind_wave_color="#A3E3FF"
-        app:cavans_bg="#FFFFFF"
+        app:cavans_bg="#e3f7ff"
         app:front_wave_color="#5DCCFC"
         app:progress="80"
         app:shape="circle"
@@ -156,11 +156,12 @@
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/total_quota"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="500 L"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -188,11 +189,12 @@
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/remaining_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="400 L"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -220,17 +222,85 @@
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/usage_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="100 L"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:background="@drawable/water_quota_amount"
                         android:padding="15dp"/>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:text="Remaining water percentage"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:background="@drawable/water_quota_text"
+                        android:padding="15dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/remaining_percentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/water_quota_amount"
+                        android:padding="15dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:text="Usage water percenetage"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:background="@drawable/water_quota_text"
+                        android:padding="15dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/usage_percentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/water_quota_amount"
+                        android:padding="15dp"/>
+                </LinearLayout>
+
+
+
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>
