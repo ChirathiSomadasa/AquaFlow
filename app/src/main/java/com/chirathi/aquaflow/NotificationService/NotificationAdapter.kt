@@ -13,6 +13,7 @@ class NotificationAdapter(private val notificationList: List<NotificationItem>) 
 
     class NotificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.notification_title)
+        val titleTextView2: TextView = itemView.findViewById(R.id.notification_title2)
         val messageTextView: TextView = itemView.findViewById(R.id.notification_message)
         val timestampTextView: TextView = itemView.findViewById(R.id.tvNotificationTime) // Reference to timestamp TextView
 
@@ -26,6 +27,7 @@ class NotificationAdapter(private val notificationList: List<NotificationItem>) 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
         val currentItem = notificationList[position]
         holder.titleTextView.text = currentItem.title
+        holder.titleTextView2.text = currentItem.title
         holder.messageTextView.text = currentItem.message
         holder.timestampTextView.text = currentItem.timestamp // Set the timestamp
 

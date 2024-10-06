@@ -161,11 +161,8 @@ class ReminderNoticeFragment : Fragment() {
 
         val sendButton = view.findViewById<Button>(R.id.btnSendNotification)
         sendButton.setOnClickListener {
-//            sendNotification()
             sendNotification_Fire()
         }
-
-
 
         return view
     }
@@ -207,7 +204,7 @@ class ReminderNoticeFragment : Fragment() {
             .add(notificationData)
             .addOnSuccessListener {
                 println("Notification stored in Firestore.")
-                Toast.makeText(requireContext(), "Notification stored successfully!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Notification send successfully!", Toast.LENGTH_SHORT).show()
 
             }
             .addOnFailureListener { e ->
@@ -244,6 +241,7 @@ class ReminderNoticeFragment : Fragment() {
                 println("Error fetching consumers' FCM tokens: ${e.message}")
             }
     }
+
 
     // Send notification to consumer using the FCM token
     private fun sendNotificationToConsumer(payload: Map<String, Any>) {
