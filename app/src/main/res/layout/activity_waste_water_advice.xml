@@ -23,13 +23,15 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="Waste Water Monitor &amp; Advice"
+            android:textColor="@color/black"
             android:textSize="24sp"
+            android:layout_marginTop="10dp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/headerImage"
             android:layout_width="wrap_content"
-            android:layout_height="328dp"
+            android:layout_height="285dp"
             android:layout_gravity="center"
             android:contentDescription="Header Image"
             android:src="@drawable/earth" />
@@ -37,34 +39,89 @@
         <TextView
             android:id="@+id/wastewaterimagetitle"
             android:layout_width="wrap_content"
-            android:layout_height="67dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="Monitor, Manage, Sustain: Every Drop Counts"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnWaterFootprint"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="73dp"
+            android:layout_height="79dp"
             android:layout_marginTop="20dp"
-            android:text="Waste Water Analysis and FootPrint" />
+            android:background="@color/babyBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnUsageGraphs"
+            <ImageView
+                android:layout_width="91dp"
+                android:layout_height="93dp"
+                android:contentDescription="Waste Water Analysis Icon"
+                android:src="@drawable/analysis" />
+
+            <TextView
+                android:id="@+id/btnWaterFootprint"
+                android:layout_width="292dp"
+                android:layout_height="73dp"
+                android:layout_marginTop="16dp"
+                android:text="Waste Water Analysis and FootPrint"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="83dp"
             android:layout_marginTop="20dp"
-            android:text="View Usage Graphs" />
+            android:background="@color/babyBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnRecommendations"
+
+            <ImageView
+                android:layout_width="84dp"
+                android:layout_height="match_parent"
+                android:contentDescription="Waste Water Analysis Icon"
+                android:src="@drawable/graph" />
+
+            <TextView
+                android:id="@+id/btnUsageGraphs"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="20dp"
+                android:text="View Usage Graphs"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="78dp"
             android:layout_marginTop="20dp"
-            android:text="Recommendations" />
+            android:background="@color/babyBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="84dp"
+                android:layout_height="93dp"
+                android:contentDescription="Waste Water Analysis Icon"
+                android:src="@drawable/reminders" />
+
+            <TextView
+                android:id="@+id/btnRecommendations"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="20dp"
+                android:text="Recommendations"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
 
         <com.scwang.wave.MultiWaveHeader
@@ -72,7 +129,7 @@
             android:layout_width="450dp"
             android:layout_height="98dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:scaleY="-1"
             app:layout_constraintTop_toTopOf="@+id/btnUsageGraphs"
             app:mwhCloseColor="#36D2EEFA"

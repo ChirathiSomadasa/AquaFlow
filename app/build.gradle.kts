@@ -56,4 +56,6 @@ dependencies {
     implementation("com.github.cjhandroid:WaveProgressBar:v1.0.0")
     implementation ("com.github.BharathKSunil:MultiWaveHeader:v1.0.0-alpha-4")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
-}
+
+    }
+
