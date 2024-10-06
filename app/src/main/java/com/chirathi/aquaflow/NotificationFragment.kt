@@ -67,13 +67,18 @@ class NotificationFragment : Fragment() {
         val expandCollapseBtn = view.findViewById<ImageView>(R.id.btnExpandCollapse)
         val expandedLayout = view.findViewById<LinearLayout>(R.id.expandedLayout)
 
-        expandCollapseBtn.setOnClickListener {
-            if (expandedLayout.visibility == View.GONE) {
-                expandedLayout.visibility = View.VISIBLE
-                expandCollapseBtn.rotation = 180f  // Rotate arrow downwards
-            } else {
-                expandedLayout.visibility = View.GONE
-                expandCollapseBtn.rotation = 0f  // Rotate arrow upwards
+        // Check if the button and layout exist to avoid crashes
+        expandCollapseBtn?.let { btn ->
+            expandedLayout?.let { layout ->
+                btn.setOnClickListener {
+                    if (layout.visibility == View.INVISIBLE) {
+                        layout.visibility = View.VISIBLE
+                        btn.rotation = 180f  // Rotate arrow downwards
+                    } else {
+                        layout.visibility = View.INVISIBLE
+                        btn.rotation = 0f  // Rotate arrow upwards
+                    }
+                }
             }
         }
     }

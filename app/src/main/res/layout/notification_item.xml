@@ -68,8 +68,8 @@ app:cardCornerRadius="12dp">
         <!-- Expand/Collapse Arrow -->
         <ImageView
             android:id="@+id/btnExpandCollapse"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center|end"
             android:rotation="90"
             app:srcCompat="@drawable/arrow" />

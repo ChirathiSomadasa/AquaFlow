@@ -3,6 +3,7 @@ package com.chirathi.aquaflow.NotificationType
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.icu.util.Calendar
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.text.HtmlCompat
 import com.chirathi.aquaflow.R
 import com.google.firebase.firestore.FirebaseFirestore
@@ -24,13 +27,9 @@ import org.json.JSONObject
 import java.io.DataOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
-import java.text.SimpleDateFormat
-import java.util.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
-
-// Get current time and format it
-val dateFormat = SimpleDateFormat("dd/MM/yyyy hh:mm", Locale.getDefault())
-val currentTime = dateFormat.format(Date())
 
 
 class ReminderNoticeFragment : Fragment() {
@@ -54,6 +53,7 @@ class ReminderNoticeFragment : Fragment() {
 
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -177,7 +177,11 @@ class ReminderNoticeFragment : Fragment() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun sendNotification_Fire() {
+
+        val currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - hh:mm"))
+
         // Construct the notification message
         val message = """
         🚰 Reminder: Water Supply Today!
@@ -203,6 +207,8 @@ class ReminderNoticeFragment : Fragment() {
             .add(notificationData)
             .addOnSuccessListener {
                 println("Notification stored in Firestore.")
+                Toast.makeText(requireContext(), "Notification stored successfully!", Toast.LENGTH_SHORT).show()
+
             }
             .addOnFailureListener { e ->
                 println("Failed to store notification in Firestore: ${e.message}")

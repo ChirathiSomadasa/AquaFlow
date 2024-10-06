@@ -83,11 +83,11 @@ class LoginActivity : AppCompatActivity() {
                                                     db.collection("users").document(userId)
                                                         .update("fcmToken", fcmToken)
                                                         .addOnSuccessListener {
-                                                            Toast.makeText(
+                                                            /*Toast.makeText(
                                                                 this,
                                                                 "FCM Token saved",
                                                                 Toast.LENGTH_SHORT
-                                                            ).show()
+                                                            ).show()*/
                                                         }
                                                         .addOnFailureListener { e ->
                                                             Toast.makeText(
