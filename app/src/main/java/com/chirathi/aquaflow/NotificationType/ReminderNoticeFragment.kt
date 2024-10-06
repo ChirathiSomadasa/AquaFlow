@@ -14,10 +14,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.core.app.NotificationCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.widget.addTextChangedListener
 import com.chirathi.aquaflow.R
-//import com.google.firebase.messaging.FirebaseMessaging      ///////// firebase setting
+import com.google.firebase.messaging.FirebaseMessaging      ///////// firebase setting
 
 
 
@@ -159,21 +160,6 @@ class ReminderNoticeFragment : Fragment() {
         spinnerLocation.isEnabled = false
     }
 
-/*
-    private fun sendNotification() {
-        // Implement Firebase notification logic here
-        val message = "Reminder set for $selectedDate at $selectedTime in $selectedLocation."
-
-        // Ensure you have a topic for notifications
-//        FirebaseMessaging.getInstance().subscribeToTopic("customers")   //////////// firebase setting
-
-        // Assuming you want to send a notification to the topic
-        // Your backend should handle sending the actual notification to this topic
-
-        // For demonstration, you can print the message
-        println("Notification sent: $message")
-    }
-*/
 
     private fun sendNotification() {
         // Construct the notification message
@@ -184,12 +170,21 @@ class ReminderNoticeFragment : Fragment() {
             Thank you!
         """.trimIndent()
 
-        // Ensure you have a topic for notifications
-        // FirebaseMessaging.getInstance().subscribeToTopic("customers")   //////////// firebase setting
+        // Subscribe the supplier to the "customers" topic
+        FirebaseMessaging.getInstance().subscribeToTopic("customers")
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    println("Supplier subscribed to 'customers' topic successfully.")
+                } else {
+                    println("Failed to subscribe supplier.")
+                }
+            }
 
-        // For demonstration, you can print the message
-        println("Notification sent: $message")
+        // This is where you would use your backend or Firebase functions to send notifications to users subscribed to "customers"
+        println("Notification prepared: $message")
     }
+
+
 
 
 }
