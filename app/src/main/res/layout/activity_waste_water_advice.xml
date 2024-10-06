@@ -124,24 +124,12 @@
         </LinearLayout>
 
 
-        <com.scwang.wave.MultiWaveHeader
-            android:id="@+id/waveFooter"
-            android:layout_width="450dp"
-            android:layout_height="98dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="30dp"
-            android:scaleY="-1"
-            app:layout_constraintTop_toTopOf="@+id/btnUsageGraphs"
-            app:mwhCloseColor="#36D2EEFA"
-            app:mwhColorAlpha="0.45"
-            app:mwhGradientAngle="45"
-            app:mwhIsRunning="true"
-            app:mwhProgress="1"
-            app:mwhStartColor="#5DCCFC"
-            app:mwhVelocity="5"
-            app:mwhWaveHeight="70dp"
-            app:mwhWaves="MultiWave"
-            tools:ignore="NotSibling" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="187dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/wavetop" />
+
 
     </LinearLayout>
 
