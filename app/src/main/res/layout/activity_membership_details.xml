@@ -44,7 +44,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="140dp"
             android:background="@drawable/white_bottom_bg">
 
             <ScrollView
@@ -77,14 +77,14 @@
                         android:layout_marginBottom="10dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        android:padding="4dp">
 
                         <TextView
                             android:layout_width="270dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/loyalty_text"
                             android:padding="17dp"
-                            android:text="Total Points"
+                            android:text="Total Earned Points"
                             android:textColor="@color/black"
                             android:textSize="16sp"
 
@@ -98,7 +98,7 @@
                             android:background="@drawable/loyalty_amount"
                             android:gravity="center"
                             android:padding="17dp"
-                            android:text="100"
+                            android:text="100 "
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -111,14 +111,14 @@
                         android:layout_marginBottom="10dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        android:padding="4dp">
 
                         <TextView
                             android:layout_width="270dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/loyalty_text"
                             android:padding="17dp"
-                            android:text="Weekly Points"
+                            android:text="Weekly Earned Points"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -131,7 +131,7 @@
                             android:background="@drawable/loyalty_amount"
                             android:gravity="center"
                             android:padding="17dp"
-                            android:text="20"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -144,27 +144,60 @@
                         android:layout_marginBottom="10dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        android:padding="4dp">
 
                         <TextView
                             android:layout_width="270dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/loyalty_text"
                             android:padding="17dp"
-                            android:text="Remaining Points"
+                            android:text="Reserved Points"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/remaining_points_amount"
+                            android:id="@+id/store_points_amount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/loyalty_amount"
                             android:gravity="center"
                             android:padding="17dp"
-                            android:text="80"
+                            android:text="5 "
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="4dp">
+
+                        <TextView
+                            android:layout_width="270dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/loyalty_text"
+                            android:padding="17dp"
+                            android:text="Redeemable  Points"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/available_points_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/loyalty_amount"
+                            android:gravity="center"
+                            android:padding="17dp"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -191,10 +224,10 @@
 
                         <TextView
                             android:id="@+id/discount_amount"
-                            android:layout_width="40dp"
+                            android:layout_width="30dp"
                             android:layout_marginStart="4dp"
                             android:layout_height="wrap_content"
-                            android:text="6%"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
