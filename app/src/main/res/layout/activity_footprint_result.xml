@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FootprintResultActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    <!-- res/layout/activity_footprint_result.xml -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="My Water Footprint"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Measure Your Consumption, Cherish Every Drop"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="@color/babyBlue">
+
+
+            <TextView
+                android:id="@+id/Question"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="Question"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/YourAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:textSize="16dp"
+                android:text="Your\nAnswer"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/AverageUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:text="Averag\nUser"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="@color/lightBlue">
+
+            <FrameLayout
+                android:layout_width="81dp"
+                android:layout_height="80dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/question1"
+                    android:layout_width="65dp"
+                    android:layout_height="61dp"
+                    android:layout_weight="1"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/q1text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="35dp"
+                    android:text="Shower"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/useranswer1"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="answer"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Avg1"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="answer"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/q1"
+                android:layout_width="69dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Tips" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="@color/lightBlue">
+
+
+            <ImageView
+                android:id="@+id/question2"
+                android:layout_width="9dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/useranswer2"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Avg2"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/q2"
+                android:layout_width="69dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Tips" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:background="@color/lightBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/question3"
+                android:layout_width="9dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/useranswer3"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Avg3"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/q3"
+                android:layout_width="69dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Tips" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:background="@color/lightBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/question4"
+                android:layout_width="9dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/useranswer4"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Avg4"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/q4"
+                android:layout_width="69dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Tips" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:background="@color/lightBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/question5"
+                android:layout_width="9dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/useranswer5"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Avg5"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/q5"
+                android:layout_width="69dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Tips" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:background="@color/lightBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/question6"
+                android:layout_width="9dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/useranswer6"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Avg6"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/q6"
+                android:layout_width="69dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Tips" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:background="@color/lightBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/question7"
+                android:layout_width="9dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/useranswer7"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Avg7"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/q7"
+                android:layout_width="69dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Tips" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:background="@color/lightBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/question8"
+                android:layout_width="9dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/useranswer8"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Avg8"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/q8"
+                android:layout_width="69dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Tips" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:background="@color/lightBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/question9"
+                android:layout_width="9dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/useranswer9"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Avg9"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/q9"
+                android:layout_width="69dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Tips" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:background="@color/lightBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/question10"
+                android:layout_width="9dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/useranswer10"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Avg10"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/q10"
+                android:layout_width="69dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Tips" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:background="@color/lightBlue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/question11"
+                android:layout_width="9dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/useranswer11"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Avg11"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="answer"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/q11"
+                android:layout_width="69dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Tips" />
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:layout_marginTop="40dp"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+
+            <Button
+                android:id="@+id/backToHomeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:layout_gravity="right"
+                android:text="Back to Home" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
