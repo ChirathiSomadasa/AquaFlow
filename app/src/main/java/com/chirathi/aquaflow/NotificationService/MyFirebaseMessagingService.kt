@@ -1,12 +1,11 @@
 package com.chirathi.aquaflow.NotificationService
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.util.Log
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import com.chirathi.aquaflow.HomeActivity
@@ -20,54 +19,61 @@ const val channelName = "com.chirathi.aquaflow.NotificationService"
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        Log.d("FCM", "From: ${remoteMessage.from}")
-        if (remoteMessage.data.isNotEmpty()) {
-            Log.d("FCM", "Message data payload: ${remoteMessage.data}")
-        }
-        remoteMessage.notification?.let {
-            Log.d("FCM", "Message Notification Body: ${it.body}")
-            generateNotification(it.title!!, it.body!!)
+        if (remoteMessage.getNotification() != null) {
+            val title = remoteMessage.notification!!.title!!
+            val message = remoteMessage.notification!!.body!!
+
+            // Store notification in Firestore
+//            storeNotificationInFirestore(title, message)
+
+            // Display the notification
+            generateNotification(title, message)
+
         }
 
-//        if(remoteMessage.getNotification() != null){
-//            generateNotification(remoteMessage.notification!!.title!!, remoteMessage.notification!!.body!!)
-//        }
     }
 
+    @SuppressLint("RemoteViewLayout")
+    fun getRemoteView(title: String, message: String): RemoteViews {
+        val remoteView = RemoteViews("com.chirathi.aquaflow", R.layout.notification)
 
-    fun getRemoteView(tvNotificationTitle: String, tvNotificationContent: String): RemoteViews {
-        val remoteView = RemoteViews("com.chirathi.aquaflow", R.layout.notification_item)
-
-        remoteView.setTextViewText(R.id.tvNotificationTitle, tvNotificationTitle)
-        remoteView.setTextViewText(R.id.tvNotificationContent, tvNotificationContent)
-        remoteView.setImageViewResource(R.id.ic_stat_ic_notification, R.drawable.ic_stat_ic_notification)
+        remoteView.setTextViewText(R.id.Ntitle, title)
+        remoteView.setTextViewText(R.id.Nmessage, message)
+        remoteView.setImageViewResource(
+            R.id.ic_notifications_active,
+            R.drawable.ic_notifications_active
+        )
 
         return remoteView
     }
 
 
-    fun generateNotification(tvNotificationTitle: String, tvNotificationContent: String){
+    fun generateNotification(title: String, message: String) {
 
-        val intent = Intent(this,HomeActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
-        val pendingIntent = PendingIntent.getActivity(this,0,intent,
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_MUTABLE)
+        val pendingIntent = PendingIntent.getActivity(
+            this, 0, intent,
+            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
+        )
 
 
         //channel id, channel name
-        var builder: NotificationCompat.Builder = NotificationCompat.Builder(applicationContext, channelId)
-            .setSmallIcon(R.drawable.ic_stat_ic_notification)
-            .setAutoCancel(true)
-            .setVibrate(longArrayOf(1000,1000,1000,1000))
-            .setOnlyAlertOnce(true)
-            .setContentIntent(pendingIntent)
+        var builder: NotificationCompat.Builder =
+            NotificationCompat.Builder(applicationContext, channelId)
+                .setSmallIcon(R.drawable.ic_notifications_active)
+                .setAutoCancel(true)
+                .setOnlyAlertOnce(true)
+                .setContentIntent(pendingIntent)
+                .setContent(getRemoteView(title, message))
 
-        builder = builder.setContent(getRemoteView(tvNotificationTitle,tvNotificationContent))
 
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        builder = builder.setContent(getRemoteView(title, message))
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
                 channelId,
                 channelName,
@@ -75,10 +81,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             )
             notificationManager.createNotificationChannel(notificationChannel)
         }
-        notificationManager.notify(0, builder.build())
+//            notificationManager.notify(0, builder.build())
+        // Use a unique notificationId if you want to display multiple notifications
+        val notificationId = System.currentTimeMillis().toInt() // Unique ID
+        notificationManager.notify(notificationId, builder.build())
 
     }
-
 
 
 }

@@ -14,12 +14,23 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-import androidx.core.app.NotificationCompat
 import androidx.core.text.HtmlCompat
-import androidx.core.widget.addTextChangedListener
 import com.chirathi.aquaflow.R
-import com.google.firebase.messaging.FirebaseMessaging      ///////// firebase setting
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.json.JSONObject
+import java.io.DataOutputStream
+import java.net.HttpURLConnection
+import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.*
 
+
+// Get current time and format it
+val dateFormat = SimpleDateFormat("dd/MM/yyyy hh:mm", Locale.getDefault())
+val currentTime = dateFormat.format(Date())
 
 
 class ReminderNoticeFragment : Fragment() {
@@ -31,6 +42,16 @@ class ReminderNoticeFragment : Fragment() {
     private lateinit var etSetDate: EditText
     private lateinit var etSetTime: EditText
     private lateinit var spinnerLocation: Spinner
+
+
+
+    // OneSignal App ID
+    private val ONESIGNAL_APP_ID = "ffd8de79-4fa2-4ad7-8a51-93edb3147e1f"
+    private val ONESIGNAL_API_KEY = "MDIwNzZhZmYtOTUzZS00ZWU1LWFhNzgtMTM1N2M3NzYyMjQy" // Add your OneSignal REST API Key
+    private val FCM_Server_Key = "BKqCP2enSG70Xu25El6oCrrz_0O0OhjZgKiETMPik6haoWEt6jNuVHe7vCXfNCImVfReH3MJsk4NmAw6-BxD-kU"
+
+
+
 
 
     override fun onCreateView(
@@ -140,16 +161,11 @@ class ReminderNoticeFragment : Fragment() {
 
         val sendButton = view.findViewById<Button>(R.id.btnSendNotification)
         sendButton.setOnClickListener {
-            sendNotification()
+//            sendNotification()
+            sendNotification_Fire()
         }
 
-//        // Find the button and set an OnClickListener
-//        val nextButton = view.findViewById<Button>(R.id.btnConfirm)
-//        nextButton.setOnClickListener {
-//            // Replace with the next fragment on button click
-//            (activity as? ReminderNoticeActivity)?.replaceFragment(ReminderSendFragment())
-//
-//        }
+
 
         return view
     }
@@ -161,28 +177,98 @@ class ReminderNoticeFragment : Fragment() {
     }
 
 
-    private fun sendNotification() {
+    private fun sendNotification_Fire() {
         // Construct the notification message
         val message = """
-            🚰 Reminder: Water Supply Today!
-            Your scheduled water delivery is set for $selectedDate at $selectedTime to $selectedLocation. 
-            Please ensure access to the delivery point is clear.
-            Thank you!
-        """.trimIndent()
+        🚰 Reminder: Water Supply Today!
+        Your scheduled water delivery is set for $selectedDate at $selectedTime to $selectedLocation. 
+        Please ensure access to the delivery point is clear.
+        Thank you!
+    """.trimIndent()
 
-        // Subscribe the supplier to the "customers" topic
-        FirebaseMessaging.getInstance().subscribeToTopic("customers")
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    println("Supplier subscribed to 'customers' topic successfully.")
-                } else {
-                    println("Failed to subscribe supplier.")
-                }
+        // Create a notification object to store in Firestore
+        val notificationData = hashMapOf(
+            "title" to "Water Supply Reminder",
+            "body" to message,
+            "date" to selectedDate,
+            "time" to selectedTime,
+            "location" to selectedLocation,
+            "timestamp" to currentTime  // For ordering notifications
+        )
+
+        val db = FirebaseFirestore.getInstance()
+
+        // Store the notification in Firestore
+        db.collection("notifications")
+            .add(notificationData)
+            .addOnSuccessListener {
+                println("Notification stored in Firestore.")
+            }
+            .addOnFailureListener { e ->
+                println("Failed to store notification in Firestore: ${e.message}")
             }
 
-        // This is where you would use your backend or Firebase functions to send notifications to users subscribed to "customers"
-        println("Notification prepared: $message")
+        // Fetch consumer FCM tokens from Firestore
+        db.collection("users")
+            .whereEqualTo("isSupplier", false)  // Fetch consumers only
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                for (document in querySnapshot.documents) {
+                    val fcmToken = document.getString("fcmToken")
+
+                    if (!fcmToken.isNullOrEmpty()) {
+                        // Prepare the notification payload
+                        val notificationPayload = mapOf(
+                            "to" to fcmToken,
+                            "notification" to mapOf(
+                                "title" to "Water Supply Reminder",
+                                "body" to message,
+                                "timestamp" to currentTime
+                            )
+                        )
+
+                        // Send the notification
+                        CoroutineScope(Dispatchers.IO).launch {
+                            sendNotificationToConsumer(notificationPayload)
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                println("Error fetching consumers' FCM tokens: ${e.message}")
+            }
     }
+
+    // Send notification to consumer using the FCM token
+    private fun sendNotificationToConsumer(payload: Map<String, Any>) {
+        val fcmApiUrl = "https://fcm.googleapis.com/fcm/send"
+
+        try {
+            val url = URL(fcmApiUrl)
+            val connection = url.openConnection() as HttpURLConnection
+            connection.doOutput = true
+            connection.requestMethod = "POST"
+            connection.setRequestProperty("Content-Type", "application/json")
+            connection.setRequestProperty("Authorization", "key=$ONESIGNAL_API_KEY")  // Replace with your FCM server key
+
+            val dataOutputStream = DataOutputStream(connection.outputStream)
+            val jsonPayload = JSONObject(payload).toString()
+            dataOutputStream.writeBytes(jsonPayload)
+            dataOutputStream.flush()
+            dataOutputStream.close()
+
+            val responseCode = connection.responseCode
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                println("Notification sent successfully.")
+            } else {
+                println("Failed to send notification. Response code: $responseCode")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+
 
 
 

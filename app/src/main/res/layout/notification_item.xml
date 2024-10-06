@@ -1,197 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:elevation="4dp"
-    app:cardCornerRadius="12dp">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="5dp"
+android:layout_marginTop="10dp"
+android:elevation="4dp"
+app:cardCornerRadius="12dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        &lt;!&ndash; Date Header &ndash;&gt;
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Today"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:layout_marginBottom="8dp" />
-
-        &lt;!&ndash; Notification Main Info &ndash;&gt;
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@drawable/blue_background_with_corners"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
-
-            &lt;!&ndash; Notification Icon &ndash;&gt;
-            <ImageView
-                android:id="@+id/notification_icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginEnd="8dp"
-                app:srcCompat="@drawable/bottom_navigation_notification_fragment" />
-
-            &lt;!&ndash; Notification Texts &ndash;&gt;
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvNotificationTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New Notification"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvNotificationTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10:00 AM"
-                    android:textColor="@color/blue_home" />
-            </LinearLayout>
-
-            &lt;!&ndash; Expand/Collapse Arrow &ndash;&gt;
-            <ImageView
-                android:id="@+id/btnExpandCollapse"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_gravity="center|end"
-                android:rotation="90"
-                app:srcCompat="@drawable/arrow" />
-        </LinearLayout>
-
-        &lt;!&ndash; Expanded Section &ndash;&gt;
-        <LinearLayout
-            android:id="@+id/expandedLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvExpandedText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:padding="10dp"
-                android:text="Reminder: Water Supply Today!"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvExpandedDetail"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:text="Your scheduled water delivery is set for [Date] at [Time] to [Location]. Please ensure access to the delivery point is clear."
-                android:textColor="@color/gray"
-                android:textStyle="bold" />
-
-            &lt;!&ndash; Confirm/Cancel Buttons &ndash;&gt;
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="end"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnConfirm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="Confirm" />
-
-                <Button
-                    android:id="@+id/btnCancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cancel" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-
-</androidx.cardview.widget.CardView>
--->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="5dp">
 
-    <RelativeLayout
+    <!-- Date Header -->
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Notification Main Info -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="70dp"
+        android:background="@drawable/blue_background_with_corners"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
+        <!-- Notification Icon -->
         <ImageView
-            android:id="@+id/ic_stat_ic_notification"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:src="@drawable/ic_stat_ic_notification"/>
+            android:id="@+id/notification_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="8dp"
+            app:srcCompat="@drawable/ic_notifications_active" />
 
-        <TextView
-            android:id="@+id/tvNotificationTitle"
+        <!-- Notification Texts -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@id/ic_stat_ic_notification"
-            android:text="@string/app_name"
-            android:textSize="18sp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/notification_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Notification"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvNotificationTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:00 AM"
+                android:textColor="@color/blue_home" />
+        </LinearLayout>
+
+        <!-- Expand/Collapse Arrow -->
+        <ImageView
+            android:id="@+id/btnExpandCollapse"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center|end"
+            android:rotation="90"
+            app:srcCompat="@drawable/arrow" />
+    </LinearLayout>
+
+    <!-- Expanded Section (Initially Hidden) -->
+    <LinearLayout
+        android:id="@+id/expandedLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- Expanded Text -->
+        <TextView
+            android:id="@+id/tvExpandedText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:padding="10dp"
+            android:text="Reminder: Water Supply Today!"
+            android:textColor="@android:color/black"
             android:textStyle="bold" />
 
+        <!-- Expanded Detail -->
         <TextView
-            android:id="@+id/tvNotificationContent"
-            android:layout_width="wrap_content"
+            android:id="@+id/notification_message"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvNotificationTitle"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@id/ic_stat_ic_notification"
-            android:text="This is notification"
-            android:textSize="16dp"
-            android:textStyle="normal" />
+            android:padding="5dp"
+            android:text="Your scheduled water delivery is set for [Date] at [Time] to [Location]. Please ensure access to the delivery point is clear."
+            android:textColor="@android:color/black" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/tvNotificationTime"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textSize="12sp"-->
-<!--            android:text="@string/app_name"-->
-<!--            android:textColor="@android:color/darker_gray"/>-->
+        <!-- Confirm/Cancel Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="end"
+            android:orientation="horizontal">
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Confirm" />
 
-
-<!--    <Button-->
-<!--        android:id="@+id/btnConfirm"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Confirm"/>-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btnCancel"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Cancel"/>-->
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
+</androidx.cardview.widget.CardView>
