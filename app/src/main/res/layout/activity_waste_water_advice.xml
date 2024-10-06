@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Waste_Water_Advice">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Waste Water Monitor &amp; Advice"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/headerImage"
+            android:layout_width="wrap_content"
+            android:layout_height="328dp"
+            android:layout_gravity="center"
+            android:contentDescription="Header Image"
+            android:src="@drawable/earth" />
+
+        <TextView
+            android:id="@+id/wastewaterimagetitle"
+            android:layout_width="wrap_content"
+            android:layout_height="67dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Monitor, Manage, Sustain: Every Drop Counts"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnWaterFootprint"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:layout_marginTop="20dp"
+            android:text="Waste Water Analysis and FootPrint" />
+
+        <Button
+            android:id="@+id/btnUsageGraphs"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:text="View Usage Graphs" />
+
+        <Button
+            android:id="@+id/btnRecommendations"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:text="Recommendations" />
+
+
+
+        <com.scwang.wave.MultiWaveHeader
+            android:id="@+id/waveFooter"
+            android:layout_width="450dp"
+            android:layout_height="98dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="60dp"
+            android:scaleY="-1"
+            app:layout_constraintTop_toTopOf="@+id/btnUsageGraphs"
+            app:mwhCloseColor="#36D2EEFA"
+            app:mwhColorAlpha="0.45"
+            app:mwhGradientAngle="45"
+            app:mwhIsRunning="true"
+            app:mwhProgress="1"
+            app:mwhStartColor="#5DCCFC"
+            app:mwhVelocity="5"
+            app:mwhWaveHeight="70dp"
+            app:mwhWaves="MultiWave"
+            tools:ignore="NotSibling" />
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
