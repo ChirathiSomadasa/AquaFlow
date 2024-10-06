@@ -12,12 +12,14 @@ class CreateAccountActivity : AppCompatActivity() {
 
         val consumer = findViewById<Button>(R.id.consumer_btn) // consumer_layout
         consumer.setOnClickListener {
-            val intent = Intent(this, CustomerRegistrationActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra("userType", "Consumer")
             startActivity(intent)
         }
         val supplier = findViewById<Button>(R.id.supplier_btn) // supplier_layout
         supplier.setOnClickListener {
-            val intent = Intent(this, SupplierRegistrationActivity::class.java)//
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra("userType", "Supplier")
             startActivity(intent)
         }
     }
