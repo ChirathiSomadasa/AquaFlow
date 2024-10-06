@@ -55,6 +55,10 @@ dependencies {
     implementation("com.github.cjhandroid:WaveProgressBar:v1.0.0")
     implementation ("com.github.BharathKSunil:MultiWaveHeader:v1.0.0-alpha-4")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation ("com.github.androidmads:QRGenerator:1.0.1")
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation ("com.google.zxing:core:3.4.1")
 
-    }
+}
+
 

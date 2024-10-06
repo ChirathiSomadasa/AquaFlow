@@ -7,9 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import android.widget.TextView
+import cjh.WaveProgressBarlibrary.WaveProgressBar
 
 class HomeFragment : Fragment() {
 
+    private lateinit var quotaValue: TextView
+    private lateinit var waveProgressBarHome: WaveProgressBar
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -17,9 +21,13 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        // Button to view more quota
-        val scanqrcodeView = view.findViewById<Button>(R.id.view_more_quota)
-        scanqrcodeView.setOnClickListener {
+        // Initialize views here
+        quotaValue = view.findViewById(R.id.water_quota_value)
+        waveProgressBarHome = view.findViewById(R.id.wave_progress_bar) // Update the ID as per your layout
+
+        val waterQuotaView = view.findViewById<Button>(R.id.view_more_quota)
+        waterQuotaView.setOnClickListener {
+
             val intent = Intent(context, WaterQuotaActivity::class.java)
             startActivity(intent)
         }

@@ -162,7 +162,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <cjh.WaveProgressBarlibrary.WaveProgressBar
-                            android:id="@+id/waveProgressBar"
+                            android:id="@+id/wave_progress_bar"
                             android:layout_width="118dp"
                             android:layout_height="166dp"
                             android:layout_marginStart="60dp"
@@ -189,7 +189,7 @@
                             android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.408"
-                            app:layout_constraintStart_toEndOf="@id/waveProgressBar"
+                            app:layout_constraintStart_toEndOf="@id/wave_progress_bar"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
@@ -204,7 +204,7 @@
                             android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.408"
-                            app:layout_constraintStart_toEndOf="@id/waveProgressBar"
+                            app:layout_constraintStart_toEndOf="@id/wave_progress_bar"
                             app:layout_constraintTop_toBottomOf="@id/water_quota_label" />
 
 
@@ -231,7 +231,7 @@
                             android:text="Updated Date : 2024 August 20"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/waveProgressBar" />
+                            app:layout_constraintTop_toBottomOf="@+id/wave_progress_bar" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
