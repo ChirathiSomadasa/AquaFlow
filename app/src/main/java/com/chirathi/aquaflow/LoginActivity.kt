@@ -71,7 +71,6 @@ class LoginActivity : AppCompatActivity() {
                             db.collection("users").document(userId).get()
                                 .addOnSuccessListener { document ->
                                     if (document != null) {
-                                        saveUserIdOnSharedPreferences(userId)
                                         val isSupplier = document.getBoolean("isSupplier") ?: false
 
                                         // Get FCM token
@@ -147,12 +146,5 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "User type not recognized", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    private fun saveUserIdOnSharedPreferences(userId: String){
-        val sharedPreferences=getSharedPreferences("AquaFlow", MODE_PRIVATE)
-        val myEdit=sharedPreferences.edit()
-        myEdit.putString("userId", userId)
-        myEdit.apply()
     }
 }
