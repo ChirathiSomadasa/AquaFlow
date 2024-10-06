@@ -14,14 +14,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AquaFlow"
-        tools:targetApi="31" >
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_stat_ic_notification" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/blue_wave" />
+        android:theme="@style/Theme.AquaFlow">
+
+        <activity
+            android:name=".FootprintResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecommendationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UsageGraphsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WaterFootprintActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WasteWaterAdviceActivity"
+            android:exported="false" />
 
         <activity
             android:name=".NotificationType.UrgentNoticeActivity"
