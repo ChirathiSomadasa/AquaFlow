@@ -168,7 +168,7 @@
                             android:layout_marginStart="60dp"
                             app:arc_color="@color/white"
                             app:behind_wave_color="#A3E3FF"
-                            app:cavans_bg="#FFFFFF"
+                            app:cavans_bg="#e3f7ff"
                             app:front_wave_color="#5DCCFC"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/water_quota_topic"
@@ -223,12 +223,13 @@
                             app:layout_constraintTop_toBottomOf="@+id/water_quota_value" />
 
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/updated_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:layout_marginEnd="100dp"
+                            android:layout_marginEnd="120dp"
                             android:text="Updated Date : 2024 August 20"
+                            android:textSize="14sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/wave_progress_bar" />
