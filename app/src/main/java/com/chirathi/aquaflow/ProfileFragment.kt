@@ -77,6 +77,13 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
 
+        // Handle payment view click
+        val paymentView = view.findViewById<RelativeLayout>(R.id.payment)
+        paymentView.setOnClickListener {
+            val intent = Intent(context, PaymentActivity::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 }
