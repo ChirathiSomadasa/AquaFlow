@@ -11,7 +11,6 @@ class UrgentNoticeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_urgent_notice)
 
-
         val back= findViewById<ImageView>(R.id.backbtn)
         back.setOnClickListener {
             finish()

@@ -4,18 +4,18 @@
     <value>
       <entry key="app">
         <State>
-          <multipleDevicesSelectedInDropDown value="true" />
-          <runningDeviceTargetsSelectedWithDialog>
+          <targetSelectedWithDropDown>
             <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
+              <type value="QUICK_BOOT_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="073113718F100658" />
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\ugtha\.android\avd\Resizable_Experimental_API_33.avd" />
                 </Key>
               </deviceKey>
             </Target>
-          </runningDeviceTargetsSelectedWithDialog>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-10-06T15:20:18.126316800Z" />
         </State>
       </entry>
     </value>
