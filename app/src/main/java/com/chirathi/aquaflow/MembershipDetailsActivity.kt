@@ -6,11 +6,8 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -20,7 +17,6 @@ class MembershipDetailsActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_membership_details)
@@ -29,61 +25,87 @@ class MembershipDetailsActivity : AppCompatActivity() {
 
         val next = findViewById<Button>(R.id.collect_button)
         next.setOnClickListener {
-            val intent = Intent(this, MembershipDetailsActivity::class.java)
+            // Start the same activity to refresh or do something else
+            startActivity(Intent(this, MembershipDetailsActivity::class.java))
+        }
+
+        val back = findViewById<ImageView>(R.id.backbtn)
+        back.setOnClickListener {
+            finish() // Go back to the previous activity
+        }
+
+        // Fetch user ID from shared preferences and get user details
+        getUserIdOnSharedPreferences()?.let { customerId ->
+            fetchUserName(customerId) // Fetch user's name
+            fetchPoints(customerId) // Fetch user's points
+        }
+
+        // Collect button click listener for dialog
+        next.setOnClickListener {
+            showCongratulationsDialog()
+        }
+    }
+
+    private fun fetchUserName(customerId: String) {
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val userId = currentUser.uid
+
+            db.collection("users").document(userId)
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        // Set user data to UI
+                        val firstName = document.getString("firstName") ?: "User"
+                        // Save the user's first name to shared preferences
+                        saveUserNameToSharedPreferences(firstName)
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.e("MembershipDetailsActivity", "Error fetching user data", exception)
+                }
+        }
+    }
+
+    private fun showCongratulationsDialog() {
+        // Create an AlertDialog.Builder
+        val builder = AlertDialog.Builder(this)
+
+        // Inflate the custom layout
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.custome_dialog_congrats, null)
+
+        // Set the custom layout to the dialog
+        builder.setView(dialogView)
+
+        // Create the dialog instance
+        val dialog: AlertDialog = builder.create()
+
+        // Get the views from the custom layout
+        val dialogButton: Button = dialogView.findViewById(R.id.dialog_button)
+        val congratNameTextView: TextView = dialogView.findViewById(R.id.congrat_name)
+
+        // Fetch the user's name from shared preferences
+        val userName = getUserNameFromSharedPreferences()
+        congratNameTextView.text = userName ?: "User" // Default to "User" if name is null
+
+        // Set an onClickListener to the button in the custom layout
+        dialogButton.setOnClickListener {
+            // Dismiss the dialog when button is clicked
+            dialog.dismiss()
+
+            val intent = Intent(this, PaymentActivity::class.java)
             startActivity(intent)
         }
 
-        val back= findViewById<ImageView>(R.id.backbtn)
-        back.setOnClickListener {
-            finish()
-        }
-
-
-        val collectButton: Button = findViewById(R.id.collect_button)
-
-        collectButton.setOnClickListener {
-            // Create an AlertDialog.Builder
-            val builder = AlertDialog.Builder(this)
-
-            // Inflate the custom layout
-            val inflater = layoutInflater
-            val dialogView = inflater.inflate(R.layout.custome_dialog_congrats, null)
-
-            // Set the custom layout to the dialog
-            builder.setView(dialogView)
-
-            // Create the dialog instance first
-            val dialog: AlertDialog = builder.create()
-
-            // Get the views from the custom layout if needed
-            val dialogButton: Button = dialogView.findViewById(R.id.dialog_button)
-
-            // Set an onClickListener to the button in the custom layout
-            dialogButton.setOnClickListener {
-                // Dismiss the dialog when button is clicked
-                dialog.dismiss()  // Now you can call dismiss() on the dialog object
-
-                val intent = Intent(this, PaymentActivity::class.java)
-                startActivity(intent)
-            }
-
-            // Show the dialog
-            dialog.show()
-        }
-
-        // Fetch user ID from shared preferences and water amount from Firestore
-        getUserIdOnSharedPreferences()?.let { customerId ->
-            fetchPoints(customerId)
-        }
-
-
+        // Show the dialog
+        dialog.show()
     }
 
     private fun fetchPoints(customerId: String) {
         val weeklyPointsTextView = findViewById<TextView>(R.id.weekly_points_amount)
         val availablePointsTextView = findViewById<TextView>(R.id.available_points_amount)
         val discountTextView = findViewById<TextView>(R.id.discount_amount)
-
 
         db.collection("points").document(customerId)
             .get()
@@ -92,8 +114,7 @@ class MembershipDetailsActivity : AppCompatActivity() {
                     // Retrieve the points data from Firestore
                     val weeklyPoints = document.getLong("points") ?: 0
 
-                    val availablePoints = calculateAvailabePoints(weeklyPoints)
-
+                    val availablePoints = calculateAvailablePoints(weeklyPoints)
 
                     // Update the TextViews with fetched points
                     weeklyPointsTextView.text = weeklyPoints.toString()
@@ -101,7 +122,6 @@ class MembershipDetailsActivity : AppCompatActivity() {
 
                     val discount = getDiscountPercentage(availablePoints)
                     discountTextView.text = "$discount%"
-
                 } else {
                     Log.e("Firestore", "No points data found for this customer")
                 }
@@ -111,12 +131,12 @@ class MembershipDetailsActivity : AppCompatActivity() {
             }
     }
 
-    private fun calculateAvailabePoints(weeklyPoints: Long): Long {
+    private fun calculateAvailablePoints(weeklyPoints: Long): Long {
         val minimumRequiredPoints = 5
         return if (weeklyPoints > minimumRequiredPoints) {
             weeklyPoints - minimumRequiredPoints
         } else {
-            0  // User can't use any points if they have less than 5
+            0 // User can't use any points if they have less than 5
         }
     }
 
@@ -128,8 +148,23 @@ class MembershipDetailsActivity : AppCompatActivity() {
             availablePoints in 60..79 -> 6      // 60 - 79 points: 6% discount
             availablePoints in 80..99 -> 8      // 80 - 99 points: 8% discount
             availablePoints == 100L -> 10       // 100 points: 10% discount
-            else -> 0                   // Fallback in case of unexpected input
+            else -> 0 // Fallback in case of unexpected input
         }
+    }
+
+    // Save the user's name to SharedPreferences
+    private fun saveUserNameToSharedPreferences(userName: String) {
+        val sharedPreferences = getSharedPreferences("AquaFlow", MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("user_name_key", userName) // Replace with your key
+            apply()
+        }
+    }
+
+    // Retrieve user's name from SharedPreferences
+    private fun getUserNameFromSharedPreferences(): String? {
+        val sharedPreferences = getSharedPreferences("AquaFlow", MODE_PRIVATE)
+        return sharedPreferences.getString("user_name_key", null) // Replace with your key
     }
 
     // Retrieve user ID from shared preferences
@@ -137,6 +172,4 @@ class MembershipDetailsActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("AquaFlow", MODE_PRIVATE)
         return sharedPreferences.getString("userId", "")
     }
-
-
 }
