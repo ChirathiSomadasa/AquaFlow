@@ -34,7 +34,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/user1"
+                android:src="@drawable/user3"
             app:civ_border_color="#FFFFFF"
             app:civ_border_width="4dp" />
 
@@ -57,6 +57,7 @@
 
         </RelativeLayout>
         <TextView
+            android:id="@+id/user_profile_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
