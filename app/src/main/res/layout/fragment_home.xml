@@ -282,6 +282,23 @@
                             app:layout_constraintStart_toStartOf="parent" />
 
                         <TextView
+                            android:id="@+id/reward_text"
+                            android:layout_width="175dp"
+                            android:layout_height="32dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="80dp"
+                            android:paddingTop="8dp"
+                            android:text=" "
+                            android:textAlignment="center"
+                            android:textColor="@color/yellow"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/loyalty_image"
+                            app:layout_constraintTop_toBottomOf="@+id/water_Loyalty_topic" />
+
+                        <TextView
                             android:id="@+id/loyalty_balance_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -289,7 +306,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="2dp"
                             android:paddingTop="8dp"
-                            android:text="Current Points 20"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"

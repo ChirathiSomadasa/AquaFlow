@@ -29,6 +29,9 @@ class HomeFragment : Fragment() {
 
         // Reference to profile name and email TextViews
         val userName = view.findViewById<TextView>(R.id.userName) // Add this
+        val PointsTextView = view.findViewById<TextView>(R.id.loyalty_balance_text)
+        val rewardTextView = view.findViewById<TextView>(R.id.reward_text)
+
 
         // Fetch current user data from Firebase
         val currentUser = auth.currentUser
@@ -53,6 +56,52 @@ class HomeFragment : Fragment() {
                     // Handle errors
                     Log.e("HomeFragment", "Error fetching user data", exception)
                 }
+
+            db.collection("points").document(userId)
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document != null && document.exists()) {
+                        // Retrieve the points data from Firestore
+                        val weeklyPoints = document.getLong("points") ?: 0
+
+                        PointsTextView.text = "$weeklyPoints Current Points"
+
+                        val rewardMessage: String
+
+                        when {
+                            weeklyPoints < 20 -> {
+                                rewardMessage = " "
+                            }
+                            weeklyPoints in 20..39 -> {
+                                rewardMessage = "Basic loyalty reward"
+                            }
+                            weeklyPoints in 40..59 -> {
+                                rewardMessage = "Bronze tier reward"
+                            }
+                            weeklyPoints in 60..79 -> {
+                                rewardMessage = "Silver tier reward"
+                            }
+                            weeklyPoints in 80..99 -> {
+                                rewardMessage = "Gold tier reward"
+                            }
+                            weeklyPoints == 100L -> {
+                                rewardMessage = " loyalty reward"
+                            }
+                            else -> {
+                                rewardMessage = " "
+                            }
+                        }
+
+                        // Update the reward text view
+                        rewardTextView.text = rewardMessage
+
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.e("Firestore", "Error fetching points data: ${exception.message}")
+                }
+
+
         }
 
         val scanqrcodeView = view.findViewById<Button>(R.id.view_more_quota)
@@ -69,5 +118,7 @@ class HomeFragment : Fragment() {
 
         return view
     }
+
+
 
 }
