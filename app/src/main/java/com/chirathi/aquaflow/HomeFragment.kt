@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import cjh.WaveProgressBarlibrary.WaveProgressBar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,6 +21,8 @@ import java.util.*
 
 class HomeFragment : Fragment() {
 
+    private lateinit var waterQuotaLayout: ConstraintLayout
+    private lateinit var emptyWaterQuotaLayout: ConstraintLayout
     private lateinit var quotaValue: TextView
     private lateinit var waveProgressBarHome: WaveProgressBar
     private lateinit var updatedDate: TextView
@@ -36,6 +39,8 @@ class HomeFragment : Fragment() {
 
         // Initialize views
         quotaValue = view.findViewById(R.id.water_quota_value)
+        waterQuotaLayout = view.findViewById(R.id.water_quota_layout)
+        emptyWaterQuotaLayout = view.findViewById(R.id.empty_water_quota_layout)
         waveProgressBarHome = view.findViewById(R.id.wave_progress_bar)
         updatedDate = view.findViewById(R.id.updated_date)
         firestore = Firebase.firestore
@@ -75,6 +80,8 @@ class HomeFragment : Fragment() {
                 }
 
                 if (snapshot != null && snapshot.exists()) {
+                    waterQuotaLayout.visibility = View.VISIBLE
+                    emptyWaterQuotaLayout.visibility = View.GONE
                     // Retrieve "waterAmount" as a String
                     val currentWaterAmount = snapshot.getString("waterAmount") ?: "0"
                     val waterAmount = currentWaterAmount.toIntOrNull() ?: 0
@@ -93,6 +100,7 @@ class HomeFragment : Fragment() {
                             // Initial state for a new customer: Set to 0 until supplier enters quota
                             remainingWaterAmountValue = 0
                             usageWaterAmountValue = 0
+
                         }
                         else -> {
                             // Calculate remaining and used amounts for the week
@@ -115,7 +123,9 @@ class HomeFragment : Fragment() {
                         }, 200) // Update after a short delay to ensure smooth transition
                     }
                 } else {
-                    Toast.makeText(context, "No water data found for this customer", Toast.LENGTH_SHORT).show()
+                    waterQuotaLayout.visibility = View.GONE
+                    emptyWaterQuotaLayout.visibility = View.VISIBLE
+                   // Toast.makeText(context, "No water data found for this customer", Toast.LENGTH_SHORT).show()
                 }
             }
     }

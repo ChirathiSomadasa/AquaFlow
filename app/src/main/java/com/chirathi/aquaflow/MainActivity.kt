@@ -21,10 +21,31 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+        /*Handler(Looper.getMainLooper()).postDelayed({
+            if(getOnboardingFlagOnSharedPreferences()){
+                val intent = Intent(this, CreateAccountActivity::class.java)
+                startActivity(intent)
+            }else{
+                val intent = Intent(this, Onboarding1Activity::class.java)
+                startActivity(intent)
+            }
+        },2000)*/
+
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, Onboarding1Activity::class.java)
-            startActivity(intent)
+            if(getOnboardingFlagOnSharedPreferences()){
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }else{
+                val intent = Intent(this, Onboarding1Activity::class.java)
+                startActivity(intent)
+            }
         },2000)
 
     }
+
+    private fun getOnboardingFlagOnSharedPreferences(): Boolean {
+        val sharedPreferences = getSharedPreferences("AquaFlow", MODE_PRIVATE)
+        return sharedPreferences.getBoolean("onBoardingFlag", false)
+    }
+
 }

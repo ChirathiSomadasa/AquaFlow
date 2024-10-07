@@ -83,7 +83,7 @@ class QRCodeActivity : AppCompatActivity() {
                             .into(QRProfileImage)
                     } else {
                         Log.e(TAG, "Profile Image URL is null or empty")
-                        Toast.makeText(this, "No profile image found", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(this, "No profile image found", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Log.e(TAG, "No such document")

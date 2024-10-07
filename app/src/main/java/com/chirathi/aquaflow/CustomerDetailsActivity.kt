@@ -8,6 +8,8 @@ import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.firestore.FirebaseFirestore
 import android.util.Log
+import android.widget.ImageView
+import android.widget.TextView
 
 class CustomerDetailsActivity : AppCompatActivity() {
 
@@ -15,6 +17,7 @@ class CustomerDetailsActivity : AppCompatActivity() {
     private lateinit var firstNameEditText: TextInputEditText
     private lateinit var lastNameEditText: TextInputEditText
     private lateinit var waterAmountEditText: TextInputEditText
+    private lateinit var BackBtn: ImageView
 
     private val firestore = FirebaseFirestore.getInstance()
 
@@ -27,6 +30,12 @@ class CustomerDetailsActivity : AppCompatActivity() {
         firstNameEditText = findViewById(R.id.first_name_edit_text)
         lastNameEditText = findViewById(R.id.last_name_edit_text)
         waterAmountEditText = findViewById(R.id.water_amount_edit_text)
+
+        val BackBtn = findViewById<ImageView>(R.id.backbtn)
+        BackBtn.setOnClickListener {
+            val intent = Intent(this, SupplierHomeActivity::class.java)
+            startActivity(intent)
+        }
 
         // Retrieve the customer ID from the intent
         val customerId = intent.getStringExtra("CUSTOMER_ID")
