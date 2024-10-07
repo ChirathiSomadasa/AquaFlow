@@ -66,9 +66,9 @@
                 android:layout_width="292dp"
                 android:layout_height="73dp"
                 android:layout_marginTop="16dp"
-                android:text="Waste Water Analysis and FootPrint"
+                android:text="Waste Water Analysis and \nFootPrint"
                 android:textColor="@color/black"
-                android:textSize="17dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -94,7 +94,7 @@
                 android:layout_marginTop="20dp"
                 android:text="View Usage Graphs"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -119,7 +119,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Recommendations"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
         </LinearLayout>
 

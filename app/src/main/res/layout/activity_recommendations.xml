@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".RecommendationsActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -55,71 +59,76 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <!-- Recommendations on the left -->
             <LinearLayout
-                android:layout_marginTop="20dp"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1">
 
                 <!-- First Recommendation -->
                 <LinearLayout
+                    android:id="@+id/recommendationLayout1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:visibility="gone"
+                    >
 
                     <ImageButton
                         android:id="@+id/recommendationButton1"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@null"
+                        android:visibility="gone"
                         android:src="@drawable/checked" />
 
                     <TextView
                         android:id="@+id/recommendationText1"
                         android:layout_width="wrap_content"
-                        android:layout_height="53dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="Use a Bowl to Wash Dishes"
+                        android:visibility="gone"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <!-- Second Recommendation -->
                 <LinearLayout
+                    android:id="@+id/recommendationLayout2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp">
 
                     <ImageButton
                         android:id="@+id/recommendationButton2"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@null"
+                        android:visibility="gone"
                         android:contentDescription="Check Icon"
                         android:src="@drawable/checked" />
 
                     <TextView
                         android:id="@+id/recommendationText2"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="Turn Off the Tap While Scrubbing Dishes"
+                        android:visibility="gone"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <!-- Third Recommendation -->
                 <LinearLayout
+                    android:id="@+id/recommendationLayout3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp">
 
                     <ImageButton
                         android:id="@+id/recommendationButton3"
@@ -127,16 +136,147 @@
                         android:layout_height="40dp"
                         android:background="@null"
                         android:contentDescription="Check Icon"
+                        android:visibility="gone"
                         android:src="@drawable/checked" />
 
                     <TextView
                         android:id="@+id/recommendationText3"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="Soak Clothes First"
+                        android:visibility="gone"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/recommendationLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp">
+
+                    <ImageButton
+                        android:id="@+id/recommendationButton4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@null"
+                        android:contentDescription="Check Icon"
+                        android:visibility="gone"
+                        android:src="@drawable/checked" />
+
+                    <TextView
+                        android:id="@+id/recommendationText4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@android:color/black"
+                        android:visibility="gone"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/recommendationLayout5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp">
+
+                    <ImageButton
+                        android:id="@+id/recommendationButton5"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@null"
+                        android:contentDescription="Check Icon"
+                        android:visibility="gone"
+                        android:src="@drawable/checked" />
+
+                    <TextView
+                        android:id="@+id/recommendationText5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:visibility="gone"
+                        android:textColor="@android:color/black"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/recommendationLayout6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp">
+
+                    <ImageButton
+                        android:id="@+id/recommendationButton6"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@null"
+                        android:contentDescription="Check Icon"
+                        android:visibility="gone"
+                        android:src="@drawable/checked" />
+
+                    <TextView
+                        android:id="@+id/recommendationText6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:visibility="gone"
+                        android:textColor="@android:color/black"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/recommendationLayout7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp">
+
+                    <ImageButton
+                        android:id="@+id/recommendationButton7"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@null"
+                        android:contentDescription="Check Icon"
+                        android:visibility="gone"
+                        android:src="@drawable/checked" />
+
+                    <TextView
+                        android:id="@+id/recommendationText7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:visibility="gone"
+                        android:textColor="@android:color/black"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/recommendationLayout8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp">
+
+                    <ImageButton
+                        android:id="@+id/recommendationButton8"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@null"
+                        android:contentDescription="Check Icon"
+                        android:visibility="gone"
+                        android:src="@drawable/checked" />
+
+                    <TextView
+                        android:id="@+id/recommendationText8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:visibility="gone"
+                        android:textColor="@android:color/black"
+                        android:textSize="14dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -175,21 +315,70 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Turn Off the Water While Lathering" />
+            android:visibility="gone"
+            android:text="Remember to stay mindful of daily water usage during showers." />
 
         <CheckBox
             android:id="@+id/reminderCheckbox2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Wash Full Loads of laundry at once." />
+            android:text="Aim to keep showers short to conserve water."
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"/>
 
         <CheckBox
             android:id="@+id/reminderCheckbox3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Turn Off the Tap while scrubbing dishes" />
+            android:text="Organize themed laundry days where everyone wears a specific color. Afterward, everyone does their laundry together, making it a social event!"
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"/>
+
+        <CheckBox
+            android:id="@+id/reminderCheckbox4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Keep a checklist of essential household tasks to manage effectively."
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"/>
+        <CheckBox
+            android:id="@+id/reminderCheckbox5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create a playlist of your favorite songs that last about the average shower length. Aim to finish before the last song ends!"
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"/>
+        <CheckBox
+            android:id="@+id/reminderCheckbox6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Consider running the dishwasher or washing dishes in batches to save water."
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"/>
+        <CheckBox
+            android:id="@+id/reminderCheckbox7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Be aware of how long laundry and dishwashing cycles take to plan your schedule."
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"/>
+        <CheckBox
+            android:id="@+id/reminderCheckbox8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Plan for increased water usage during events and gatherings."
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
+    </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

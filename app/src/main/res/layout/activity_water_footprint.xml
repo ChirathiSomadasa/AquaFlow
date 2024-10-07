@@ -17,18 +17,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="20dp">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Analysis &amp; Water Footprint"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <ImageButton
+                    android:id="@+id/back"
+                    android:layout_width="34dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:contentDescription="Back Icon"
+                    android:src="@drawable/back" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Analysis &amp; Water Footprint"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+
+
 
             <ImageView
                 android:id="@+id/waterFootprintImage"
@@ -41,16 +60,15 @@
 
             <TextView
                 android:id="@+id/question1"
-                android:layout_width="wrap_content"
+                android:layout_width="363dp"
                 android:layout_height="67dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="60dp"
                 android:gravity="left"
+                android:text="💧 How many Showers did you take today?"
                 android:textColor="@color/black"
-                android:text="💧 How many Showers do you take each day?"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                />
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -80,13 +98,13 @@
             <TextView
                 android:id="@+id/question2"
                 android:layout_width="wrap_content"
-                android:layout_height="67dp"
+                android:layout_height="51dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="36dp"
                 android:gravity="left"
-                android:textColor="@color/black"
                 android:text="💧 What is the average length of each shower?"
-                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -115,62 +133,13 @@
             <TextView
                 android:id="@+id/question3"
                 android:layout_width="wrap_content"
-                android:layout_height="67dp"
+                android:layout_height="94dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:gravity="left"
+                android:text="💧 Did you clean you house today? If so how many liters of water did you use when mopping or cleaning floors?"
                 android:textColor="@color/black"
-                android:text="💧 Do your showers have standard or low-flow showerheads?"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="59dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <RadioGroup
-                    android:id="@+id/radioGroupshowerHead"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/standardShower"
-                        android:layout_width="125dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="1dp"
-                        android:text="Standard Shower Head" />
-
-                    <RadioButton
-                        android:id="@+id/lowFlowShower"
-                        android:layout_width="128dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="22dp"
-                        android:text="Low Flow Shower Head" />
-
-                    <RadioButton
-                        android:id="@+id/both"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:text="both" />
-                </RadioGroup>
-            </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/question4"
-                android:layout_width="wrap_content"
-                android:layout_height="67dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:gravity="left"
-                android:textColor="@color/black"
-                android:text="💧 How many baths do you have each week?"
-                android:textSize="18sp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -180,33 +149,33 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/inputLaundryPerWeek"
+                    android:id="@+id/inputhouseusage"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_weight="2"
                     android:background="@color/babyBlue"
                     android:gravity="center"
-                    android:hint="Enter number"
-                    android:inputType="number"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:hint="Enter 0 if you didnt do this activity"
+                    android:inputType="number" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="per week" />
+                    android:text="litres" />
             </LinearLayout>
 
+
             <TextView
-                android:id="@+id/question5"
+                android:id="@+id/question4"
                 android:layout_width="wrap_content"
-                android:layout_height="82dp"
+                android:layout_height="65dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:gravity="left"
+                android:text="💧 How many times did you brush your teeth or shave?"
                 android:textColor="@color/black"
-                android:text="💧 How many times per day do you brush your teeth, shave or wash your hands?"
-                android:textSize="18sp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -222,7 +191,7 @@
                     android:layout_weight="2"
                     android:background="@color/babyBlue"
                     android:gravity="center"
-                    android:hint="Enter loads"
+                    android:hint="Enter number"
                     android:inputType="number"
                     tools:ignore="TouchTargetSizeCheck" />
 
@@ -230,19 +199,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="per week" />
+                    android:text="per day" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/question7"
+                android:id="@+id/question5"
                 android:layout_width="wrap_content"
                 android:layout_height="67dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:gravity="left"
+                android:text="💧 Did you leave the tap running when brushing your teeth or shaving?"
                 android:textColor="@color/black"
-                android:text="💧 Do you leave the tap running when brushing your teeth or shaving?"
-                android:textSize="18sp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -274,15 +243,15 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/question8"
+                android:id="@+id/question6"
                 android:layout_width="wrap_content"
                 android:layout_height="67dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:gravity="left"
                 android:textColor="@color/black"
-                android:text="💧 How many loads of laundry do you do in an average week?"
-                android:textSize="18sp"
+                android:text="💧 How many loads of laundry did you do today?"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -306,19 +275,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="per week" />
+                    android:text="per day" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/question9"
-                android:layout_width="373dp"
-                android:layout_height="41dp"
+                android:id="@+id/question7"
+                android:layout_width="397dp"
+                android:layout_height="100dp"
                 android:layout_gravity="left"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:gravity="left"
-                android:text="💧 Do you have a dual flush toilet?"
-                android:textSize="18sp"
+                android:text="💧 Are there any cultural or family events that affect your water usage today(e.g., large family gatherings, festivals)?"
                 android:textColor="@color/black"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -328,7 +297,7 @@
                 android:orientation="horizontal">
 
                 <RadioGroup
-                    android:id="@+id/radioGroupToilet"
+                    android:id="@+id/radioGroupEvent"
                     android:layout_width="wrap_content"
                     android:layout_height="43dp"
                     android:orientation="horizontal">
@@ -349,26 +318,48 @@
                         android:text="No"
                         tools:ignore="TouchTargetSizeCheck" />
 
-                    <RadioButton
-                        android:id="@+id/radioTBoth"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="160dp"
-                        android:text="No flushing. Use eco-toilet" />
                 </RadioGroup>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/amountUsedInput"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="2"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/babyBlue"
+                    android:hint="Enter water amount used"
+                    android:textAlignment="center"
+                    android:inputType="number"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/amountUsed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="30dp"
+                    android:text="litres"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/question10"
+                android:id="@+id/question8"
                 android:layout_width="wrap_content"
                 android:layout_height="84dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="10dp"
                 android:gravity="left"
-                android:text="💧 If you wash your dishes by hand how many times are the dishes washed each day?"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:text="💧 If you washed your dishes by hand how many times are the dishes washed?"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -390,19 +381,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="per day" />
+                    android:text="times" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/question11"
+                android:id="@+id/question9"
                 android:layout_width="wrap_content"
                 android:layout_height="67dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:gravity="left"
                 android:textColor="@color/black"
-                android:text="💧 How long does the water run during each wash?"
-                android:textSize="18sp"
+                android:text="💧 How long did the water run during each wash?"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -425,7 +416,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="per day" />
+                    android:text="minutes" />
             </LinearLayout>
 
 
@@ -434,7 +425,7 @@
                 android:id="@+id/btnCalculateFootprint"
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:background="@color/blue"
                 android:textColor="@color/white"
                 android:textStyle="bold"
