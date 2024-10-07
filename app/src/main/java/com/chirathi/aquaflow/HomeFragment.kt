@@ -70,22 +70,22 @@ class HomeFragment : Fragment() {
 
                         when {
                             weeklyPoints < 20 -> {
-                                rewardMessage = " "
+                                rewardMessage = " Basic Reward"
                             }
                             weeklyPoints in 20..39 -> {
-                                rewardMessage = "Basic loyalty reward"
+                                rewardMessage = "Water Saver Reward"
                             }
                             weeklyPoints in 40..59 -> {
-                                rewardMessage = "Bronze tier reward"
+                                rewardMessage = "Eco Saver Reward"
                             }
                             weeklyPoints in 60..79 -> {
-                                rewardMessage = "Silver tier reward"
+                                rewardMessage = "Blue Tier Reward"
                             }
                             weeklyPoints in 80..99 -> {
-                                rewardMessage = "Gold tier reward"
+                                rewardMessage = "Aqua Champion"
                             }
                             weeklyPoints == 100L -> {
-                                rewardMessage = " loyalty reward"
+                                rewardMessage = "Hydro Hero"
                             }
                             else -> {
                                 rewardMessage = " "
