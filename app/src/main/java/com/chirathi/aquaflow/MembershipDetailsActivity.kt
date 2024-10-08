@@ -24,10 +24,6 @@ class MembershipDetailsActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         val next = findViewById<Button>(R.id.collect_button)
-        next.setOnClickListener {
-            // Start the same activity to refresh or do something else
-            startActivity(Intent(this, MembershipDetailsActivity::class.java))
-        }
 
         val back = findViewById<ImageView>(R.id.backbtn)
         back.setOnClickListener {
@@ -51,7 +47,7 @@ class MembershipDetailsActivity : AppCompatActivity() {
         if (currentUser != null) {
             val userId = currentUser.uid
 
-            db.collection("users").document(userId)
+            db.collection("users").document(customerId)
                 .get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
@@ -68,40 +64,29 @@ class MembershipDetailsActivity : AppCompatActivity() {
     }
 
     private fun showCongratulationsDialog() {
-        // Create an AlertDialog.Builder
         val builder = AlertDialog.Builder(this)
-
-        // Inflate the custom layout
         val inflater = layoutInflater
         val dialogView = inflater.inflate(R.layout.custome_dialog_congrats, null)
 
-        // Set the custom layout to the dialog
         builder.setView(dialogView)
 
-        // Create the dialog instance
         val dialog: AlertDialog = builder.create()
-
-        // Get the views from the custom layout
         val dialogButton: Button = dialogView.findViewById(R.id.dialog_button)
         val congratNameTextView: TextView = dialogView.findViewById(R.id.congrat_name)
 
-        // Fetch the user's name from shared preferences
         val userName = getUserNameFromSharedPreferences()
         congratNameTextView.text = userName ?: "User" // Default to "User" if name is null
 
-        // Set an onClickListener to the button in the custom layout
         dialogButton.setOnClickListener {
-            // Dismiss the dialog when button is clicked
             dialog.dismiss()
 
+            // Navigate to PaymentActivity instead of restarting MembershipDetailsActivity
             val intent = Intent(this, PaymentActivity::class.java)
             startActivity(intent)
         }
 
-        // Show the dialog
         dialog.show()
     }
-
     private fun fetchPoints(customerId: String) {
         val weeklyPointsTextView = findViewById<TextView>(R.id.weekly_points_amount)
         val availablePointsTextView = findViewById<TextView>(R.id.available_points_amount)

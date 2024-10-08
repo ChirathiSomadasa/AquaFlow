@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -18,7 +19,7 @@ class MembershipActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
-    private lateinit var progressBar: ProgressBar
+    private lateinit var progressBar: CircularProgressIndicator
     private lateinit var progressText: TextView
     private val handler = Handler(Looper.getMainLooper())
     private var progressStatus = 0
