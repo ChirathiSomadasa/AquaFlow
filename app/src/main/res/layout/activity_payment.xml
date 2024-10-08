@@ -49,7 +49,7 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="50dp"
                 android:padding="10dp">
 
 
@@ -76,12 +76,12 @@
                         android:layout_marginBottom="10dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:padding="5dp">
+                        android:padding="2dp">
 
                         <TextView
                             android:layout_width="270dp"
                             android:layout_height="wrap_content"
-                            android:text="Amount Per Week"
+                            android:text="Payment For Water"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:background="@drawable/loyalty_text"
@@ -90,12 +90,12 @@
                             android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/week_amount"
+                            android:id="@+id/water_payment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Rs.5000"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"
@@ -110,7 +110,7 @@
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:padding="5dp">
+                        android:padding="2dp">
 
                         <TextView
                             android:layout_width="270dp"
@@ -128,7 +128,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Rs.300"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"
@@ -143,7 +143,7 @@
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:padding="5dp">
+                        android:padding="2dp">
 
                         <TextView
                             android:layout_width="270dp"
@@ -161,7 +161,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Rs.4700"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"
