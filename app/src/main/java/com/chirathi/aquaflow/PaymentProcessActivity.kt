@@ -39,6 +39,7 @@ class PaymentProcessActivity : AppCompatActivity() {
             finish()
         }
 
+
         val submitBtn: Button = findViewById(R.id.submit_btn)
 
         submitBtn.setOnClickListener {
@@ -60,7 +61,6 @@ class PaymentProcessActivity : AppCompatActivity() {
             db.collection("users")
                 .whereEqualTo("firstName", firstName)
                 .whereEqualTo("lastName", lastName)
-                .whereEqualTo("address",location)
                 .get()
                 .addOnSuccessListener { documents ->
                     if (!documents.isEmpty) {
@@ -75,6 +75,7 @@ class PaymentProcessActivity : AppCompatActivity() {
                             "location" to location,
                             "paymentAmount" to paymentAmount,
                             "customerID" to customerId // Optional, you can use this to link the payment to a user
+
                         )
 
                         // Save the data to Firestore
