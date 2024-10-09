@@ -14,34 +14,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:gravity="bottom"
+        >
 
         <!-- Header with back button and title -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_width="460dp"
+            android:layout_height="85dp"
+            android:orientation="horizontal"
+            android:gravity="bottom">
 
             <ImageButton
                 android:id="@+id/back"
-                android:layout_width="63dp"
+                android:layout_width="72dp"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:background="@null"
                 android:contentDescription="Back Icon"
-                android:src="@drawable/back"
-                android:layout_marginTop="20dp"/>
+                android:src="@drawable/back" />
 
             <TextView
                 android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="316dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="Recommendations"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/toolbar"
+            android:alpha="0.5"
+            android:background="@drawable/ash_shadow" />
 
         <!-- Recommendation Title -->
         <TextView
@@ -296,7 +304,7 @@
             android:layout_marginTop="20dp"
             android:text="Your Reminders"
             android:layout_marginStart="30dp"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:textColor="@android:color/black" />
 

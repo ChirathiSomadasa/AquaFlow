@@ -11,10 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="bottom">
+
+
 
         <TextView
             android:id="@+id/title"
@@ -24,9 +26,16 @@
             android:gravity="center"
             android:text="Waste Water Monitor &amp; Advice"
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="20dp"
             android:layout_marginTop="10dp"
             android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/toolbar"
+            android:alpha="0.5"
+            android:background="@drawable/ash_shadow" />
 
         <ImageView
             android:id="@+id/headerImage"
@@ -46,6 +55,11 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,6 +80,7 @@
                 android:layout_width="292dp"
                 android:layout_height="73dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginLeft="10dp"
                 android:text="Waste Water Analysis and \nFootPrint"
                 android:textColor="@color/black"
                 android:textSize="16dp"
@@ -82,7 +97,7 @@
 
 
             <ImageView
-                android:layout_width="84dp"
+                android:layout_width="94dp"
                 android:layout_height="match_parent"
                 android:contentDescription="Waste Water Analysis Icon"
                 android:src="@drawable/graph" />
@@ -92,6 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
                 android:text="View Usage Graphs"
                 android:textColor="@color/black"
                 android:textSize="16dp"
@@ -107,7 +123,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="84dp"
+                android:layout_width="94dp"
                 android:layout_height="93dp"
                 android:contentDescription="Waste Water Analysis Icon"
                 android:src="@drawable/reminders" />
@@ -118,10 +134,12 @@
                 android:layout_height="70dp"
                 android:layout_marginTop="20dp"
                 android:text="Recommendations"
+                android:layout_marginLeft="10dp"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:textStyle="bold" />
         </LinearLayout>
+    </LinearLayout>
 
 
         <ImageView

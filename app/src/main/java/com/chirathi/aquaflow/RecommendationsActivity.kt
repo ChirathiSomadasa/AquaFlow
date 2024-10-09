@@ -108,6 +108,7 @@ class RecommendationsActivity : AppCompatActivity() {
         )
     }
 
+
     private fun fetchWaterFootprintData(documentId: String) {
         db.collection("waterFootprint").document(documentId)
             .get()

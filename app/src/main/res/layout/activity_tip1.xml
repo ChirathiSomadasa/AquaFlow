@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FootprintResultActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Title Section -->
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shower &amp; Bath"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:background="#2B79A1"
+                android:padding="16dp"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="center"/>
+
+            <!-- Description Section -->
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="It takes a lot of water to produce the food we eat, the energy we use and all the things that we buy. Use our water saving tips below to reduce your water use in the bathroom. You’ll find lots of ways to shrink your water footprint."
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Tips Section -->
+            <!-- Tip 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="59dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bucket" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Put a bucket in the shower while you’re waiting for the water to warm up, and use the used-water you catch for watering plants, flushing the toilet or cleaning."
+                    android:paddingStart="16dp"
+                    android:textSize="16sp"
+                    android:textColor="#666666"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+            <!-- Tip 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="63dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/showerhead" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Install a low-flow showerhead. It may cost you some money up front, but your water conservation efforts will save you money down the road. Low-flow showerheads typically flow at 2.5 gallons per minute or less."
+                    android:paddingStart="16dp"
+                    android:textSize="16sp"
+                    android:textColor="#666666"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+            <!-- Tip 3 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="58dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/timer" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Spend less time in the shower. If you lose track of time, bring a radio into the bathroom and time yourself by how many songs play while you’re in there."
+                    android:paddingStart="16dp"
+                    android:textSize="16sp"
+                    android:textColor="#666666"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
