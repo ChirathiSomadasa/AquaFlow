@@ -89,6 +89,13 @@ class ProfileDetailsActivity : AppCompatActivity() {
                     .update(updatedData as Map<String, Any>)
                     .addOnSuccessListener {
                         Toast.makeText(this, "Profile successfully updated", Toast.LENGTH_SHORT).show()
+
+                        // Disable input fields
+                        fName.isEnabled = false
+                        lName.isEnabled = false
+                        profileAddress.isEnabled = false
+                        profileEmail.isEnabled = false
+
                     }
                     .addOnFailureListener { e ->
                         Toast.makeText(this, "Error updating profile", Toast.LENGTH_SHORT).show()
@@ -96,6 +103,10 @@ class ProfileDetailsActivity : AppCompatActivity() {
                     }
 
             }
+
         }
+
+
+
     }
 }
