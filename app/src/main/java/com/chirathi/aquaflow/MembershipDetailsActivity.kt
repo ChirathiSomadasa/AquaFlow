@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
@@ -93,11 +94,15 @@ class MembershipDetailsActivity : AppCompatActivity() {
         val discountTextView = findViewById<TextView>(R.id.discount_amount)
 
         db.collection("points").document(customerId)
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
+            .addSnapshotListener { snapshot, exception ->
+                if (exception != null) {
+                    Toast.makeText(this, "Error listening for updates: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener
+                }
+
+                if (snapshot != null && snapshot.exists()) {
                     // Retrieve the points data from Firestore
-                    val weeklyPoints = document.getLong("points") ?: 0
+                    val weeklyPoints = snapshot.getLong("points") ?: 0
 
                     val availablePoints = calculateAvailablePoints(weeklyPoints)
 
@@ -111,9 +116,7 @@ class MembershipDetailsActivity : AppCompatActivity() {
                     Log.e("Firestore", "No points data found for this customer")
                 }
             }
-            .addOnFailureListener { exception ->
-                Log.e("Firestore", "Error fetching points data: ${exception.message}")
-            }
+
     }
 
     private fun calculateAvailablePoints(weeklyPoints: Long): Long {
