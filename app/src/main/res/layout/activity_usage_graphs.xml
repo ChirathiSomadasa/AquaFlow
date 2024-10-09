@@ -6,27 +6,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UsageGraphsActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="bottom"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="View Usage Graphs"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <ImageButton
+                android:id="@+id/back1"
+                android:layout_width="74dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:contentDescription="Back Icon"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="View Usage Graphs"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/toolbar"
+            android:alpha="0.5"
+            android:background="@drawable/ash_shadow" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:gravity="bottom">
 
     <TextView
         android:id="@+id/title1"
@@ -35,9 +63,15 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="Daily Water Usage Graph"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/black"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChartDaily"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"/>
     </LinearLayout>
 
         <LinearLayout
@@ -54,10 +88,17 @@
                 android:gravity="center"
                 android:text="Weekly Water Usage Graph"
                 android:textColor="@color/black"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChartWeekly"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"/>
         </LinearLayout>
 
     </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
