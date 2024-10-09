@@ -99,6 +99,11 @@ class HomeFragment : Fragment() {
             val intent = Intent(context, MembershipActivity::class.java)
             startActivity(intent)
         }
+        val TipView = view.findViewById<Button>(R.id.view_more_tip)
+        TipView.setOnClickListener {
+            val intent = Intent(context, WasteWaterAdviceActivity::class.java)
+            startActivity(intent)
+        }
 
 
 

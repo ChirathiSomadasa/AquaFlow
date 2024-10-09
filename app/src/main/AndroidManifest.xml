@@ -29,6 +29,22 @@
             android:name=".NotificationActivity"
             android:exported="false" />
         <activity
+            android:name=".WasteWaterAdviceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WaterFootprintActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UsageGraphsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecommendationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FootprintResultActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".ProfileDetailsActivity"
             android:exported="false" />
         <activity
