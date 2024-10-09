@@ -43,7 +43,9 @@
         <activity
             android:name=".FootprintResultActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".SupplierProfileDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".ProfileDetailsActivity"
             android:exported="false" />
