@@ -178,11 +178,13 @@ class HomeFragment : Fragment() {
 
     private fun fetchCustomerPoints(customerId: String){
         firestore.collection("points").document(customerId)
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
+            .addSnapshotListener { snapshot, exception ->
+                if (exception != null) {
+                    return@addSnapshotListener
+                }
+                if (snapshot != null && snapshot.exists()) {
                     // Retrieve the points data from Firestore
-                    val weeklyPoints = document.getLong("points") ?: 0
+                    val weeklyPoints = snapshot.getLong("points") ?: 0
 
                     if (weeklyPoints > 0 ){
                         pointsTextView.text = "$weeklyPoints Current Points"
