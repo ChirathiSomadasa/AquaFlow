@@ -27,12 +27,20 @@ class PaymentProcessActivity : AppCompatActivity() {
 
         val fName = findViewById<TextView>(R.id.firstname) // Add this
         val lName = findViewById<TextView>(R.id.lastname) // Add this
-        val date = findViewById<TextView>(R.id.date) // Add this
-        val address = findViewById<TextView>(R.id.location)  // Address (location)
+        val customerid = findViewById<TextView>(R.id.customer_id) // Add this
         val payment = findViewById<TextView>(R.id.payment)  // Email
 
-        val currentDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
-        date.text = currentDate
+
+        // Get data from Intent
+        val intent = intent
+        val customerId = intent.getStringExtra("Customer_ID")
+        val firstName =  intent.getStringExtra("First_Name")
+        val lastName = intent.getStringExtra("Last_Name")
+
+
+        customerid.text = customerId
+        fName.text = firstName
+        lName.text = lastName
 
         val back = findViewById<ImageView>(R.id.backbtn)
         back.setOnClickListener {
@@ -44,23 +52,19 @@ class PaymentProcessActivity : AppCompatActivity() {
 
         submitBtn.setOnClickListener {
             // Get the details from the UI
-
+            val customerID = customerid.toString().trim()
             val firstName = fName.text.toString().trim()
             val lastName = lName.text.toString().trim()
-            val currentDate = date.text.toString().trim()
-            val location = address.text.toString().trim()
             val paymentAmount = payment.text.toString().trim()
 
             // Validate the input fields
-            if (firstName.isEmpty() || lastName.isEmpty() || currentDate.isEmpty() || location.isEmpty() || paymentAmount.isEmpty()) {
+            if (firstName.isEmpty() || lastName.isEmpty() || customerID.isEmpty() || paymentAmount.isEmpty()) {
                 // Show an error message (e.g., a Toast or a dialog)
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             db.collection("users")
-                .whereEqualTo("firstName", firstName)
-                .whereEqualTo("lastName", lastName)
                 .get()
                 .addOnSuccessListener { documents ->
                     if (!documents.isEmpty) {
@@ -69,12 +73,8 @@ class PaymentProcessActivity : AppCompatActivity() {
 
                         // Prepare the data to be saved
                         val paymentDetails = hashMapOf(
-                            "firstName" to firstName,
-                            "lastName" to lastName,
-                            "date" to currentDate,
-                            "location" to location,
-                            "paymentAmount" to paymentAmount,
-                            "customerID" to customerId // Optional, you can use this to link the payment to a user
+                            "customerID" to customerId,// Optional, you can use this to link the payment to a user
+                            "paymentAmount" to paymentAmount
 
                         )
 
@@ -106,9 +106,8 @@ class PaymentProcessActivity : AppCompatActivity() {
                                 // Clear the form fields
                                 fName.text = ""
                                 lName.text = ""
-                                date.text = ""
-                                address.text = ""
                                 payment.text = ""
+                                customerid.text =""
                             }
                             .addOnFailureListener { e ->
                                 // Handle the error

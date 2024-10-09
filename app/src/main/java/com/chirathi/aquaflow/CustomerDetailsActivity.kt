@@ -85,6 +85,8 @@ class CustomerDetailsActivity : AppCompatActivity() {
     private fun submitCustomerDetails() {
         val customerId = customerIdEditText.text.toString().trim()
         val waterAmount = waterAmountEditText.text.toString().trim()
+        val firstname = firstNameEditText.text.toString().trim()
+        val lastname = lastNameEditText.text.toString().trim()
 
         // Validate input before submitting
         if (customerId.isEmpty() || waterAmount.isEmpty()) {
@@ -95,7 +97,9 @@ class CustomerDetailsActivity : AppCompatActivity() {
         // Create a map to store in Firestore
         val waterMap = hashMapOf(
             "customerId" to customerId,
-            "waterAmount" to waterAmount
+            "waterAmount" to waterAmount,
+            "First_name" to firstname,
+            "Last_name" to lastname
         )
 
         // Store water amount data in the "water" collection with user ID as document
@@ -107,6 +111,14 @@ class CustomerDetailsActivity : AppCompatActivity() {
                 // Clear the fields
                 Log.e("water", "Amount: $waterAmount")
                 waterAmountEditText.text?.clear()
+
+                // Passing data to PaymentProcessActivity via Intent
+                val intent = Intent(this, PaymentProcessActivity::class.java)
+                intent.putExtra("Customer_ID", customerId)
+                intent.putExtra("Water_Amount", waterAmount)
+                intent.putExtra("First_Name",firstname)
+                intent.putExtra("Last_Name",lastname)
+                startActivity(intent)
 
             }
             .addOnFailureListener { exception ->
