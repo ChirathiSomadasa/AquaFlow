@@ -84,26 +84,6 @@ class MembershipActivity : AppCompatActivity() {
             }
     }
 
-    // Function to save points in Firestore
-    private fun savePoints(customerId: String, points: Int) {
-        // Create a data object to save the points
-        val pointsData = hashMapOf(
-            "customerId" to customerId,
-            "points" to points,
-            "timestamp" to System.currentTimeMillis()  // Optional: add a timestamp for when the points were saved
-        )
-
-        // Save the points in the "points" collection using customerId as the document ID
-        db.collection("points").document(customerId)
-            .set(pointsData)
-            .addOnSuccessListener {
-                Log.d("Firestore", "Points successfully saved for customerId: $customerId")
-            }
-            .addOnFailureListener { exception ->
-                Log.e("Firestore", "Error saving points: ${exception.message}")
-            }
-    }
-
     // Dynamically update the progress bar based on points
     private fun startProgressBar(points: Int) {
         // Ensure the progress bar does not exceed the maximum points (100)
@@ -127,6 +107,28 @@ class MembershipActivity : AppCompatActivity() {
             }
         }.start()
     }
+
+    // Function to save points in Firestore
+    private fun savePoints(customerId: String, points: Int) {
+        // Create a data object to save the points
+        val pointsData = hashMapOf(
+            "customerId" to customerId,
+            "points" to points,
+            "timestamp" to System.currentTimeMillis()  // Optional: add a timestamp for when the points were saved
+        )
+
+        // Save the points in the "points" collection using customerId as the document ID
+        db.collection("points").document(customerId)
+            .set(pointsData)
+            .addOnSuccessListener {
+                Log.d("Firestore", "Points successfully saved for customerId: $customerId")
+            }
+            .addOnFailureListener { exception ->
+                Log.e("Firestore", "Error saving points: ${exception.message}")
+            }
+    }
+
+
 
     // Retrieve user ID from shared preferences
     private fun getUserIdOnSharedPreferences(): String? {
