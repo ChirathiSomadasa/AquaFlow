@@ -1,20 +1,22 @@
 package com.chirathi.aquaflow
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 
 class ScanQRCodeActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan_qrcode)
 
-        val back= findViewById<ImageView>(R.id.backbtn)
+        // Back button listener
+        val back = findViewById<ImageView>(R.id.backbtn)
         back.setOnClickListener {
             finish()
         }
@@ -24,7 +26,7 @@ class ScanQRCodeActivity : AppCompatActivity() {
         scanButton.setOnClickListener {
             initiateQRCodeScan()
         }
-     }
+    }
 
     // Function to start QR code scan
     private fun initiateQRCodeScan() {
