@@ -58,29 +58,10 @@ class NotificationFragment : Fragment() {
                 // Handle failure
             }
 
-        setupExpandCollapse(view)// Set up expand/collapse functionality
+
 
         return view
     }
 
-    private fun setupExpandCollapse(view: View) {
-        val expandCollapseBtn = view.findViewById<ImageView>(R.id.btnExpandCollapse)
-        val expandedLayout = view.findViewById<LinearLayout>(R.id.expandedLayout)
-
-        // Check if the button and layout exist to avoid crashes
-        expandCollapseBtn?.let { btn ->
-            expandedLayout?.let { layout ->
-                btn.setOnClickListener {
-                    if (layout.visibility == View.INVISIBLE) {
-                        layout.visibility = View.VISIBLE
-                        btn.rotation = 180f  // Rotate arrow downwards
-                    } else {
-                        layout.visibility = View.INVISIBLE
-                        btn.rotation = 0f  // Rotate arrow upwards
-                    }
-                }
-            }
-        }
-    }
 
 }

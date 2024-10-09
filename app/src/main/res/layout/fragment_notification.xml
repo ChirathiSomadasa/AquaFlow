@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp">
 
+<!--
             <ImageView
                 android:id="@+id/backbtn"
                 android:layout_width="wrap_content"
@@ -26,12 +27,12 @@
                 android:layout_marginStart="10dp"
                 android:scaleType="center"
                 android:src="@drawable/back" />
+-->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_centerHorizontal="true"
                 android:layout_marginStart="50dp"
                 android:text="Notifications"
                 android:textColor="@color/black"
