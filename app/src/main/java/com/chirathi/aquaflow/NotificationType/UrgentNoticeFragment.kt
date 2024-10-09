@@ -198,6 +198,7 @@ class UrgentNoticeFragment : Fragment() {
         // Store the notification in Firestore => user collection(consumer only)
         db.collection("users")
             .whereEqualTo("isSupplier", false)  // Target consumers only
+            .whereEqualTo("address", selectedLocation)  // Match the user's address with the selected location
             .get()
             .addOnSuccessListener { querySnapshot ->
                 for (document in querySnapshot.documents) {
