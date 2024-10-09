@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_margin="5dp"
-android:layout_marginTop="10dp"
-android:elevation="4dp"
-app:cardCornerRadius="12dp">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:layout_marginTop="10dp"
+    android:elevation="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="12dp">
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
     android:padding="5dp">
 
     <!-- Date Header -->
@@ -72,8 +77,7 @@ app:cardCornerRadius="12dp">
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center|end"
-            android:rotation="90"
-            app:srcCompat="@drawable/arrow" />
+            app:srcCompat="@drawable/dropdown_arrow" />
     </LinearLayout>
 
     <!-- Expanded Section (Initially Hidden) -->
