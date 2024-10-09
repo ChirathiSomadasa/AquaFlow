@@ -72,6 +72,8 @@ class LoginActivity : AppCompatActivity() {
                                 .addOnSuccessListener { document ->
                                     if (document != null) {
                                         saveUserIdOnSharedPreferences(userId)
+                                        saveOnboardingOnSharedPreferences(true)
+
                                         val isSupplier = document.getBoolean("isSupplier") ?: false
 
                                         // Get FCM token
@@ -84,11 +86,11 @@ class LoginActivity : AppCompatActivity() {
                                                     db.collection("users").document(userId)
                                                         .update("fcmToken", fcmToken)
                                                         .addOnSuccessListener {
-                                                            Toast.makeText(
+                                                            /*Toast.makeText(
                                                                 this,
                                                                 "FCM Token saved",
                                                                 Toast.LENGTH_SHORT
-                                                            ).show()
+                                                            ).show()*/
                                                         }
                                                         .addOnFailureListener { e ->
                                                             Toast.makeText(
@@ -134,7 +136,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Create Account button click listener
-        val createAccount = findViewById<Button>(R.id.btn_create_account)
+       /* val createAccount = findViewById<Button>(R.id.btn_create_account)
         createAccount.setOnClickListener {
             // Check user type and navigate to the respective registration activity
             if (userType == "Consumer") {
@@ -146,7 +148,16 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "User type not recognized", Toast.LENGTH_SHORT).show()
             }
+        }*/
+
+        val createAccount = findViewById<Button>(R.id.btn_create_account)
+        createAccount.setOnClickListener {
+            // Check user type and navigate to the respective registration activity
+                val intent = Intent(this, CreateAccountActivity::class.java)
+                startActivity(intent)
+
         }
+
     }
 
     private fun saveUserIdOnSharedPreferences(userId: String){
@@ -155,4 +166,12 @@ class LoginActivity : AppCompatActivity() {
         myEdit.putString("userId", userId)
         myEdit.apply()
     }
+
+    private fun saveOnboardingOnSharedPreferences(onBoardingFlag: Boolean){
+        val sharedPreferences=getSharedPreferences("AquaFlow", MODE_PRIVATE)
+        val myEdit=sharedPreferences.edit()
+        myEdit.putBoolean("onBoardingFlag", onBoardingFlag)
+        myEdit.apply()
+    }
+
 }

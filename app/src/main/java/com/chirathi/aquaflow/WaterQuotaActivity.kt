@@ -40,9 +40,9 @@ class WaterQuotaActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Fetch user ID and water amount
+        // Fetch user ID and set up a real-time listener
         getUserIdOnSharedPreferences()?.let { customerId ->
-            fetchWaterAmount(customerId)
+            setupRealTimeListener(customerId)
         }
 
         // Back button listener
@@ -52,27 +52,35 @@ class WaterQuotaActivity : AppCompatActivity() {
         }
     }
 
-    // Function to fetch water amount and update UI
-    private fun fetchWaterAmount(customerId: String) {
+    // Set up real-time Firestore listener to monitor changes in water amount
+    private fun setupRealTimeListener(customerId: String) {
         firestore.collection("water").document(customerId)
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
+            .addSnapshotListener { snapshot, exception ->
+                if (exception != null) {
+                    Toast.makeText(this, "Error listening for updates: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener
+                }
+
+                if (snapshot != null && snapshot.exists()) {
                     // Retrieve "waterAmount" as a String
-                    val currentWaterAmount = document.getString("waterAmount") ?: "0"
+                    val currentWaterAmount = snapshot.getString("waterAmount") ?: "0"
                     val waterAmount = currentWaterAmount.toIntOrNull() ?: 0
 
                     // Set the remaining and usage amounts
                     val remainingWaterAmountValue: Int
                     val usageWaterAmountValue: Int
 
-                    // Check if waterAmount is 1000
+                    // Check if waterAmount is 1000 (new week or initial quota set)
                     if (waterAmount == 1000) {
-                        // Reset for a new week
+                        // Supplier has entered 1000 liters for a new week
                         remainingWaterAmountValue = totalQuotaValue
                         usageWaterAmountValue = 0
+                    } else if (waterAmount == 0) {
+                        // Initial state for a new customer: Set to 0 until supplier enters quota
+                        remainingWaterAmountValue = 0
+                        usageWaterAmountValue = 0
                     } else {
-                        // For non-new weeks
+                        // Calculate remaining and used amounts for the week
                         remainingWaterAmountValue = totalQuotaValue - waterAmount
                         usageWaterAmountValue = waterAmount
                     }
@@ -92,13 +100,10 @@ class WaterQuotaActivity : AppCompatActivity() {
                     // Set progress for WaveProgressBar based on remainingPercentageValue
                     waveProgressBar.setProgress(remainingPercentageValue.toInt())
 
-                    Log.d("waterAmount", "Current Amount: $waterAmount")
+                    Log.d("waterAmount", "Real-time Update: $waterAmount")
                 } else {
                     Toast.makeText(this, "No water data found for this customer", Toast.LENGTH_SHORT).show()
                 }
-            }
-            .addOnFailureListener { exception ->
-                Toast.makeText(this, "Error fetching water data: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
     }
 

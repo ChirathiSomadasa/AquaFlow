@@ -5,17 +5,82 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.chirathi.aquaflow.NotificationService.NotificationAdapter
+import com.chirathi.aquaflow.NotificationService.NotificationItem
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 
 class NotificationFragment : Fragment() {
+
+    private lateinit var notificationRecyclerView: RecyclerView
+    private lateinit var notificationAdapter: NotificationAdapter
+    private lateinit var notificationList: ArrayList<NotificationItem>
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notification, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_notification, container, false)
+
+        // Initialize RecyclerView
+        notificationRecyclerView = view.findViewById(R.id.recycler_view_notifications)
+        notificationRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        // Initialize the list and adapter
+        notificationList = ArrayList()
+        notificationAdapter = NotificationAdapter(notificationList)
+        notificationRecyclerView.adapter = notificationAdapter
+
+        db = FirebaseFirestore.getInstance()   // Initialize Firestore
+
+        // Fetch notifications from Firestore and order by time (newest first)
+        db.collection("notifications")
+            .orderBy("timestamp", Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val title = document.getString("title") ?: "No Title"
+                    val message = document.getString("body") ?: "No Message"
+                    val timestamp = document.getString("timestamp") ?: "Now"
+                    val notificationItem = NotificationItem(title, message, timestamp)
+                    notificationList.add(notificationItem)
+                }
+                notificationAdapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { e ->
+                // Handle failure
+            }
+
+        setupExpandCollapse(view)// Set up expand/collapse functionality
+
+        return view
     }
 
+    private fun setupExpandCollapse(view: View) {
+        val expandCollapseBtn = view.findViewById<ImageView>(R.id.btnExpandCollapse)
+        val expandedLayout = view.findViewById<LinearLayout>(R.id.expandedLayout)
+
+        // Check if the button and layout exist to avoid crashes
+        expandCollapseBtn?.let { btn ->
+            expandedLayout?.let { layout ->
+                btn.setOnClickListener {
+                    if (layout.visibility == View.INVISIBLE) {
+                        layout.visibility = View.VISIBLE
+                        btn.rotation = 180f  // Rotate arrow downwards
+                    } else {
+                        layout.visibility = View.INVISIBLE
+                        btn.rotation = 0f  // Rotate arrow upwards
+                    }
+                }
+            }
+        }
+    }
 
 }

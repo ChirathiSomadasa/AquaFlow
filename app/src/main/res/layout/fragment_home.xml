@@ -141,10 +141,11 @@
                     app:layout_constraintTop_toBottomOf="@+id/cardWaterQuote">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout"
+                        android:id="@+id/water_quota_layout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white">
+                        android:background="@color/white"
+                        android:visibility="gone">
 
                         <TextView
                             android:id="@+id/water_quota_topic"
@@ -162,17 +163,17 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <cjh.WaveProgressBarlibrary.WaveProgressBar
-                            android:id="@+id/waveProgressBar"
+                            android:id="@+id/wave_progress_bar"
                             android:layout_width="118dp"
                             android:layout_height="166dp"
                             android:layout_marginStart="60dp"
                             app:arc_color="@color/white"
                             app:behind_wave_color="#A3E3FF"
-                            app:cavans_bg="#FFFFFF"
+                            app:cavans_bg="#e3f7ff"
                             app:front_wave_color="#5DCCFC"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/water_quota_topic"
-                            app:progress="80"
+                            app:progress="0"
                             app:shape="circle"
                             app:text_size="15sp" />
 
@@ -189,7 +190,7 @@
                             android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.408"
-                            app:layout_constraintStart_toEndOf="@id/waveProgressBar"
+                            app:layout_constraintStart_toEndOf="@id/wave_progress_bar"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
@@ -199,12 +200,12 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="4dp"
                             android:layout_marginEnd="40dp"
-                            android:text="400L"
+                            android:text="0L"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.408"
-                            app:layout_constraintStart_toEndOf="@id/waveProgressBar"
+                            app:layout_constraintStart_toEndOf="@id/wave_progress_bar"
                             app:layout_constraintTop_toBottomOf="@id/water_quota_label" />
 
 
@@ -223,15 +224,65 @@
                             app:layout_constraintTop_toBottomOf="@+id/water_quota_value" />
 
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/updated_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:layout_marginEnd="100dp"
+                            android:layout_marginEnd="120dp"
                             android:text="Updated Date : 2024 August 20"
+                            android:textSize="14sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/waveProgressBar" />
+                            app:layout_constraintTop_toBottomOf="@+id/wave_progress_bar" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/empty_water_quota_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white">
+
+                        <TextView
+                            android:id="@+id/tvEmptyWaterQuotaTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="198dp"
+                            android:paddingTop="8dp"
+                            android:text="Water Quota Status"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvEmptyWaterQuotaMsg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:paddingTop="8dp"
+                            android:text="Get Water"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvEmptyWaterQuotaTitle"/>
+
+                        <ImageView
+                            android:id="@+id/tvEmptyWaterQuotaViewMore"
+                            android:layout_width="400dp"
+                            android:layout_height="100dp"
+
+                            android:text="View more"
+                            android:textStyle="bold"
+                            android:src="@drawable/water"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvEmptyWaterQuotaMsg" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
