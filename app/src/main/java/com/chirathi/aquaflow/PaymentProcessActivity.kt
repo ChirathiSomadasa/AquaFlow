@@ -65,6 +65,8 @@ class PaymentProcessActivity : AppCompatActivity() {
             }
 
             db.collection("users")
+                .whereEqualTo("firstName",firstName  )
+                .whereEqualTo("lastName",lastName  )
                 .get()
                 .addOnSuccessListener { documents ->
                     if (!documents.isEmpty) {
