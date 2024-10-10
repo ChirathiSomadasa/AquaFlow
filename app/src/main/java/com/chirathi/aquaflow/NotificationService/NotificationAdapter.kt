@@ -7,9 +7,16 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.chirathi.aquaflow.NotificationFragment
 import com.chirathi.aquaflow.R
 
-data class NotificationItem(val title: String, val message: String, val timestamp: String)
+data class NotificationItem(
+    val notificationId: String,
+    val title: String,
+    val message: String,
+    val timestamp: String,
+    val isRead: Boolean = false
+)
 
 class NotificationAdapter(private val notificationList: List<NotificationItem>) : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
 
@@ -33,6 +40,24 @@ class NotificationAdapter(private val notificationList: List<NotificationItem>) 
         holder.titleTextView2.text = currentItem.title
         holder.messageTextView.text = currentItem.message
         holder.timestampTextView.text = currentItem.timestamp // Set the timestamp
+
+
+        // Change appearance if notification is read
+        if (currentItem.isRead) {
+            holder.itemView.alpha = 0.5f // Dim the view to show it has been read
+        } else {
+            holder.itemView.alpha = 1.0f // Full opacity if unread
+        }
+
+        // Handle notification click
+        holder.itemView.setOnClickListener {
+            // Mark the notification as read in Firestore
+            (holder.itemView.context as? NotificationFragment)?.markNotificationAsRead(currentItem.notificationId)
+
+            // Optional: Change the UI to reflect the read status immediately
+            holder.itemView.alpha = 0.5f
+        }
+
 
 
         // Initialize the expanded state (collapsed by default)

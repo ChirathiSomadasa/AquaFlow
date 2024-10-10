@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import cjh.WaveProgressBarlibrary.WaveProgressBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -58,6 +59,7 @@ class HomeFragment : Fragment() {
         getUserIdOnSharedPreferences()?.let { customerId ->
             fetchRealTimeWaterAmount(customerId)
             fetchCustomerPoints(customerId)
+            listenForNewNotifications(customerId) // Listen for new notifications
         }
 
         // Reference to profile name and email TextViews
@@ -237,4 +239,37 @@ class HomeFragment : Fragment() {
         val sharedPreferences = activity?.getSharedPreferences("AquaFlow", Context.MODE_PRIVATE)
         return sharedPreferences?.getString("userId", "")
     }
+
+
+    private fun listenForNewNotifications(customerId: String) {
+        firestore.collection("notifications")
+            .whereEqualTo("userId", customerId)
+            .whereEqualTo("isRead", false) // Listen for unread notifications
+            .addSnapshotListener { snapshots, error ->
+                if (error != null) {
+                    Log.e("HomeFragment", "Error fetching notifications: ${error.message}")
+                    return@addSnapshotListener
+                }
+
+                if (snapshots != null && !snapshots.isEmpty) {
+                    // New notifications are available
+                    displayNotificationIndicator(true)
+                } else {
+                    // No unread notifications
+                    displayNotificationIndicator(false)
+                }
+            }
+    }
+    private fun displayNotificationIndicator(show: Boolean) {
+        val bottomNavView = activity?.findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+        val badge = bottomNavView?.getOrCreateBadge(R.id.fragment_notification)
+
+        if (show) {
+            badge?.isVisible = true // Show the red dot or badge
+        } else {
+            badge?.isVisible = false // Hide it if no new notifications
+        }
+    }
+
+
 }

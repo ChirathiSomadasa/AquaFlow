@@ -19,6 +19,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
+import com.chirathi.aquaflow.NotificationService.FirebaseUtils
 import com.chirathi.aquaflow.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
@@ -178,7 +179,9 @@ class UrgentNoticeFragment : Fragment() {
             "body" to message,
             "date" to selectedDate,
             "location" to selectedLocation,
-            "timestamp" to currentTime  // For ordering notifications
+            "timestamp" to currentTime,  // For ordering notifications
+            "isRead" to false  // Default to unread
+
         )
 
         val db = FirebaseFirestore.getInstance()
@@ -210,7 +213,9 @@ class UrgentNoticeFragment : Fragment() {
                         "body" to message,
                         "date" to selectedDate,
                         "location" to selectedLocation,
-                        "timestamp" to currentTime
+                        "timestamp" to currentTime,
+                        "isRead" to false  // Default to unread
+
                     )
 
                     // Update or add the notification for each consumer under their user document
@@ -263,7 +268,9 @@ class UrgentNoticeFragment : Fragment() {
 
 
     private fun sendNotificationToConsumer(payload: Map<String, Any>) {
-        val fcmApiUrl = "https://fcm.googleapis.com/fcm/send"
+        val fcmApiUrl = "https://fcm.googleapis.com/v1/projects/aquaflow-e93c7/messages:send"
+        val accessToken = FirebaseUtils.getAccessToken() // Get the access token
+
 
         try {
             val url = URL(fcmApiUrl)
@@ -271,7 +278,7 @@ class UrgentNoticeFragment : Fragment() {
             connection.doOutput = true
             connection.requestMethod = "POST"
             connection.setRequestProperty("Content-Type", "application/json")
-            connection.setRequestProperty("Authorization", "key=$ONESIGNAL_API_KEY")  // Replace with your FCM server key
+            connection.setRequestProperty("Authorization", "Bearer $accessToken")  // Replace with your FCM server key
 
             val dataOutputStream = DataOutputStream(connection.outputStream)
             val jsonPayload = JSONObject(payload).toString()

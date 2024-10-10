@@ -1,6 +1,7 @@
 package com.chirathi.aquaflow
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -54,10 +55,14 @@ class NotificationFragment : Fragment() {
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
+                        val notificationId = document.id
                         val title = document.getString("title") ?: "No Title"
                         val message = document.getString("body") ?: "No Message"
                         val timestamp = document.getString("timestamp") ?: "Now"
-                        val notificationItem = NotificationItem(title, message, timestamp)
+                        val isRead = document.getBoolean("isRead") ?: false // Get isRead field
+
+
+                        val notificationItem = NotificationItem(notificationId, title, message, timestamp, isRead)
                         notificationList.add(notificationItem)
                     }
                     notificationAdapter.notifyDataSetChanged()
@@ -90,6 +95,17 @@ class NotificationFragment : Fragment() {
 
 
         return view
+    }
+    fun markNotificationAsRead(notificationId: String) {
+        db.collection("users").document(userId).collection("notifications")
+            .document(notificationId)
+            .update("isRead", true)  // Mark the notification as read
+            .addOnSuccessListener {
+                Log.d("NotificationFragment", "Notification marked as read")
+            }
+            .addOnFailureListener { exception ->
+                Log.e("NotificationFragment", "Error updating notification: ${exception.message}")
+            }
     }
 
 
