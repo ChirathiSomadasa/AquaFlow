@@ -64,7 +64,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:text="Question"
-                android:textSize="16dp"
+                android:textSize="15dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
 
@@ -72,8 +72,8 @@
                 android:id="@+id/YourAnswer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:textSize="16dp"
+                android:layout_marginStart="24dp"
+                android:textSize="15dp"
                 android:text="Your\nAnswer"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
@@ -82,10 +82,10 @@
                 android:id="@+id/AverageUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="18dp"
                 android:text="Average\nUser"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="15dp"
                 android:textStyle="bold"/>
 
 
@@ -215,6 +215,8 @@
                 android:layout_marginStart="30dp"
                 android:text="Tips" />
         </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -533,31 +535,53 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="40dp"
-            android:gravity="right"
+            android:id="@+id/backToHomeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="250dp"
+            android:layout_marginBottom="30dp"
             android:orientation="horizontal"
-            android:padding="10dp">
-            <Button
-                android:id="@+id/backToHomeButton"
-                android:layout_width="200dp"
+            android:layout_marginTop="30dp"
+            android:padding="6dp">
+
+            <!-- Left arrow icon -->
+            <ImageView
+                android:id="@+id/previous_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:contentDescription="@string/previous"
+                android:src="@drawable/backarrow" /> <!-- Space between the two images -->
+
+            <!-- Home icon with text below it -->
+            <LinearLayout
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="250dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/view_more_btn"
-                android:backgroundTint="@color/blue"
-                android:drawableLeft="@drawable/previous"
-                android:text="Back To Home"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:gravity="center"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/home_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="home"
+                    android:src="@drawable/backhome" />
 
+                <TextView
+                    android:id="@+id/home_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:text="Home"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
-
+            </LinearLayout>
 
     </LinearLayout>
     </ScrollView>

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -44,7 +45,7 @@ class FootprintResultActivity : AppCompatActivity() {
         val documentId = intent.getStringExtra("DOCUMENT_ID") ?: return
         fetchWaterFootprintData(documentId)
 
-        val backToHomeButton = findViewById<Button>(R.id.backToHomeButton)
+        val backToHomeButton = findViewById<LinearLayout>(R.id.backToHomeButton)
         backToHomeButton.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }

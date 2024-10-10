@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="100dp"
             android:text="Recommendations"
             android:textColor="@android:color/black"
             android:textSize="18sp"
@@ -301,9 +301,9 @@
             android:id="@+id/remindersTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Your Reminders"
-            android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
+            android:text="Quick Action Points"
+            android:layout_marginStart="100dp"
             android:textSize="18dp"
             android:textStyle="bold"
             android:textColor="@android:color/black" />
@@ -316,6 +316,17 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/reminder"
             android:scaleType="centerInside" />
+
+        <TextView
+            android:id="@+id/remindersSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Want to save Water?"
+            android:layout_marginStart="30dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
 
         <!-- Checkboxes for reminders -->
         <CheckBox
