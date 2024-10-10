@@ -55,20 +55,15 @@ class SupplierProfileDetailsActivity : AppCompatActivity() {
         profileEmail = findViewById(R.id.prof_email)  // Email
         saveButton = findViewById(R.id.ok_button)
 
-        profileImage = findViewById(R.id.profile_image)
-        imageUploadIcon = findViewById(R.id.image_upload_icon)
+        profileImage = findViewById(R.id.profilePic)
+//        imageUploadIcon = findViewById(R.id.image_upload_icon)
         ProfileName = findViewById(R.id.profileName)
 
 
         // Load user profile data from Firestore
         loadProfileData()
         saveButton.setOnClickListener { updateUserProfile() }
-        imageUploadIcon.setOnClickListener {
-            // Open an image picker to select an image from the gallery
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, 1000)  // Use a unique request code
-        }
+
 
     }
 
@@ -90,11 +85,12 @@ class SupplierProfileDetailsActivity : AppCompatActivity() {
                         fullNameTextView.text = "$firstName $lastName"
 
                         // Load the profile image if available
-                        val imageUrl = document.getString("profileImageUrl")
+                        val imageUrl = document.getString("profileImageUrl") ?: "N/A"
                         if (!imageUrl.isNullOrEmpty()) {
                             Glide.with(this)
                                 .load(imageUrl)
                                 .placeholder(R.drawable.user3) // Add a placeholder image
+                                .error(R.drawable.user3) // Error image if loading fails
                                 .into(profileImage)
                         }
 
@@ -151,6 +147,7 @@ class SupplierProfileDetailsActivity : AppCompatActivity() {
     }
 
 
+/*
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -206,6 +203,7 @@ class SupplierProfileDetailsActivity : AppCompatActivity() {
                 }
         }
     }
+*/
 
 
 }

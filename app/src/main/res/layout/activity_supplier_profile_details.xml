@@ -25,12 +25,13 @@
             android:textColor="@color/black"/>
 
         <!-- Circular Image View  -->
+<!--
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
 
-            <!-- Circular Image View (Profile Image) -->
+            &lt;!&ndash; Circular Image View (Profile Image) &ndash;&gt;
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
                 android:layout_width="150dp"
@@ -40,7 +41,7 @@
                 app:civ_border_color="#FFFFFF"
                 app:civ_border_width="4dp" />
 
-            <!-- Camera Icon with Orange Circle Background -->
+            &lt;!&ndash; Camera Icon with Orange Circle Background &ndash;&gt;
             <RelativeLayout
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -58,6 +59,15 @@
             </RelativeLayout>
 
         </RelativeLayout>
+-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilePic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/user1"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="4dp"/>
 
         <TextView
             android:id="@+id/profileName"
