@@ -20,6 +20,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
+import com.chirathi.aquaflow.NotificationService.FirebaseUtils
 import com.chirathi.aquaflow.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
@@ -46,9 +47,6 @@ class ReminderNoticeFragment : Fragment() {
 
 
 
-    // OneSignal App ID
-    private val ONESIGNAL_APP_ID = "ffd8de79-4fa2-4ad7-8a51-93edb3147e1f"
-    private val ONESIGNAL_API_KEY = "MDIwNzZhZmYtOTUzZS00ZWU1LWFhNzgtMTM1N2M3NzYyMjQy" // Add your OneSignal REST API Key
     private val FCM_Server_Key = "BKqCP2enSG70Xu25El6oCrrz_0O0OhjZgKiETMPik6haoWEt6jNuVHe7vCXfNCImVfReH3MJsk4NmAw6-BxD-kU"
 
 
@@ -229,7 +227,7 @@ class ReminderNoticeFragment : Fragment() {
                 println("Failed to store notification in Firestore: ${e.message}")
             }
 
-        // Store the notification in Firestore => user collection(consumer only)
+        // Store the notification in Firestore => user collection(consumer only base on location)
         db.collection("users")
             .whereEqualTo("isSupplier", false)  // Target consumers only
             .whereEqualTo("address", selectedLocation)  // Match the user's address with the selected location
@@ -268,6 +266,7 @@ class ReminderNoticeFragment : Fragment() {
         // Fetch consumer FCM tokens from Firestore
         db.collection("users")
             .whereEqualTo("isSupplier", false)  // Fetch consumers only
+            .whereEqualTo("address", selectedLocation)  // Match the user's address with the selected location
             .get()
             .addOnSuccessListener { querySnapshot ->
                 for (document in querySnapshot.documents) {
@@ -287,7 +286,7 @@ class ReminderNoticeFragment : Fragment() {
                         // Send the notification
                         CoroutineScope(Dispatchers.IO).launch {
                             sendNotificationToConsumer(notificationPayload)
-                            sendNotification_OneSignal(message)
+//                            sendNotification_OneSignal(message)
                         }
                     }
                 }
@@ -301,6 +300,8 @@ class ReminderNoticeFragment : Fragment() {
     // Send notification to consumer using the FCM token
     private fun sendNotificationToConsumer(payload: Map<String, Any>) {
         val fcmApiUrl = "https://fcm.googleapis.com/v1/projects/aquaflow-e93c7/messages:send"
+        val accessToken = FirebaseUtils.getAccessToken() // Get the access token
+
 
         try {
             val url = URL(fcmApiUrl)
@@ -308,7 +309,7 @@ class ReminderNoticeFragment : Fragment() {
             connection.doOutput = true
             connection.requestMethod = "POST"
             connection.setRequestProperty("Content-Type", "application/json")
-            connection.setRequestProperty("Authorization", "//////************////////////")  // Replace with your FCM server key
+            connection.setRequestProperty("Authorization", "Bearer $accessToken")  // Replace with your FCM server key
 
             val dataOutputStream = DataOutputStream(connection.outputStream)
             val jsonPayload = JSONObject(payload).toString()
@@ -328,7 +329,7 @@ class ReminderNoticeFragment : Fragment() {
     }
 
 
-
+/*
     // Function to send notification via OneSignal
     private fun sendNotification_OneSignal(message: String) {
         val url = URL("https://onesignal.com/api/v1/notifications")
@@ -363,7 +364,7 @@ class ReminderNoticeFragment : Fragment() {
                 println("Error sending OneSignal notification: ${e.message}")
             }
         }
-    }
+    }*/
 
 
 

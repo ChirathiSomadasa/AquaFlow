@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+# Ignore service account credentials
+/secrets/aquaflow-e93c7-firebase-adminsdk-42ldy-15117638df.json
