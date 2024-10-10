@@ -5,7 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -29,8 +33,8 @@ class PaymentActivity : AppCompatActivity() {
         }
 
         // Button to go to HomeActivity
-        val next = findViewById<Button>(R.id.backhome_btn)
-        next.setOnClickListener {
+        val payment = findViewById<LinearLayout>(R.id.backhome_btn)
+        payment.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
@@ -47,10 +51,14 @@ class PaymentActivity : AppCompatActivity() {
         val totalPaymentTextView = findViewById<TextView>(R.id.total_amount)
 
         db.collection("points").document(customerID)
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    val points = document.getLong("points") ?: 0
+            .addSnapshotListener { snapshot, exception ->
+                if (exception != null) {
+                    Toast.makeText(this, "Error listening for updates: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener
+                }
+
+                if (snapshot != null && snapshot.exists()) {
+                    val points = snapshot.getLong("points") ?: 0
 
                     val availablePoints = points - 5
 
@@ -61,6 +69,13 @@ class PaymentActivity : AppCompatActivity() {
 
                         discountPaymentTextView.text = "Rs.$discount"
                         totalPaymentTextView.text = "Rs.$totalAmount"
+
+                        // Now fetch the paymentAmount from the payment collection
+                        fetchPaymentAmount(customerID) { paymentAmount ->
+                            if (totalAmount <= paymentAmount) {
+                                showPaymentAlertDialog(totalAmount)
+                            }
+                        }
                     }
 
 
@@ -70,10 +85,37 @@ class PaymentActivity : AppCompatActivity() {
                     Log.e("Firestore", "No water data found for this customer")
                 }
             }
-            .addOnFailureListener { exception ->
-                // Corrected error message
-                Log.e("Firestore", "Error fetching water data: ${exception.message}")
+
+    }
+
+    // Method to fetch paymentAmount from Firestore
+    private fun fetchPaymentAmount(customerID: String, callback: (Long) -> Unit) {
+        db.collection("payment").document(customerID)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val paymentAmount = document.getLong("paymentAmount") ?: 0
+                    callback(paymentAmount)
+                } else {
+                    Log.e("Firestore", "No payment data found for this customer")
+                }
             }
+            .addOnFailureListener { exception ->
+                Toast.makeText(this, "Error fetching payment data: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    // Method to show AlertDialog
+    private fun showPaymentAlertDialog(totalAmount: Long) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Payment Confirmation")
+        builder.setMessage("Your total payment amount of Rs.$totalAmount matches the stored payment amount.")
+        builder.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss() // Close the dialog
+        }
+
+        val alertDialog = builder.create()
+        alertDialog.show()
     }
 
     private fun calculatePayment(customerID: String, callback: (Long) -> Unit) {
@@ -81,10 +123,18 @@ class PaymentActivity : AppCompatActivity() {
         val waterPaymentTextView = findViewById<TextView>(R.id.water_payment)
 
         db.collection("water").document(customerID)
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    val waterAmount = document.getString("waterAmount")!!.toLong() ?: 0
+            .addSnapshotListener { snapshot, exception ->
+                if (exception != null) {
+                    Toast.makeText(
+                        this,
+                        "Error listening for updates: ${exception.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@addSnapshotListener
+                }
+
+                if (snapshot != null && snapshot.exists()) {
+                    val waterAmount = snapshot.getString("waterAmount")!!.toLong() ?: 0
                     val waterPayment = waterAmount * 3
 
                     // Display the water payment with currency symbol
@@ -96,10 +146,6 @@ class PaymentActivity : AppCompatActivity() {
                     // Corrected error message
                     Log.e("Firestore", "No water data found for this customer")
                 }
-            }
-            .addOnFailureListener { exception ->
-                // Corrected error message
-                Log.e("Firestore", "Error fetching water data: ${exception.message}")
             }
     }
 
