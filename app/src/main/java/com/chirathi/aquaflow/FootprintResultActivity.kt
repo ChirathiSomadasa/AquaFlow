@@ -26,10 +26,8 @@ class FootprintResultActivity : AppCompatActivity() {
         const val AVERAGE_SHOWERS_PER_DAY = 2
         const val AVERAGE_LENGTH_OF_SHOWER = 7
         const val AVERAGE_HOUSE_USAGE = 15
-        const val AVERAGE_DETAILS =3
         const val AVERAGE_LAUNDRY_DETAILS = 2
         const val AVERAGE_DISHES_WASHED = 6
-        const val AVERAGE_WASH_DURATION = 5
         const val AVERAGE_EVENT_USAGE= 30
     }
 
@@ -71,10 +69,8 @@ class FootprintResultActivity : AppCompatActivity() {
                         footprint?.showersPerDay ?: 0,
                         footprint?.lengthOfShower ?: 0,
                         footprint?.houseUsage ?: 0,
-                        footprint?.details ?: 0,
                         footprint?.laundryDetails ?: 0,
                         footprint?.dishesWashed ?: 0,
-                        footprint?.washDuration ?: 0,
                         footprint?.amountUsedForEvent ?: 0,
 
                     )
@@ -95,10 +91,6 @@ class FootprintResultActivity : AppCompatActivity() {
                     updateAverageTextView(R.id.Avg3, AVERAGE_HOUSE_USAGE)
                     toggleTipVisibility(R.id.q3, footprint?.houseUsage ?: 0, AVERAGE_HOUSE_USAGE)
 
-                    updateTextView(R.id.useranswer4, footprint?.details ?: 0)
-                    updateAverageTextView(R.id.Avg4, AVERAGE_DETAILS)
-                    toggleTipVisibility(R.id.q4, footprint?.details ?: 0, AVERAGE_DETAILS)
-
                     // Handle tap running and event as strings
                     val tapRunningValue = footprint?.tapRunning ?: "N/A"
                     findViewById<TextView>(R.id.useranswer5).text = tapRunningValue
@@ -117,9 +109,6 @@ class FootprintResultActivity : AppCompatActivity() {
                     updateAverageTextView(R.id.Avg8, AVERAGE_DISHES_WASHED)
                     toggleTipVisibility(R.id.q8, footprint?.dishesWashed?: 0, AVERAGE_DISHES_WASHED)
 
-                    updateTextView(R.id.useranswer9, footprint?.washDuration?: 0)
-                    updateAverageTextView(R.id.Avg9, AVERAGE_WASH_DURATION)
-                    toggleTipVisibility(R.id.q9, footprint?.washDuration?: 0, AVERAGE_WASH_DURATION)
 
 
 

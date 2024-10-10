@@ -61,13 +61,11 @@ class UsageGraphsActivity : AppCompatActivity() {
                         footprint?.showersPerDay ?: 0,
                         footprint?.lengthOfShower ?: 0,
                         footprint?.houseUsage ?: 0,
-                        footprint?.details ?: 0,
                         footprint?.laundryDetails ?: 0,
                         footprint?.dishesWashed ?: 0,
-                        footprint?.washDuration ?: 0,
                         footprint?.amountUsedForEvent ?: 0
                     )
-                    val dailyLabels = listOf("Showers", "Length", "Usage", "Details", "Laundry", "Dishes", "Washing", "Event")
+                    val dailyLabels = listOf("Showers", "Length", "Usage", "Laundry", "Dishes", "Event")
 
                     setupBarChartD(barChartDaily, dailyInputs, dailyLabels)
 
