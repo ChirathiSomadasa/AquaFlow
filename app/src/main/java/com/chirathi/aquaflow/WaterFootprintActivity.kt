@@ -19,10 +19,8 @@ class WaterFootprintActivity : AppCompatActivity() {
     private lateinit var inputShowersPerDay: EditText
     private lateinit var inputLengthOfShower: EditText
     private lateinit var inputHouseUsage: EditText
-    private lateinit var inputDetails: EditText
     private lateinit var inputLaundryDetails: EditText
     private lateinit var inputDishesWashed: EditText
-    private lateinit var inputWash: EditText
     private lateinit var radioGroupTapRunning: RadioGroup
     private lateinit var radioGroupEvent: RadioGroup
     private lateinit var btnCalculateFootprint: Button
@@ -49,10 +47,8 @@ class WaterFootprintActivity : AppCompatActivity() {
         inputShowersPerDay = findViewById(R.id.inputShowersPerDay)
         inputLengthOfShower = findViewById(R.id.inputLengthOfShower)
         inputHouseUsage = findViewById(R.id.inputhouseusage)
-        inputDetails = findViewById(R.id.inputdetails)
         inputLaundryDetails = findViewById(R.id.inputlaundrydetails)
         inputDishesWashed = findViewById(R.id.inputdisheswashed)
-        inputWash = findViewById(R.id.inputwash)
         radioGroupTapRunning = findViewById(R.id.radioGroupTapRunning)
         radioGroupEvent = findViewById(R.id.radioGroupEvent)
         btnCalculateFootprint = findViewById(R.id.btnCalculateFootprint)
@@ -87,21 +83,19 @@ class WaterFootprintActivity : AppCompatActivity() {
         val showersPerDay = inputShowersPerDay.text.toString()
         val lengthOfShower = inputLengthOfShower.text.toString()
         val houseUsage = inputHouseUsage.text.toString()
-        val details = inputDetails.text.toString()
         val laundryDetails = inputLaundryDetails.text.toString()
         val dishesWashed = inputDishesWashed.text.toString()
-        val washDuration = inputWash.text.toString()
 
         // Check if any field is empty
         if (showersPerDay.isEmpty() || lengthOfShower.isEmpty() || houseUsage.isEmpty() ||
-            details.isEmpty() || laundryDetails.isEmpty() || dishesWashed.isEmpty() || washDuration.isEmpty()) {
+             laundryDetails.isEmpty() || dishesWashed.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show()
             return false
         }
 
         // Check if all inputs are numbers
         if (!isNumeric(showersPerDay) || !isNumeric(lengthOfShower) || !isNumeric(houseUsage) ||
-            !isNumeric(details) || !isNumeric(laundryDetails) || !isNumeric(dishesWashed) || !isNumeric(washDuration)) {
+             !isNumeric(laundryDetails) || !isNumeric(dishesWashed)) {
             Toast.makeText(this, "Please enter numbers only.", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -123,10 +117,8 @@ class WaterFootprintActivity : AppCompatActivity() {
         val showersPerDay = inputShowersPerDay.text.toString().toInt()
         val lengthOfShower = inputLengthOfShower.text.toString().toInt()
         val houseUsage = inputHouseUsage.text.toString().toInt()
-        val details = inputDetails.text.toString().toInt()
         val laundryDetails = inputLaundryDetails.text.toString().toInt()
         val dishesWashed = inputDishesWashed.text.toString().toInt()
-        val washDuration = inputWash.text.toString().toInt()
 
         // Get selected radio button values
         val selectedTapRunningId = radioGroupTapRunning.checkedRadioButtonId
@@ -148,10 +140,8 @@ class WaterFootprintActivity : AppCompatActivity() {
             showersPerDay,
             lengthOfShower,
             houseUsage,
-            details,
             laundryDetails,
             dishesWashed,
-            washDuration,
             tapRunning,
             event,
             amountUsedForEvent
@@ -184,10 +174,8 @@ class WaterFootprintActivity : AppCompatActivity() {
         val showersPerDay: Int = 0,
         val lengthOfShower: Int = 0,
         val houseUsage: Int = 0,
-        val details: Int = 0,
         val laundryDetails: Int = 0,
         val dishesWashed: Int = 0,
-        val washDuration: Int = 0,
         val tapRunning: String = "",
         val event: String = "",
         val  amountUsedForEvent : Int = 0

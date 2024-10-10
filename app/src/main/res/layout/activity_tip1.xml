@@ -32,12 +32,19 @@
                 android:layout_marginBottom="16dp"
                 android:layout_gravity="center"/>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/bath"
+                />
+
             <!-- Description Section -->
             <TextView
                 android:id="@+id/tv_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="It takes a lot of water to produce the food we eat, the energy we use and all the things that we buy. Use our water saving tips below to reduce your water use in the bathroom. You’ll find lots of ways to shrink your water footprint."
+                android:text="Use our water saving tips below to reduce your water use in the bathroom. You’ll find lots of ways to shrink your water footprint."
                 android:textColor="#666666"
                 android:textSize="16sp"
                 android:padding="8dp"
@@ -59,7 +66,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Put a bucket in the shower while you’re waiting for the water to warm up, and use the used-water you catch for watering plants, flushing the toilet or cleaning."
+                    android:text="Put a bucket in the shower while you’re waiting for the water to warm up."
                     android:paddingStart="16dp"
                     android:textSize="16sp"
                     android:textColor="#666666"
@@ -81,7 +88,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Install a low-flow showerhead. It may cost you some money up front, but your water conservation efforts will save you money down the road. Low-flow showerheads typically flow at 2.5 gallons per minute or less."
+                    android:text="Install a low-flow showerhead.Your water conservation efforts will save you money down the road."
                     android:paddingStart="16dp"
                     android:textSize="16sp"
                     android:textColor="#666666"
@@ -103,7 +110,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Spend less time in the shower. If you lose track of time, bring a radio into the bathroom and time yourself by how many songs play while you’re in there."
+                    android:text="Spend less time in the shower. If you lose track of time, bring a radio into the bathroom and time yourself."
                     android:paddingStart="16dp"
                     android:textSize="16sp"
                     android:textColor="#666666"

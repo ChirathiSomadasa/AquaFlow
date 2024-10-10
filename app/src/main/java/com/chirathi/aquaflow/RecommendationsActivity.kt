@@ -28,10 +28,8 @@ class RecommendationsActivity : AppCompatActivity() {
         const val AVERAGE_SHOWERS_PER_DAY = 2
         const val AVERAGE_LENGTH_OF_SHOWER = 7
         const val AVERAGE_HOUSE_USAGE = 15
-        const val AVERAGE_DETAILS = 3
         const val AVERAGE_LAUNDRY_DETAILS = 2
         const val AVERAGE_DISHES_WASHED = 6
-        const val AVERAGE_WASH_DURATION = 5
         const val AVERAGE_EVENT_USAGE = 30
     }
 
@@ -132,10 +130,8 @@ class RecommendationsActivity : AppCompatActivity() {
             Triple(footprint.showersPerDay, AVERAGE_SHOWERS_PER_DAY, "Install a water-efficient showerhead for strong flow with less water waste"),
             Triple(footprint.lengthOfShower, AVERAGE_LENGTH_OF_SHOWER, "Shorten your showers to conserve water and energy"),
             Triple(footprint.houseUsage, AVERAGE_HOUSE_USAGE, "Be mindful of your water use at home—small changes can save big."),
-            Triple(footprint.details, AVERAGE_DETAILS, "Use a two-basin system for washing dishes to save water."),
             Triple(footprint.laundryDetails, AVERAGE_LAUNDRY_DETAILS, "Running full laundry loads only will reduce water use."),
             Triple(footprint.dishesWashed, AVERAGE_DISHES_WASHED, "Soak pots and pans instead of scrubbing under running water."),
-            Triple(footprint.washDuration, AVERAGE_WASH_DURATION, "Use a spray nozzle to control flow and minimize water waste"),
             Triple(footprint.amountUsedForEvent, AVERAGE_EVENT_USAGE, "Set up a refillable water station at events to reduce bottled waste.")
         )
 
@@ -165,10 +161,8 @@ class RecommendationsActivity : AppCompatActivity() {
         remindercheckBox[0].visibility = if (footprint.showersPerDay > AVERAGE_SHOWERS_PER_DAY) View.VISIBLE else View.GONE
         remindercheckBox[1].visibility = if (footprint.lengthOfShower > AVERAGE_LENGTH_OF_SHOWER) View.VISIBLE else View.GONE
         remindercheckBox[2].visibility = if (footprint.houseUsage > AVERAGE_HOUSE_USAGE) View.VISIBLE else View.GONE
-        remindercheckBox[3].visibility = if (footprint.details > AVERAGE_DETAILS) View.VISIBLE else View.GONE
         remindercheckBox[4].visibility = if (footprint.laundryDetails > AVERAGE_LAUNDRY_DETAILS) View.VISIBLE else View.GONE
         remindercheckBox[5].visibility = if (footprint.dishesWashed > AVERAGE_DISHES_WASHED) View.VISIBLE else View.GONE
-        remindercheckBox[6].visibility = if (footprint.washDuration > AVERAGE_WASH_DURATION) View.VISIBLE else View.GONE
         remindercheckBox[7].visibility = if (footprint.amountUsedForEvent > AVERAGE_EVENT_USAGE) View.VISIBLE else View.GONE
 
 

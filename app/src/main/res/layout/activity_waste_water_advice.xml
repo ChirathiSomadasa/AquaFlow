@@ -97,10 +97,10 @@
 
 
             <ImageView
-                android:layout_width="94dp"
-                android:layout_height="match_parent"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:contentDescription="Waste Water Analysis Icon"
-                android:src="@drawable/graph" />
+                android:src="@drawable/graphs" />
 
             <TextView
                 android:id="@+id/btnUsageGraphs"
@@ -124,9 +124,9 @@
 
             <ImageView
                 android:layout_width="94dp"
-                android:layout_height="93dp"
+                android:layout_height="80dp"
                 android:contentDescription="Waste Water Analysis Icon"
-                android:src="@drawable/reminders" />
+                android:src="@drawable/list" />
 
             <TextView
                 android:id="@+id/btnRecommendations"
