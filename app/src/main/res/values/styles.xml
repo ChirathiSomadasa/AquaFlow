@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomDatePickerDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <!-- Customize colors -->
+        <item name="colorPrimary">#FF0000</item>
+        <item name="colorPrimaryDark">#8B0000</item>
+        <item name="colorAccent">#00BCD4</item>
+    </style>
+</resources>

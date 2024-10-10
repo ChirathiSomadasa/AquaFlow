@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,73 +8,74 @@
     android:layout_margin="5dp"
     android:layout_marginTop="10dp"
     android:elevation="4dp"
+    android:clickable="true"
+    android:focusable="true"
     app:cardCornerRadius="12dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
         android:padding="5dp">
 
-        <!-- Date Header -->
-        <!--    <TextView
-                android:id="@+id/tvDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Today"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_marginBottom="8dp" />-->
-
-        <!-- Notification Main Info -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@drawable/blue_background_with_corners"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
 
-            <!-- Notification Icon -->
-            <ImageView
-                android:id="@+id/notification_icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginEnd="8dp"
-                app:srcCompat="@drawable/ic_notifications_active" />
-
-            <!-- Notification Texts -->
+            <!-- Notification Main Info -->
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/blue_background_with_corners"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
-                <TextView
-                    android:id="@+id/notification_title"
+                <!-- Notification Icon -->
+                <ImageView
+                    android:id="@+id/notification_icon"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    app:srcCompat="@drawable/ic_notifications_active" />
+
+                <!-- Notification Texts -->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New Notification"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvNotificationTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10:00 AM"
-                    android:textColor="@color/blue_home" />
+                    <TextView
+                        android:id="@+id/notification_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Notification"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvNotificationTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:00 AM"
+                        android:textColor="@color/blue_home" />
+                </LinearLayout>
+
+                <!-- Expand/Collapse Arrow -->
+                <ImageView
+                    android:id="@+id/btnExpandCollapse"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center|end"
+                    android:rotation="90"
+                    app:srcCompat="@drawable/arrow" />
             </LinearLayout>
-
-            <!-- Expand/Collapse Arrow -->
-            <ImageView
-                android:id="@+id/btnExpandCollapse"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center|end"
-                android:rotation="90"
-                app:srcCompat="@drawable/arrow" />
         </LinearLayout>
 
         <!-- Expanded Section (Initially Hidden) -->
@@ -127,5 +129,7 @@
                     android:text="Cancel" />
             </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

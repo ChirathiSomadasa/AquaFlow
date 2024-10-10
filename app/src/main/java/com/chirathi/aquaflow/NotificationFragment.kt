@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chirathi.aquaflow.NotificationService.NotificationAdapter
 import com.chirathi.aquaflow.NotificationService.NotificationItem
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.Query
 
 
@@ -21,6 +22,8 @@ class NotificationFragment : Fragment() {
     private lateinit var notificationAdapter: NotificationAdapter
     private lateinit var notificationList: ArrayList<NotificationItem>
     private lateinit var db: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth  // Firebase Authentication instance
+    private lateinit var userId: String      // To store current user's ID
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,9 +42,35 @@ class NotificationFragment : Fragment() {
         notificationRecyclerView.adapter = notificationAdapter
 
         db = FirebaseFirestore.getInstance()   // Initialize Firestore
+        auth = FirebaseAuth.getInstance()
+
+        // Get the current user's ID
+        userId = auth.currentUser?.uid ?: ""  // Retrieve the user ID from FirebaseAuth
+
+        if (userId.isNotEmpty()) {
+            // Fetch notifications from the current user's subcollection "notifications"
+            db.collection("users").document(userId).collection("notifications")
+                .orderBy("timestamp", Query.Direction.DESCENDING)
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        val title = document.getString("title") ?: "No Title"
+                        val message = document.getString("body") ?: "No Message"
+                        val timestamp = document.getString("timestamp") ?: "Now"
+                        val notificationItem = NotificationItem(title, message, timestamp)
+                        notificationList.add(notificationItem)
+                    }
+                    notificationAdapter.notifyDataSetChanged()
+                }
+                .addOnFailureListener { e ->
+                    // Handle failure
+                }
+        } else {
+            // Handle the case where userId is null or empty
+        }
 
         // Fetch notifications from Firestore and order by time (newest first)
-        db.collection("notifications")
+        /*db.collection("notifications")
             .orderBy("timestamp", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { documents ->
@@ -56,31 +85,12 @@ class NotificationFragment : Fragment() {
             }
             .addOnFailureListener { e ->
                 // Handle failure
-            }
+            }*/
 
-        setupExpandCollapse(view)// Set up expand/collapse functionality
+
 
         return view
     }
 
-    private fun setupExpandCollapse(view: View) {
-        val expandCollapseBtn = view.findViewById<ImageView>(R.id.btnExpandCollapse)
-        val expandedLayout = view.findViewById<LinearLayout>(R.id.expandedLayout)
-
-        // Check if the button and layout exist to avoid crashes
-        expandCollapseBtn?.let { btn ->
-            expandedLayout?.let { layout ->
-                btn.setOnClickListener {
-                    if (layout.visibility == View.INVISIBLE) {
-                        layout.visibility = View.VISIBLE
-                        btn.rotation = 180f  // Rotate arrow downwards
-                    } else {
-                        layout.visibility = View.INVISIBLE
-                        btn.rotation = 0f  // Rotate arrow upwards
-                    }
-                }
-            }
-        }
-    }
 
 }

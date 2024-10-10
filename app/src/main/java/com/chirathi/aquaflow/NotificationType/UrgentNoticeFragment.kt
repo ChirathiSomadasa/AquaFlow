@@ -1,6 +1,7 @@
 package com.chirathi.aquaflow.NotificationType
 
 import android.app.DatePickerDialog
+import android.content.DialogInterface
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
@@ -16,6 +17,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import com.chirathi.aquaflow.R
 import com.google.firebase.firestore.FirebaseFirestore
@@ -87,7 +89,8 @@ class UrgentNoticeFragment : Fragment() {
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-            val datePickerDialog = DatePickerDialog(requireContext(), { _, selectedYear, selectedMonth, selectedDay ->
+            val datePickerDialog = DatePickerDialog(requireContext(), R.style.CustomDatePickerDialog,
+                { _, selectedYear, selectedMonth, selectedDay ->
                 selectedDate = "${selectedYear}-${selectedMonth + 1}-${selectedDay}"
                 etSetDate.setText(selectedDate)
 
@@ -96,6 +99,13 @@ class UrgentNoticeFragment : Fragment() {
 
             }, year, month, day)
 
+            datePickerDialog.setOnShowListener {
+                val positiveButton = datePickerDialog.getButton(DialogInterface.BUTTON_POSITIVE)
+                positiveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.blueee))
+
+                val negativeButton = datePickerDialog.getButton(DialogInterface.BUTTON_NEGATIVE)
+                negativeButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.blueee))
+            }
             datePickerDialog.show()
         }
 
@@ -173,7 +183,7 @@ class UrgentNoticeFragment : Fragment() {
 
         val db = FirebaseFirestore.getInstance()
 
-        // Store the notification in Firestore
+        // Store the notification in Firestore => notifications collection
         db.collection("notifications")
             .add(notificationData)
             .addOnSuccessListener {
@@ -184,6 +194,41 @@ class UrgentNoticeFragment : Fragment() {
             .addOnFailureListener { e ->
                 println("Failed to store notification in Firestore: ${e.message}")
             }
+
+        // Store the notification in Firestore => user collection(consumer only)
+        db.collection("users")
+            .whereEqualTo("isSupplier", false)  // Target consumers only
+            .whereEqualTo("address", selectedLocation)  // Match the user's address with the selected location
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                for (document in querySnapshot.documents) {
+                    val userId = document.id  // Get the consumer's user ID
+
+                    // Prepare the notification data to store in the consumer's document
+                    val consumerNotificationData = hashMapOf(
+                        "title" to "Water Supply Reminder",
+                        "body" to message,
+                        "date" to selectedDate,
+                        "location" to selectedLocation,
+                        "timestamp" to currentTime
+                    )
+
+                    // Update or add the notification for each consumer under their user document
+                    db.collection("users").document(userId)
+                        .collection("notifications")  // Create a subcollection for notifications
+                        .add(consumerNotificationData)
+                        .addOnSuccessListener {
+                            println("Notification stored for user: $userId")
+                        }
+                        .addOnFailureListener { e ->
+                            println("Failed to store notification for user $userId: ${e.message}")
+                        }
+                }
+            }
+            .addOnFailureListener { e ->
+                println("Error fetching consumers: ${e.message}")
+            }
+
 
         // Fetch consumer FCM tokens from Firestore
         db.collection("users")

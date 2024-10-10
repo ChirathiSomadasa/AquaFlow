@@ -14,18 +14,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import de.hdodenhof.circleimageview.CircleImageView
 import java.util.*
+import androidx.activity.result.contract.ActivityResultContracts
 
-
-    class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
     private lateinit var profileImage: CircleImageView
     private lateinit var imageUploadIcon: ImageView
@@ -33,7 +31,6 @@ import java.util.*
     private lateinit var storage: FirebaseStorage
     private lateinit var firestore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
-    private val db = Firebase.firestore
     private lateinit var selectedImg: Uri
     private lateinit var dialog: AlertDialog
     private var profileListener: ListenerRegistration? = null
@@ -45,47 +42,15 @@ import java.util.*
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        auth = FirebaseAuth.getInstance()
-
-        // Reference to profile name and email TextViews
-        val profileName = view.findViewById<TextView>(R.id.user_profile_name) // Add this
-
-        // Fetch current user data from Firebase
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            val userId = currentUser.uid
-
-            // Fetch user data from Firestore
-            db.collection("users").document(userId)
-                .get()
-                .addOnSuccessListener { document ->
-                    if (document != null) {
-                        // Set user data to UI
-                        val firstName = document.getString("firstName") ?: ""
-                        val lastName = document.getString("lastName") ?: ""
-
-                        // Concatenate first and last names and display them
-                        profileName.text = "$firstName $lastName"
-
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    // Handle errors
-                    Log.e("ProfileFragment", "Error fetching user data", exception)
-                }
-        }
-
-        // Handle profile details click
         // Initialize Firebase services
+        auth = FirebaseAuth.getInstance() // Initialize auth before use
         storage = FirebaseStorage.getInstance()
         firestore = FirebaseFirestore.getInstance()
-        auth = FirebaseAuth.getInstance()
 
         // Initialize views
         profileImage = view.findViewById(R.id.profile_image)
         imageUploadIcon = view.findViewById(R.id.image_upload_icon)
         ProfileName = view.findViewById(R.id.user_profile_name)
-
 
         // Set onClickListener to upload icon
         imageUploadIcon.setOnClickListener {
@@ -105,7 +70,6 @@ import java.util.*
             startActivity(intent)
         }
 
-        // Handle QR code view click
         val qrcodeView = view.findViewById<RelativeLayout>(R.id.qrcode)
         qrcodeView.setOnClickListener {
             val intent = Intent(context, QRCodeActivity::class.java)
@@ -126,7 +90,7 @@ import java.util.*
             startActivity(intent)
         }
 
-        return view
+        return view // Ensure this is here
     }
 
     // Function to load profile data (name and image)
