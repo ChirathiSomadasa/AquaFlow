@@ -90,7 +90,22 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
 
+        val logoutView = view.findViewById<RelativeLayout>(R.id.logout_button)
+        logoutView.setOnClickListener {
+            performLogout()
+        }
+
         return view // Ensure this is here
+    }
+
+    private fun performLogout() {
+        auth.signOut() // Sign out from Firebase
+        Toast.makeText(context, "Logged out successfully.", Toast.LENGTH_SHORT).show()
+
+        // Navigate to LoginActivity
+        val intent = Intent(activity, LoginActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
     }
 
     // Function to load profile data (name and image)
