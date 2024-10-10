@@ -25,7 +25,7 @@
         android:text="Set Date &amp; Location"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <TextView

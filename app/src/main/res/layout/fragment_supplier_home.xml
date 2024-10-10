@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".SupplierHomeFragment"
+    android:background="@color/blue_home"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/blue_home">
+    tools:context=".SupplierHomeFragment">
 
 
     <TextView
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
         android:text="Welcome"
         android:textColor="@color/black"
         android:textSize="18sp" />
@@ -23,18 +23,20 @@
         android:id="@+id/userNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="10dp"
         android:text=" "
-        android:textSize="24sp"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginTop="0dp">
 
 
         <ImageView
@@ -42,77 +44,88 @@
             android:layout_width="400dp"
             android:layout_height="200dp"
             android:foregroundGravity="fill"
-            app:layout_constraintBottom_toTopOf="@+id/layoutBtn"
+            app:layout_constraintBottom_toTopOf="@+id/layout_lay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/supplierdashboard" />
 
-        <LinearLayout
-            android:id="@+id/layoutBtn"
+        <RelativeLayout
+            android:id="@+id/layout_lay"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="240dp"
+            android:background="@drawable/white_bottom_bg"
+            android:padding="10dp">
 
-
-            <Button
-                android:id="@+id/Notification_Management_btn"
+            <LinearLayout
+                android:id="@+id/layoutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/blue_btn"
-                android:backgroundTint="@color/blue"
-                android:text="Notification Management"
-                android:textAlignment="viewStart"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent">
 
-            <Button
-                android:id="@+id/Delivery_Schedules_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/blue_btn"
-                android:backgroundTint="@color/blue"
-                android:text="Delivery Schedules"
-                android:textAlignment="viewStart"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/Scan_QR_code_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/blue_btn"
-                android:backgroundTint="@color/blue"
-                android:text="Scan QR code"
-                android:textAlignment="viewStart"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+                <Button
+                    android:id="@+id/Notification_Management_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/blue_btn"
+                    android:backgroundTint="@color/blue"
+                    android:text="Notification Management"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/Payment_Process_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/blue_btn"
-                android:backgroundTint="@color/blue"
-                android:text="Payment Process"
-                android:textAlignment="viewStart"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+                <Button
+                    android:id="@+id/Delivery_Schedules_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/blue_btn"
+                    android:backgroundTint="@color/blue"
+                    android:text="Delivery Schedules"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/Scan_QR_code_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/blue_btn"
+                    android:backgroundTint="@color/blue"
+                    android:text="Scan QR code"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/Payment_Process_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/blue_btn"
+                    android:backgroundTint="@color/blue"
+                    android:text="Payment Process"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
