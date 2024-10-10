@@ -73,13 +73,13 @@ class PaymentActivity : AppCompatActivity() {
                         // Now fetch the paymentAmount from the payment collection
                         fetchPaymentAmount(customerID) { paymentAmount ->
                             if (totalAmount <= paymentAmount) {
-                                showPaymentAlertDialog(totalAmount)
+                                Toast.makeText(this, "Completed", Toast.LENGTH_SHORT).show()
+                            }else{
+                                Log.d("PaymentActivity", "Total Amount: $totalAmount, Payment Amount: $paymentAmount")
                             }
+
                         }
                     }
-
-
-
                 } else {
                     // Corrected error message
                     Log.e("Firestore", "No water data found for this customer")

@@ -180,6 +180,7 @@ class HomeFragment : Fragment() {
         firestore.collection("points").document(customerId)
             .addSnapshotListener { snapshot, exception ->
                 if (exception != null) {
+                    Toast.makeText(context, "Error listening for updates", Toast.LENGTH_SHORT).show()
                     return@addSnapshotListener
                 }
                 if (snapshot != null && snapshot.exists()) {
