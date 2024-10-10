@@ -34,6 +34,13 @@ android {
     kotlinOptions {
         jvmTarget="1.8"
     }
+    // Add this packagingOptions block
+    packagingOptions {
+        resources {
+            excludes += setOf("META-INF/DEPENDENCIES")
+        }
+    }
+
 
 }
 
@@ -72,6 +79,8 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
     implementation ("com.onesignal:OneSignal:[5.0.0, 5.99.99]")
+    implementation("com.google.auth:google-auth-library-oauth2-http:1.12.0")
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
 
 }
 
