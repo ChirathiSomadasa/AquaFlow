@@ -210,7 +210,9 @@ class ReminderNoticeFragment : Fragment() {
             "date" to selectedDate,
             "time" to selectedTime,
             "location" to selectedLocation,
-            "timestamp" to currentTime  // For ordering notifications
+            "timestamp" to currentTime,  // For ordering notifications
+            "isRead" to false  // Default to unread
+
         )
 
         val db = FirebaseFirestore.getInstance()
@@ -243,7 +245,9 @@ class ReminderNoticeFragment : Fragment() {
                         "date" to selectedDate,
                         "time" to selectedTime,
                         "location" to selectedLocation,
-                        "timestamp" to currentTime
+                        "timestamp" to currentTime,
+                        "isRead" to false  // Default to unread
+
                     )
 
                     // Update or add the notification for each consumer under their user document
