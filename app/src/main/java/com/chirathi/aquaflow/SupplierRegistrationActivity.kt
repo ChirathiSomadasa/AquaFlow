@@ -55,7 +55,8 @@ class SupplierRegistrationActivity : AppCompatActivity() {
         // Sign-in link click listener
         val signinLink = findViewById<TextView>(R.id.link_signin)
         signinLink.setOnClickListener {
-            finish()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
 
         // Sign-up button listener
