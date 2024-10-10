@@ -86,15 +86,11 @@
                             android:layout_weight="2"
                             android:background="@drawable/text_border"
                             android:gravity="center"
-                            android:hint="Enter number"
+                            android:hint="Number of showers per day"
                             android:inputType="number"
                             android:textSize="16dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="per day" />
+
                     </LinearLayout>
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,11 +131,6 @@
                         android:background="@drawable/text_border"
                         android:gravity="center"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="mins" />
                 </LinearLayout>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -171,20 +162,15 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputhouseusage"
-                        android:layout_width="271dp"
+                        android:layout_width="372dp"
                         android:layout_height="wrap_content"
-                        android:hint="Enter 0 if you didnt do this activity"
-                        android:inputType="number"
                         android:layout_weight="2"
-                        android:textSize="15dp"
                         android:background="@drawable/text_border"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:hint="Value in liters(Enter 0 if you didnt do this activity)"
+                        android:inputType="number"
+                        android:textSize="13.5dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="ltrs" />
                 </LinearLayout>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -256,18 +242,13 @@
                         android:id="@+id/inputlaundrydetails"
                         android:layout_width="271dp"
                         android:layout_height="wrap_content"
-                        android:hint="Enter laundry load number"
+                        android:hint="Enter laundry load number per day"
                         android:inputType="number"
                         android:layout_weight="2"
                         android:textSize="14dp"
                         android:background="@drawable/text_border"
                         android:gravity="center"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="per day" />
                 </LinearLayout>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -380,18 +361,13 @@
                         android:id="@+id/inputdisheswashed"
                         android:layout_width="271dp"
                         android:layout_height="wrap_content"
-                        android:hint="Enter zero if using a dishwasher"
+                        android:hint="Enter Times(Enter zero if using a dishwasher)"
                         android:inputType="number"
                         android:layout_weight="2"
-                        android:textSize="15dp"
+                        android:textSize="14dp"
                         android:background="@drawable/text_border"
                         android:gravity="center"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="times" />
                 </LinearLayout>
             </com.google.android.material.textfield.TextInputLayout>
 
