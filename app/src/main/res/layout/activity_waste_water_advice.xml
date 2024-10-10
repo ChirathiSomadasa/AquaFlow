@@ -62,82 +62,87 @@
         android:padding="12dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="337dp"
             android:layout_height="74dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:background="@color/babyBlue"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="91dp"
-                android:layout_height="93dp"
-                android:contentDescription="Waste Water Analysis Icon"
-                android:src="@drawable/analysis" />
 
             <TextView
                 android:id="@+id/btnWaterFootprint"
-                android:layout_width="292dp"
+                android:layout_width="272dp"
                 android:layout_height="73dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
                 android:text="Waste Water Analysis and \nFootPrint"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="93dp"
+                android:contentDescription="Waste Water Analysis Icon"
+                android:src="@drawable/goforwrd" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="337dp"
             android:layout_height="70dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@color/babyBlue"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-
-            <ImageView
-                android:layout_width="90dp"
-                android:layout_height="60dp"
-                android:contentDescription="Waste Water Analysis Icon"
-                android:src="@drawable/graphs" />
-
             <TextView
                 android:id="@+id/btnUsageGraphs"
-                android:layout_width="match_parent"
+                android:layout_width="273dp"
                 android:layout_height="70dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:text="View Usage Graphs"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="93dp"
+                android:contentDescription="Waste Water Analysis Icon"
+                android:src="@drawable/goforwrd" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="339dp"
             android:layout_height="62dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@color/babyBlue"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="94dp"
-                android:layout_height="80dp"
-                android:contentDescription="Waste Water Analysis Icon"
-                android:src="@drawable/list" />
-
             <TextView
                 android:id="@+id/btnRecommendations"
-                android:layout_width="match_parent"
+                android:layout_width="276dp"
                 android:layout_height="70dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:text="Recommendations"
-                android:layout_marginLeft="10dp"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="93dp"
+                android:contentDescription="Waste Water Analysis Icon"
+                android:src="@drawable/goforwrd" />
         </LinearLayout>
     </LinearLayout>
 
