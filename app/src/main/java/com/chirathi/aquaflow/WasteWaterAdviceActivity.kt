@@ -2,7 +2,7 @@ package com.chirathi.aquaflow
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -11,9 +11,9 @@ class WasteWaterAdviceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_waste_water_advice)
 
-            val btnWaterFootprint = findViewById<TextView>(R.id.btnWaterFootprint)
-            val btnUsageGraphs = findViewById<TextView>(R.id.btnUsageGraphs)
-            val btnRecommendations = findViewById<TextView>(R.id.btnRecommendations)
+            val btnWaterFootprint = findViewById<LinearLayout>(R.id.btnWaterFootprint)
+            val btnUsageGraphs = findViewById<LinearLayout>(R.id.btnUsageGraphs)
+            val btnRecommendations = findViewById<LinearLayout>(R.id.btnRecommendations)
 
             btnWaterFootprint.setOnClickListener {
                 startActivity(Intent(this, WaterFootprintActivity::class.java))

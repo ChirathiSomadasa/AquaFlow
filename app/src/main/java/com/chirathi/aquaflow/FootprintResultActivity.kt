@@ -55,6 +55,29 @@ class FootprintResultActivity : AppCompatActivity() {
             startActivity(Intent(this, Tip1Activity::class.java))
         }
 
+        val tip2button = findViewById<Button>(R.id.q2)
+        tip2button.setOnClickListener {
+            startActivity(Intent(this, Tip1Activity::class.java))
+        }
+        val tip3button = findViewById<Button>(R.id.q3)
+        tip3button.setOnClickListener {
+            startActivity(Intent(this, Tip1Activity::class.java))
+        }
+
+        val tip6button = findViewById<Button>(R.id.q6)
+        tip6button.setOnClickListener {
+            startActivity(Intent(this, Tip1Activity::class.java))
+        }
+
+        val tip5button = findViewById<Button>(R.id.q5)
+        tip5button.setOnClickListener {
+            startActivity(Intent(this, Tip1Activity::class.java))
+        }
+
+        val tip8button = findViewById<Button>(R.id.q8)
+        tip8button.setOnClickListener {
+            startActivity(Intent(this, Tip1Activity::class.java))
+        }
     }
 
     private fun fetchWaterFootprintData(documentId: String) {
