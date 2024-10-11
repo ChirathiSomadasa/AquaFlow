@@ -43,9 +43,6 @@ class UrgentNoticeFragment : Fragment() {
 
 
 
-    // OneSignal App ID
-    private val ONESIGNAL_APP_ID = "ffd8de79-4fa2-4ad7-8a51-93edb3147e1f"
-    private val ONESIGNAL_API_KEY = "MDIwNzZhZmYtOTUzZS00ZWU1LWFhNzgtMTM1N2M3NzYyMjQy" // Add your OneSignal REST API Key
     private val FCM_Server_Key = "BKqCP2enSG70Xu25El6oCrrz_0O0OhjZgKiETMPik6haoWEt6jNuVHe7vCXfNCImVfReH3MJsk4NmAw6-BxD-kU"
 
 
@@ -209,7 +206,7 @@ class UrgentNoticeFragment : Fragment() {
 
                     // Prepare the notification data to store in the consumer's document
                     val consumerNotificationData = hashMapOf(
-                        "title" to "Water Supply Reminder",
+                        "title" to "Water Supply Disruption",
                         "body" to message,
                         "date" to selectedDate,
                         "location" to selectedLocation,

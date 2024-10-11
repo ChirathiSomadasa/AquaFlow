@@ -39,14 +39,13 @@ class NotificationFragment : Fragment() {
 
         // Initialize the list and adapter
         notificationList = ArrayList()
-        notificationAdapter = NotificationAdapter(notificationList)
+        notificationAdapter = NotificationAdapter(notificationList, this)
         notificationRecyclerView.adapter = notificationAdapter
 
         db = FirebaseFirestore.getInstance()   // Initialize Firestore
         auth = FirebaseAuth.getInstance()
+        userId = auth.currentUser?.uid ?: ""  // Get the current user's ID from FirebaseAuth
 
-        // Get the current user's ID
-        userId = auth.currentUser?.uid ?: ""  // Retrieve the user ID from FirebaseAuth
 
         if (userId.isNotEmpty()) {
             // Fetch notifications from the current user's subcollection "notifications"
@@ -73,26 +72,6 @@ class NotificationFragment : Fragment() {
         } else {
             // Handle the case where userId is null or empty
         }
-
-        // Fetch notifications from Firestore and order by time (newest first)
-        /*db.collection("notifications")
-            .orderBy("timestamp", Query.Direction.DESCENDING)
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    val title = document.getString("title") ?: "No Title"
-                    val message = document.getString("body") ?: "No Message"
-                    val timestamp = document.getString("timestamp") ?: "Now"
-                    val notificationItem = NotificationItem(title, message, timestamp)
-                    notificationList.add(notificationItem)
-                }
-                notificationAdapter.notifyDataSetChanged()
-            }
-            .addOnFailureListener { e ->
-                // Handle failure
-            }*/
-
-
 
         return view
     }
