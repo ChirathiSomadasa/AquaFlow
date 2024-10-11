@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvTitle"
-        android:text="Plan your next journey with us"
+        android:text="Manage your water supply effortlesslys"
         android:textAlignment="center"
         android:textColor="@color/gray"
         android:textSize="16sp" />

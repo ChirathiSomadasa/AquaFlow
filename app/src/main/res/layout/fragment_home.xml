@@ -264,19 +264,18 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:paddingTop="8dp"
-                            android:text="Get Water"
-                            android:textColor="@color/black"
+                            android:text="Collect your water now"
+                            android:textColor="#008ECC"
                             android:textSize="16sp"
+                            android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/tvEmptyWaterQuotaTitle"/>
 
                         <ImageView
                             android:id="@+id/tvEmptyWaterQuotaViewMore"
-                            android:layout_width="400dp"
-                            android:layout_height="100dp"
-
-                            android:text="View more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="120dp"
                             android:textStyle="bold"
                             android:src="@drawable/water"
                             app:layout_constraintStart_toStartOf="parent"
