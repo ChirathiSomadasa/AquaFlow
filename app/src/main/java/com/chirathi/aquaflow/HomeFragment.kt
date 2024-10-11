@@ -1,5 +1,6 @@
 package com.chirathi.aquaflow
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -33,6 +35,7 @@ class HomeFragment : Fragment() {
     private val totalQuotaValue = 1000 // Set total quota value as a constant
     private lateinit var pointsTextView: TextView
     private lateinit var rewardTextView: TextView
+    private lateinit var emptyImg:ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +52,7 @@ class HomeFragment : Fragment() {
         updatedDate = view.findViewById(R.id.updated_date)
         pointsTextView = view.findViewById(R.id.loyalty_balance_text)
         rewardTextView = view.findViewById(R.id.reward_text)
+        emptyImg = view.findViewById((R.id.tvEmptyWaterQuotaViewMore))
         firestore = Firebase.firestore
         auth = FirebaseAuth.getInstance()
 
@@ -174,8 +178,23 @@ class HomeFragment : Fragment() {
                     waterQuotaLayout.visibility = View.GONE
                     emptyWaterQuotaLayout.visibility = View.VISIBLE
                     // Toast.makeText(context, "No water data found for this customer", Toast.LENGTH_SHORT).show()
+                    applyZoomInAnimation(emptyImg)
                 }
             }
+    }
+
+    private fun applyZoomInAnimation(view: View) {
+        // Set up ObjectAnimator for zoom-in effect
+        val scaleXAnimator = ObjectAnimator.ofFloat(view, "scaleX", 0.5f, 1f)
+        val scaleYAnimator = ObjectAnimator.ofFloat(view, "scaleY", 0.5f, 1f)
+
+        // Play animations together
+        scaleXAnimator.duration = 2000 // Animation duration in milliseconds
+        scaleYAnimator.duration = 2000
+
+        // Start both animations
+        scaleXAnimator.start()
+        scaleYAnimator.start()
     }
 
     private fun fetchCustomerPoints(customerId: String){
