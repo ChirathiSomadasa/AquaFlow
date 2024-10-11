@@ -28,9 +28,10 @@
 
             <!-- Notification Main Info -->
             <LinearLayout
+                android:id="@+id/main_notification_card"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:background="@drawable/blue_background_with_corners"
+                android:background="@drawable/notification_read"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="20dp"

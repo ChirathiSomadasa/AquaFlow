@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.chirathi.aquaflow.NotificationFragment
 import com.chirathi.aquaflow.R
@@ -15,10 +16,14 @@ data class NotificationItem(
     val title: String,
     val message: String,
     val timestamp: String,
-    val isRead: Boolean = false
+    var isRead: Boolean
 )
 
-class NotificationAdapter(private val notificationList: List<NotificationItem>) : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
+class NotificationAdapter(
+    private val notificationList: List<NotificationItem>,
+    private val fragment: NotificationFragment
+) : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
+
 
     class NotificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.notification_title)
@@ -27,6 +32,8 @@ class NotificationAdapter(private val notificationList: List<NotificationItem>) 
         val timestampTextView: TextView = itemView.findViewById(R.id.tvNotificationTime) // Reference to timestamp TextView
         val expandCollapseBtn: ImageView = itemView.findViewById(R.id.btnExpandCollapse) // Expand/Collapse Button
         val expandedLayout: LinearLayout = itemView.findViewById(R.id.expandedLayout) // Expanded layout that will be shown/hidden
+        val notificationCard: LinearLayout = itemView.findViewById(R.id.main_notification_card)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
@@ -42,21 +49,21 @@ class NotificationAdapter(private val notificationList: List<NotificationItem>) 
         holder.timestampTextView.text = currentItem.timestamp // Set the timestamp
 
 
-        // Change appearance if notification is read
+        // Set background color based on read status
         if (currentItem.isRead) {
-            holder.itemView.alpha = 0.5f // Dim the view to show it has been read
+            holder.notificationCard.setBackgroundResource(R.drawable.notification_read)
         } else {
-            holder.itemView.alpha = 1.0f // Full opacity if unread
+            holder.notificationCard.setBackgroundResource(R.drawable.notification_unread)
         }
 
-        // Handle notification click
-        holder.itemView.setOnClickListener {
-            // Mark the notification as read in Firestore
-            (holder.itemView.context as? NotificationFragment)?.markNotificationAsRead(currentItem.notificationId)
-
-            // Optional: Change the UI to reflect the read status immediately
-            holder.itemView.alpha = 0.5f
-        }
+        // Handle click to mark notification as read
+//        holder.notificationCard.setOnClickListener {
+//            if (!currentItem.isRead) {
+//                fragment.markNotificationAsRead(currentItem.notificationId) // Call method to mark as read
+//                currentItem.isRead = true // Update the notification object
+//                notifyItemChanged(position) // Notify the adapter to refresh this item
+//            }
+//        }
 
 
 
@@ -69,10 +76,23 @@ class NotificationAdapter(private val notificationList: List<NotificationItem>) 
                 // Expand the layout
                 holder.expandedLayout.visibility = View.VISIBLE
                 holder.expandCollapseBtn.rotation = 180f  // Rotate the arrow down
+
+
+                // Handle click to mark notification as read
+                holder.notificationCard.setBackgroundResource(R.drawable.notification_read)
+
+
+
+
             } else {
                 // Collapse the layout
                 holder.expandedLayout.visibility = View.GONE
                 holder.expandCollapseBtn.rotation = 0f  // Rotate the arrow up
+                if (!currentItem.isRead) {
+                    fragment.markNotificationAsRead(currentItem.notificationId) // Call method to mark as read
+                    currentItem.isRead = true // Update the notification object
+                    notifyItemChanged(position) // Notify the adapter to refresh this item
+                }
             }
         }
     }

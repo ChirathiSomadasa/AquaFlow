@@ -289,7 +289,7 @@ class ReminderNoticeFragment : Fragment() {
 
                         // Send the notification
                         CoroutineScope(Dispatchers.IO).launch {
-                            sendNotificationToConsumer(notificationPayload)
+//                            sendNotificationToConsumer(notificationPayload)
 //                            sendNotification_OneSignal(message)
                         }
                     }

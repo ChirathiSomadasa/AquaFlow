@@ -16,5 +16,8 @@
     <color name="lightgray">#A3A0A0</color>
     <color name="blueee">#00BCD4</color>
 
+    <color name="notification_read">#CC3C3C</color>   <!-- Light gray for read notifications -->
+    <color name="notification_unread">#03A9F4</color>  <!-- White for unread notifications -->
+
 
 </resources>
