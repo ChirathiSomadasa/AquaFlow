@@ -2,6 +2,7 @@ package com.chirathi.aquaflow
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,6 +15,11 @@ class WasteWaterAdviceActivity : AppCompatActivity() {
             val btnWaterFootprint = findViewById<LinearLayout>(R.id.btnWaterFootprint)
             val btnUsageGraphs = findViewById<LinearLayout>(R.id.btnUsageGraphs)
             val btnRecommendations = findViewById<LinearLayout>(R.id.btnRecommendations)
+        val backbtn = findViewById<ImageView>(R.id.backbtn)
+
+        backbtn.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
+        }
 
             btnWaterFootprint.setOnClickListener {
                 startActivity(Intent(this, WaterFootprintActivity::class.java))
