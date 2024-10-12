@@ -143,6 +143,7 @@ class UrgentNoticeFragment : Fragment() {
 
         val sendButton = view.findViewById<Button>(R.id.btnSendNotification)
         sendButton.setOnClickListener {
+            lockInputFields()
             sendNotification_Fire()
         }
 
@@ -253,7 +254,7 @@ class UrgentNoticeFragment : Fragment() {
 
                         // Send the notification
                         CoroutineScope(Dispatchers.IO).launch {
-                            sendNotificationToConsumer(notificationPayload)
+//                            sendNotificationToConsumer(notificationPayload)
                         }
                     }
                 }
