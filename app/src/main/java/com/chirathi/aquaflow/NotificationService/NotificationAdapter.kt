@@ -3,6 +3,7 @@ package com.chirathi.aquaflow.NotificationService
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -76,13 +77,9 @@ class NotificationAdapter(
                 // Expand the layout
                 holder.expandedLayout.visibility = View.VISIBLE
                 holder.expandCollapseBtn.rotation = 180f  // Rotate the arrow down
-
-
+                
                 // Handle click to mark notification as read
                 holder.notificationCard.setBackgroundResource(R.drawable.notification_read)
-
-
-
 
             } else {
                 // Collapse the layout
@@ -94,6 +91,11 @@ class NotificationAdapter(
                     notifyItemChanged(position) // Notify the adapter to refresh this item
                 }
             }
+        }
+
+        // Handle delete notification when the Cancel button is clicked
+        holder.itemView.findViewById<Button>(R.id.btnCancel).setOnClickListener {
+            fragment.deleteNotification(currentItem.notificationId, position)
         }
     }
 

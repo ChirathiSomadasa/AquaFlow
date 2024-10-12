@@ -177,6 +177,7 @@ class ReminderNoticeFragment : Fragment() {
 
         val sendButton = view.findViewById<Button>(R.id.btnSendNotification)
         sendButton.setOnClickListener {
+            lockInputFields()
             sendNotification_Fire()
         }
 
@@ -290,7 +291,6 @@ class ReminderNoticeFragment : Fragment() {
                         // Send the notification
                         CoroutineScope(Dispatchers.IO).launch {
 //                            sendNotificationToConsumer(notificationPayload)
-//                            sendNotification_OneSignal(message)
                         }
                     }
                 }
@@ -333,42 +333,6 @@ class ReminderNoticeFragment : Fragment() {
     }
 
 
-/*
-    // Function to send notification via OneSignal
-    private fun sendNotification_OneSignal(message: String) {
-        val url = URL("https://onesignal.com/api/v1/notifications")
-        val json = """
-            {
-                "app_id": "$ONESIGNAL_APP_ID",
-                "included_segments": ["Subscribed Users"],
-                "contents": {"en": "$message"}
-            }
-        """.trimIndent()
-
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val connection = url.openConnection() as HttpURLConnection
-                connection.doOutput = true
-                connection.requestMethod = "POST"
-                connection.setRequestProperty("Content-Type", "application/json; charset=utf-8")
-                connection.setRequestProperty("Authorization", "Basic $ONESIGNAL_API_KEY") // Use your OneSignal API key here
-
-                val outputStream = DataOutputStream(connection.outputStream)
-                outputStream.writeBytes(json)
-                outputStream.flush()
-                outputStream.close()
-
-                val responseCode = connection.responseCode
-                if (responseCode == HttpURLConnection.HTTP_OK) {
-                    println("OneSignal notification sent successfully.")
-                } else {
-                    println("Failed to send OneSignal notification. Response code: $responseCode")
-                }
-            } catch (e: Exception) {
-                println("Error sending OneSignal notification: ${e.message}")
-            }
-        }
-    }*/
 
 
 

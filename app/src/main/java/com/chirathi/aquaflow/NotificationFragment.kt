@@ -86,6 +86,22 @@ class NotificationFragment : Fragment() {
                 Log.e("NotificationFragment", "Error updating notification: ${exception.message}")
             }
     }
+    fun deleteNotification(notificationId: String, position: Int) {
+        db.collection("users").document(userId).collection("notifications")
+            .document(notificationId)
+            .delete()
+            .addOnSuccessListener {
+                Log.d("NotificationFragment", "Notification deleted successfully")
+
+                // Remove the notification from the list and update the adapter
+                notificationList.removeAt(position)
+                notificationAdapter.notifyItemRemoved(position)
+            }
+            .addOnFailureListener { exception ->
+                Log.e("NotificationFragment", "Error deleting notification: ${exception.message}")
+            }
+    }
+
 
 
 }
